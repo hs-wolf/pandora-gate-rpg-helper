@@ -1,0 +1,38 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [
+      "node",
+      "vite/client",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-layouts/client",
+      "unplugin-icons/types/vue",
+      "@intlify/vite-plugin-vue-i18n/client"
+    ],
+    "useDefineForClassFields": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@environments/*": ["./src/environments/*"],
+      "@plugins/*": ["./src/plugins/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@pandora-gate-rpg-helper/models": ["../../libs/models/src/index.ts"],
+      "@pandora-gate-rpg-helper/utilities": [
+        "../../libs/utilities/src/index.ts"
+      ]
+    },
+    "composite": true,
+    "declaration": true
+  },
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+  "include": ["**/*.ts"]
+}

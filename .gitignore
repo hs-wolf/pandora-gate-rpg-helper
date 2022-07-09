@@ -142,3 +142,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Custom
+firebase-keys.json

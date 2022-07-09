@@ -1,5 +1,11 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "backoffice": "apps/backoffice",
+    "client": "apps/client",
+    "models": "libs/models",
+    "monolith": "apps/monolith",
+    "utilities": "libs/utilities"
+  }
 }

@@ -1,0 +1,69 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/monolith/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "monolith:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "monolith:build:production"
+        }
+      }
+    },
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/monolith",
+        "main": "apps/monolith/src/main.ts",
+        "tsConfig": "apps/monolith/tsconfig.app.json",
+        "assets": ["apps/monolith/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/monolith/src/environments/environment.ts",
+              "with": "apps/monolith/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "watch-tsoa": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "nodemon --config apps/monolith/monolith.nodemon.json -x tsoa spec-and-routes -c=apps/monolith/monolith.tsoa.json"
+      }
+    },
+    "build-tsoa": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "tsoa spec-and-routes -c=apps/monolith/monolith.tsoa.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/monolith/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/monolith"],
+      "options": {
+        "jestConfig": "apps/monolith/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

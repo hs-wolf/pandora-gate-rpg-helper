@@ -1,0 +1,25 @@
+{
+  "entryFile": "apps/monolith/src/main.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": ["apps/monolith/src/**/*Controller.ts"],
+  "spec": {
+    "outputDirectory": "apps/monolith/spec",
+    "specVersion": 3,
+    "securityDefinitions": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "routes": {
+    "routesDir": "apps/monolith/routes",
+    "authenticationModule": "apps/monolith/src/authentication.ts"
+  },
+  "compilerOptions": {
+    "paths": {
+      "@pandora-gate-rpg-helper/models": ["libs/models/src/index.ts"],
+      "@pandora-gate-rpg-helper/utilities": ["libs/utilities/src/index.ts"]
+    }
+  }
+}

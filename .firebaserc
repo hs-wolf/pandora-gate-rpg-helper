@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "pandora-gate-rpg-helper"
+  },
+  "targets": {
+    "pandora-gate-rpg-helper": {
+      "hosting": {
+        "backoffice": [
+          "pandora-gate-rpg-helper-client"
+        ],
+        "client": [
+          "pandora-gate-rpg-helper-client"
+        ]
+      }
+    }
+  }
+}

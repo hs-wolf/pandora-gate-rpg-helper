@@ -23,5 +23,19 @@
     "build": {
       "dependsOn": ["^build"]
     }
+  },
+  "defaultProject": "monolith",
+  "cli": {
+    "defaultCollection": "@nxext/vite"
+  },
+  "generators": {
+    "@nxext/vite": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    }
   }
 }
