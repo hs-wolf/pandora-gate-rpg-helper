@@ -5,7 +5,5 @@ const localesStore = useLocalesStore();
 </script>
 
 <template>
-  <div class="flex min-w-screen min-h-screen" :dir="localesStore.direction">
-    <router-view />
-  </div>
+  <router-view :dir="localesStore.direction" />
 </template>

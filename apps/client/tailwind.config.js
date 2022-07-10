@@ -26,7 +26,17 @@ module.exports = {
         central: '800px',
         dialog: '400px',
       },
-      colors: {},
+      colors: {
+        primary: {
+          black: '#1d1d1d',
+          gray: '#484848',
+          green: '#00c896',
+          'green-light': '#00c896',
+          'green-dark': '#00c896',
+          red: '#d47e6c',
+          white: '#f2ecff',
+        },
+      },
     },
   },
   plugins: [],
