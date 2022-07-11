@@ -4,9 +4,9 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    'IconAkarIcons:circleX': typeof import('~icons/akar-icons/circle-x')['default']
     'IconAntDesign:eyeFilled': typeof import('~icons/ant-design/eye-filled')['default']
     'IconAntDesign:eyeInvisibleFilled': typeof import('~icons/ant-design/eye-invisible-filled')['default']
-    'IconBx:user': typeof import('~icons/bx/user')['default']
     'IconCarbon:password': typeof import('~icons/carbon/password')['default']
     'IconDashicons:menuAlt3': typeof import('~icons/dashicons/menu-alt3')['default']
     'IconEosIcons:loading': typeof import('~icons/eos-icons/loading')['default']

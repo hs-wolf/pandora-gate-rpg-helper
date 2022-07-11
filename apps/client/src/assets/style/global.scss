@@ -17,9 +17,18 @@ body {
   .hide-scrollbar::-webkit-scrollbar {
     @apply hidden;
   }
-
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #f2ecff inset;
+  }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background: url('https://api.iconify.design/akar-icons/arrow-down.svg')
+      no-repeat right #ddd;
+    background-size: 1rem;
+    background-position-x: right 0.7rem;
   }
 }
 
@@ -38,5 +47,8 @@ body {
     &:disabled {
       @apply bg-primary-gray text-primary-black pointer-events-none;
     }
+  }
+  .masonry {
+    @apply columns-1 sm:columns-2 md:columns-3 lg:columns-4;
   }
 }

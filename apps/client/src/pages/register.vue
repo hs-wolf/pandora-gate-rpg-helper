@@ -150,7 +150,7 @@ const showPassword = ref(false);
 <style scoped lang="scss">
 .login-container {
   @apply flex flex-col gap-4 w-full;
-  @apply desktop:flex-1 desktop:justify-center desktop:items-center;
+  @apply lg:flex-1 lg:justify-center lg:items-center;
 }
 .input-with-icon {
   @apply relative flex items-center rounded;

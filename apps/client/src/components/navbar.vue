@@ -49,9 +49,11 @@ const navbarLinks = [
 </script>
 
 <template>
-  <nav class="flex justify-center w-full bg-black/20 shadow-md">
+  <nav
+    class="z-10 fixed flex justify-center w-full bg-primary-gray-dark shadow"
+  >
     <div
-      class="flex justify-between items-center gap-4 w-full desktop:max-w-page p-4 desktop:px-8"
+      class="flex justify-between items-center gap-4 w-full lg:max-w-page p-4 lg:px-8"
     >
       <button
         class="shrink-0 flex items-center gap-4"
@@ -178,7 +180,7 @@ const navbarLinks = [
 .mobile-menu {
   @apply z-50 inset-x-4 top-4 fixed flex flex-col px-0 py-2 bg-primary-white shadow rounded text-primary-black text-sm;
   .link {
-    @apply flex items-center gap-2 px-6 py-3 text-left truncate;
+    @apply flex items-center gap-2 px-4 py-3 text-left truncate;
     &:hover {
       @apply bg-primary-gray text-primary-white;
     }
@@ -187,7 +189,7 @@ const navbarLinks = [
     }
   }
   .login {
-    @apply flex items-center gap-2 px-6 py-3 text-left text-primary-green truncate;
+    @apply flex items-center gap-2 px-4 py-3 text-left text-primary-green truncate;
     &:hover {
       @apply bg-primary-gray text-primary-white;
     }
@@ -196,7 +198,7 @@ const navbarLinks = [
     }
   }
   .logout {
-    @apply flex items-center gap-2 px-6 py-3 text-left text-primary-red truncate;
+    @apply flex items-center gap-2 px-4 py-3 text-left text-primary-red truncate;
     &:hover {
       @apply bg-primary-gray text-primary-white;
     }

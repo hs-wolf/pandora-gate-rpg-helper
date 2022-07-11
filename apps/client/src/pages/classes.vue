@@ -66,15 +66,24 @@ const filteredClasses = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-4 desktop:gap-8 w-full">
+  <div class="flex flex-col gap-4 lg:gap-8 w-full">
     <h1 class="text-2xl font-semibold">{{ t('classes.page-title') }}</h1>
-    <div class="grid grid-cols-1 desktop:grid-cols-3 gap-x-8 gap-y-4">
-      <input
-        type="text"
-        class="px-4 py-2 bg-transparent border border-primary-gray outline-none rounded placeholder:text-primary-gray"
-        placeholder="Search class..."
-        v-model="nameFilter"
-      />
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div class="input-with-icon">
+        <input
+          type="text"
+          placeholder="Search class..."
+          v-model="nameFilter"
+          class="form-input pl-3 pr-8"
+        />
+        <button
+          type="button"
+          class="absolute right-2 text-primary-gray"
+          @click.prevent="nameFilter = ''"
+        >
+          <icon-akar-icons:circle-x class="text-xl" />
+        </button>
+      </div>
       <select
         name=""
         id=""
@@ -89,24 +98,24 @@ const filteredClasses = computed(() => {
         <option value="4">Tier 4 (Suprema)</option>
       </select>
     </div>
-    <div class="grid desktop:grid-cols-3 gap-4">
+    <div class="grid lg:grid-cols-3 gap-4">
       <div
         v-for="characterClasss in filteredClasses"
         :key="characterClasss.id"
-        class="relative flex p-4 border border-primary-gray-dark rounded"
+        class="relative flex p-4 border border-primary-gray-dark rounded shadow"
       >
         <div
           class="-z-10 absolute inset-0 flex flex-col opacity-[40%] brightness-[40%]"
         >
           <img :src="characterClasss.img" class="object-cover h-full" />
         </div>
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 w-full">
           <div class="flex justify-between items-center">
             <h1 class="text-xl font-bold">{{ characterClasss.name }}</h1>
             <p class="text-sm">
               {{
                 characterClasss.tier === 4
-                  ? '🌌'
+                  ? '🔥'
                   : '⭐'.repeat(characterClasss.tier)
               }}
             </p>
@@ -118,4 +127,11 @@ const filteredClasses = computed(() => {
   </div>
 </template>
 
-<!-- shrink-0 flex w-[30%] -->
+<style scoped lang="scss">
+.input-with-icon {
+  @apply relative flex items-center rounded;
+  .form-input {
+    @apply w-full py-2 bg-transparent border border-primary-gray rounded text-primary-white placeholder:text-primary-gray outline-none;
+  }
+}
+</style>

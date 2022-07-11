@@ -70,7 +70,7 @@ const showPassword = ref(false);
           :name="formInfo.password.name"
           :placeholder="t(formInfo.password.placeholder)"
           v-model="passwordValue"
-          class="form-input px-8"
+          class="px-8"
           :class="errors.password ? 'form-input-error' : 'form-input'"
         />
         <button
@@ -120,7 +120,7 @@ const showPassword = ref(false);
 <style scoped lang="scss">
 .login-container {
   @apply flex flex-col gap-4 w-full;
-  @apply desktop:flex-1 desktop:justify-center desktop:items-center;
+  @apply lg:flex-1 lg:justify-center lg:items-center;
 }
 .input-with-icon {
   @apply relative flex items-center rounded;

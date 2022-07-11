@@ -8,9 +8,6 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      screens: {
-        desktop: '1024px',
-      },
       width: {
         page: '1440px',
         central: '800px',
@@ -32,7 +29,7 @@ module.exports = {
           gray: {
             DEFAULT: '#525c63',
             light: '#c0c0c0',
-            dark: '#383b3f',
+            dark: '#222222',
           },
           green: {
             DEFAULT: '#00c896',

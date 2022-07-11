@@ -55,3 +55,9 @@ register:
 classes:
   head-title: Pandora Gate Classes
   page-title: List of Classes
+locations:
+  head-title: Pandora Gate Locations
+  page-title: List of Locations
+npcs:
+  head-title: Pandora Gate NPCs
+  page-title: List of NPCs
