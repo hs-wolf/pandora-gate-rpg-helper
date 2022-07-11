@@ -52,3 +52,6 @@ register:
     placeholder: Type your password...
   got-account: Already have an account? {field}
   login-here: Login here!
+classes:
+  head-title: Pandora Gate Classes
+  page-title: List of Classes

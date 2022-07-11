@@ -29,7 +29,11 @@ module.exports = {
       colors: {
         primary: {
           black: '#1d1d1d',
-          gray: '#c0c0c0',
+          gray: {
+            DEFAULT: '#525c63',
+            light: '#c0c0c0',
+            dark: '#383b3f',
+          },
           green: {
             DEFAULT: '#00c896',
             light: '#c8fcea',

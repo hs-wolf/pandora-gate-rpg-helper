@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="flex flex-col gap-4 w-full max-w-page p-4">NPCs</div>
+  <div class="flex flex-col gap-4 desktop:gap-8">
+    <span>NPCs not implemented yet.</span>
+  </div>
 </template>

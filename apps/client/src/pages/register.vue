@@ -57,9 +57,9 @@ const showPassword = ref(false);
 <template>
   <div class="login-container">
     <h1 class="text-2xl font-semibold">{{ t('register.page-title') }}</h1>
-    <form class="flex flex-col gap-2">
+    <form class="flex flex-col gap-4">
       <div class="input-with-icon">
-        <icon-bx:user class="absolute left-2 text-xl text-primary-gray" />
+        <icon-bx:user class="absolute left-2 text-primary-gray" />
         <input
           type="text"
           :name="formInfo.name.name"
@@ -74,7 +74,7 @@ const showPassword = ref(false);
       </span>
       <div class="input-with-icon">
         <icon-ic:round-alternate-email
-          class="absolute left-2 text-xl text-primary-gray"
+          class="absolute left-2 text-primary-gray"
         />
         <input
           type="text"
@@ -89,9 +89,7 @@ const showPassword = ref(false);
         {{ t(errors.email, { label: t(formInfo.email.label) }) }}
       </span>
       <div class="input-with-icon">
-        <icon-carbon:password
-          class="absolute left-2 text-xl text-primary-gray"
-        />
+        <icon-carbon:password class="absolute left-2 text-primary-gray" />
         <input
           :type="showPassword ? 'text' : 'password'"
           :name="formInfo.password.name"
@@ -157,10 +155,10 @@ const showPassword = ref(false);
 .input-with-icon {
   @apply relative flex items-center rounded;
   .form-input {
-    @apply w-full py-2 bg-primary-white rounded text-primary-black placeholder:text-primary-gray outline-none;
+    @apply w-full py-2 bg-primary-white rounded text-primary-black placeholder:text-primary-gray-light outline-none;
   }
   .form-input-error {
-    @apply w-full py-2 bg-primary-white rounded text-primary-red placeholder:text-primary-gray outline-none  border-2 border-primary-red;
+    @apply w-full py-2 bg-primary-white rounded text-primary-red placeholder:text-primary-gray-light outline-none  border-2 border-primary-red;
   }
 }
 .message-error {

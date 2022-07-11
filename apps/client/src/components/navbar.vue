@@ -150,7 +150,7 @@ const navbarLinks = [
   .link {
     @apply flex items-center gap-2 p-3 rounded whitespace-nowrap;
     &:hover {
-      @apply bg-primary-gray text-primary-green-light;
+      @apply bg-primary-gray;
     }
     &:active {
       @apply bg-primary-green-dark text-primary-white;
@@ -179,18 +179,27 @@ const navbarLinks = [
   @apply z-50 inset-x-4 top-4 fixed flex flex-col px-0 py-2 bg-primary-white shadow rounded text-primary-black text-sm;
   .link {
     @apply flex items-center gap-2 px-6 py-3 text-left truncate;
+    &:hover {
+      @apply bg-primary-gray text-primary-white;
+    }
     &:active {
       @apply bg-primary-green-dark text-primary-white;
     }
   }
   .login {
     @apply flex items-center gap-2 px-6 py-3 text-left text-primary-green truncate;
+    &:hover {
+      @apply bg-primary-gray text-primary-white;
+    }
     &:active {
       @apply bg-primary-green text-primary-white;
     }
   }
   .logout {
     @apply flex items-center gap-2 px-6 py-3 text-left text-primary-red truncate;
+    &:hover {
+      @apply bg-primary-gray text-primary-white;
+    }
     &:active {
       @apply bg-primary-red text-primary-white;
     }

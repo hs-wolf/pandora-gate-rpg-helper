@@ -7,8 +7,8 @@ import {
 } from '@src/constants';
 import { http } from '@plugins/axios';
 import { auth } from '@plugins/firebase';
-import { User, UserRegisterBody } from '@pandora-gate-rpg-helper/models';
 import { useAlertsStore } from '@stores/alerts';
+import { User, UserRegisterBody } from '@pandora-gate-rpg-helper/models';
 
 export interface IState {
   currentUser: User | null;
