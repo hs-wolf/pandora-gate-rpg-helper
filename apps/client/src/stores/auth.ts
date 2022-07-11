@@ -1,16 +1,20 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { AUTH_STORE, API_GET_USER_BY_ID } from '@src/constants';
+import {
+  AUTH_STORE,
+  API_GET_USER_BY_ID,
+  API_USER_REGISTER,
+} from '@src/constants';
 import { http } from '@plugins/axios';
 import { auth } from '@plugins/firebase';
-import { User } from '@pandora-gate-rpg-helper/models';
+import { User, UserRegisterBody } from '@pandora-gate-rpg-helper/models';
 import { useAlertsStore } from '@stores/alerts';
 
 export interface IState {
   currentUser: User | null;
   userToken: string | null;
   showNotAuthenticatedModal: boolean;
-  loggingIn: boolean;
+  logging: boolean;
   registering: boolean;
 }
 
@@ -19,7 +23,7 @@ export const useAuthStore = defineStore(AUTH_STORE, {
     currentUser: null,
     userToken: null,
     showNotAuthenticatedModal: false,
-    loggingIn: false,
+    logging: false,
     registering: false,
   }),
   getters: {},
@@ -48,29 +52,31 @@ export const useAuthStore = defineStore(AUTH_STORE, {
       }
     },
     async login(email: string, password: string) {
-      if (this.loggingIn) {
+      if (this.logging) {
         return;
       }
-      this.loggingIn = true;
+      this.logging = true;
       try {
         await signInWithEmailAndPassword(auth, email, password);
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
-        this.loggingIn = false;
+        this.logging = false;
       }
     },
-    register() {
-      if (this.loggingIn) {
+    async register(name: string, email: string, password: string) {
+      if (this.registering) {
         return;
       }
-      this.loggingIn = true;
+      this.registering = true;
       try {
-        console.log('Try to register.');
+        const registerBody: UserRegisterBody = { name, email, password };
+        await http.post(API_USER_REGISTER, registerBody);
+        await this.login(email, password);
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
-        this.loggingIn = false;
+        this.registering = false;
       }
     },
     async logout() {

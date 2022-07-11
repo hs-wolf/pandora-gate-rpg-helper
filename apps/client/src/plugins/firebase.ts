@@ -13,7 +13,7 @@ const auth = getAuth(app);
 
 auth.onAuthStateChanged(async (user) => {
   const token = await user?.getIdToken();
-  updateHeaders(token || '');
+  updateHeaders(token ?? '');
 
   const authStore = useAuthStore(pinia);
   const localesStore = useLocalesStore(pinia);

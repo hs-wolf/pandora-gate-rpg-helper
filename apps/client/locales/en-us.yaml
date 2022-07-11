@@ -1,1 +1,54 @@
+# GENERAL
 key: Value
+general:
+  pandora-gate: PANDORA GATE
+  cancel: Cancel
+  login: Login
+  register: Register
+  logging: Logging
+  registering: Registering
+  form-validations:
+    required: '{label} is required.'
+    min: '{label} needs a minimum of {min} characters.'
+    email: '{label} must be a valid e-mail.'
+    not-number: '{label} must have only numbers.'
+    not-date: '{label} must be a valid date.'
+    array-min: You need to select at least {min} options from {label}.
+
+# COMPONENTS
+navbar:
+  characters: Characters
+  npcs: NPCs
+  classes: Classes
+  locations: Locations
+  notifications: Notifications
+  name: Name
+  logout: Logout
+  login: Login
+
+#PAGES
+login:
+  head-title: Pandora Gate Login
+  page-title: Login
+  email:
+    label: E-mail
+    placeholder: Type your e-mail...
+  password:
+    label: Password
+    placeholder: Type your password...
+  no-account: No account? {field}
+  register-here: Register here!
+register:
+  head-title: Pandora Gate Register
+  page-title: Register
+  name:
+    label: Name
+    placeholder: Type your name...
+  email:
+    label: E-mail
+    placeholder: Type your e-mail...
+  password:
+    label: Password
+    placeholder: Type your password...
+  got-account: Already have an account? {field}
+  login-here: Login here!

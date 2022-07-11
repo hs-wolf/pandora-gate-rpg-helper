@@ -20,6 +20,11 @@ const customErrorMap: z.ZodErrorMap = (issue, ctx) => {
       }
     }
   }
+  if (issue.code === z.ZodIssueCode.invalid_string) {
+    if (issue.validation === 'email') {
+      return { message: 'general.form-validations.email' };
+    }
+  }
   if (issue.code === z.ZodIssueCode.too_small) {
     if (issue.type === 'string') {
       return { message: 'general.form-validations.required' };

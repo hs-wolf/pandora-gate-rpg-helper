@@ -10,7 +10,7 @@ const environment: IEnvironment = {
     messagingSenderId: '1056929563577',
     appId: '1:1056929563577:web:79266ec19704da66672c68',
   },
-  backend: 'http://localhost:3000/api',
+  backend: 'http://localhost:3000',
 };
 
 export default environment;

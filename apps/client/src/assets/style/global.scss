@@ -15,15 +15,28 @@ body {
     scrollbar-width: none;
   }
   .hide-scrollbar::-webkit-scrollbar {
-    display: none;
+    @apply hidden;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #f2ecff inset;
   }
 }
 
 @layer components {
   .card {
-    @apply flex p-8 bg-white shadow rounded-md;
+    @apply flex p-8 bg-primary-white shadow rounded-md;
   }
-  .modal {
-    @apply z-50 fixed inset-0 flex justify-center items-center p-7 bg-black/80 filter backdrop-blur overflow-y-auto;
+  .btn-green {
+    @apply flex justify-center items-center px-4 py-2 bg-primary-green-dark rounded transition-all duration-100 ease-out;
+    &:hover {
+      @apply bg-primary-green;
+    }
+    &:active {
+      @apply bg-primary-green-light text-primary-green;
+    }
+    &:disabled {
+      @apply bg-primary-gray text-primary-black pointer-events-none;
+    }
   }
 }

@@ -10,7 +10,7 @@ export class AuthController extends Controller {
   private service: AuthService;
 
   @Post('/register')
-  public userRegister(@Body() body: UserRegisterBody): Promise<void> {
-    return this.service.userRegister(body);
+  public async userRegister(@Body() body: UserRegisterBody): Promise<void> {
+    return await this.service.userRegister(body);
   }
 }

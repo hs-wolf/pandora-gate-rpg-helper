@@ -29,10 +29,12 @@ module.exports = {
       colors: {
         primary: {
           black: '#1d1d1d',
-          gray: '#484848',
-          green: '#00c896',
-          'green-light': '#00c896',
-          'green-dark': '#00c896',
+          gray: '#c0c0c0',
+          green: {
+            DEFAULT: '#00c896',
+            light: '#c8fcea',
+            dark: '#518071',
+          },
           red: '#d47e6c',
           white: '#f2ecff',
         },

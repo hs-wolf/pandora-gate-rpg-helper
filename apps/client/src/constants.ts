@@ -11,3 +11,4 @@ export const LOCALES_STORE = 'LOCALES_STORE';
 
 // API URLS
 export const API_GET_USER_BY_ID = (id: string) => `/users/${id}`;
+export const API_USER_REGISTER = '/auth/register';
