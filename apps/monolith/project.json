@@ -49,6 +49,12 @@
         "command": "tsoa spec-and-routes -c=apps/monolith/monolith.tsoa.json"
       }
     },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "gcloud builds submit . --config=./cloudbuild.monolith.yaml --substitutions=_PROJECT=pandora-gate-60296,_ENV=dev,_API_VERSION=$API_VERSION --suppress-logs --async --project pandora-gate-60296"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],

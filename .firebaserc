@@ -1,15 +1,12 @@
 {
   "projects": {
-    "default": "pandora-gate-rpg-helper"
+    "default": "pandora-gate-60296"
   },
   "targets": {
-    "pandora-gate-rpg-helper": {
+    "pandora-gate-60296": {
       "hosting": {
-        "backoffice": [
-          "pandora-gate-rpg-helper-client"
-        ],
         "client": [
-          "pandora-gate-rpg-helper-client"
+          "pandora-gate-client"
         ]
       }
     }

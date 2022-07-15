@@ -1,21 +1,9 @@
 {
   "hosting": [
     {
-      "target": "backoffice",
-      "public": "dist/apps/backoffice",
-      "predeploy": "nx build backoffice --skip-nx-cache",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    },
-    {
       "target": "client",
       "public": "dist/apps/client",
-      "predeploy": "nx build backoffice --skip-nx-cache",
+      "predeploy": "nx build client --skip-nx-cache",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {

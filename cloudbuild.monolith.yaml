@@ -1,0 +1,62 @@
+#Command  gcloud builds submitoptions:
+options:
+  logging: CLOUD_LOGGING_ONLY
+  dynamic_substitutions: true
+  substitution_option: 'ALLOW_LOOSE'
+
+timeout: '600s'
+
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/${_PROJECT}/monolith',
+        '-f',
+        'monolith.Dockerfile',
+        '.',
+      ]
+
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/${_PROJECT}/monolith']
+
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run',
+        'deploy',
+        'monolith',
+        '--project',
+        '${_PROJECT}',
+        '--image',
+        'gcr.io/${_PROJECT}/monolith',
+        '--region',
+        'europe-west1',
+        '--platform',
+        'managed',
+        '--max-instances',
+        '10',
+        '--min-instances',
+        '0',
+        '--concurrency',
+        '160',
+        '--cpu',
+        '1',
+        '--memory',
+        '1Gi',
+        '--allow-unauthenticated',
+        '--set-env-vars',
+        'USE_DEFAULT_SERVICE_ACCOUNT=true,ENV=${_ENV},SENTRY_ON=true',
+      ]
+
+substitutions:
+  _PROJECT: unused
+  _ENV: dev
+
+images:
+  - 'gcr.io/${_PROJECT}/monolith'
