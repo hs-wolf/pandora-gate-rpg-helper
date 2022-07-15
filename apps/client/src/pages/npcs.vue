@@ -81,7 +81,7 @@ const filteredClasses = computed(() => {
       <div class="input-with-icon">
         <input
           type="text"
-          placeholder="Search class..."
+          placeholder="Search NPC..."
           v-model="nameFilter"
           class="form-input pl-3 pr-8"
         />
