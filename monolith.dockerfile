@@ -16,7 +16,8 @@ FROM node:lts-alpine as prod
 
 WORKDIR /app
 
-ENV PORT=3333
+ENV PORT 8080
+ENV HOST 0.0.0.0
 
 EXPOSE ${PORT}
 

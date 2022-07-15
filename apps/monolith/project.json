@@ -21,7 +21,8 @@
         "outputPath": "dist/apps/monolith",
         "main": "apps/monolith/src/main.ts",
         "tsConfig": "apps/monolith/tsconfig.app.json",
-        "assets": ["apps/monolith/src/assets"]
+        "assets": ["apps/monolith/src/assets"],
+        "generatePackageJson": true
       },
       "configurations": {
         "production": {

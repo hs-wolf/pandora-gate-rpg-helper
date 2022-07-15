@@ -11,7 +11,7 @@ if (!admin.apps.length) {
   });
 }
 
-const port = process.env.PORT || 3333;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(
     `\u001b[32mAPI being listened at: \u001b[1;32mhttp://localhost:${port}`
