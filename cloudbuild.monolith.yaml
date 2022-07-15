@@ -15,7 +15,7 @@ steps:
         '-t',
         'gcr.io/${_PROJECT}/monolith',
         '-f',
-        'monolith.Dockerfile',
+        'monolith.dockerfile',
         '.',
       ]
 
