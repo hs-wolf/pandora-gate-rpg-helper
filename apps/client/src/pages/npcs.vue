@@ -63,7 +63,7 @@ const mockNPCs = [
   },
 ];
 
-const filteredClasses = computed(() => {
+const filteredJobs = computed(() => {
   let filterByName = mockNPCs;
   if (nameFilter.value) {
     filterByName = filterByName.filter((characterClass) =>
@@ -90,13 +90,13 @@ const filteredClasses = computed(() => {
           class="absolute right-2 text-primary-gray"
           @click.prevent="nameFilter = ''"
         >
-          <icon-akar-icons:circle-x class="text-xl" />
+          <icon-akar-icons:circle-x class="text-lg" />
         </button>
       </div>
     </div>
     <div class="masonry gap-4">
       <div
-        v-for="characterClasss in filteredClasses"
+        v-for="characterClasss in filteredJobs"
         :key="characterClasss.id"
         class="flex flex-col mb-4 border border-primary-gray-dark rounded shadow overflow-hidden break-inside-avoid"
       >

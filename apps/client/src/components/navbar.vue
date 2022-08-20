@@ -36,8 +36,8 @@ const navbarLinks = [
     hash: '',
   },
   {
-    id: 'classes',
-    page: 'classes',
+    id: 'jobs',
+    page: 'jobs',
     hash: '',
   },
   {
@@ -84,6 +84,10 @@ const navbarLinks = [
             class="login font-semibold overflow-hidden"
             @click.prevent="goToPage('profile')"
           >
+            <img
+              :src="authStore.currentUser.picture"
+              class="rounded-full h-5"
+            />
             <span class="truncate">
               {{ authStore.currentUser.name ?? t('navbar.name') }}
             </span>

@@ -5,6 +5,12 @@ import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, H
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { AuthController } from './../src/app/auth/authController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { JobsController } from './../src/app/jobs/jobsController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { LocationsController } from './../src/app/locations/locationsController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { NpcsController } from './../src/app/npcs/npcsController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { UsersController } from './../src/app/users/usersController';
 import { expressAuthentication } from './../src/authentication';
 // @ts-ignore - no great way to install types from subpackage
@@ -18,6 +24,76 @@ const models: TsoaRoute.Models = {
     "UserRegisterBody": {
         "dataType": "refAlias",
         "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"password":{"dataType":"string","required":true},"email":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Job": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "tier": {"dataType":"double","required":true},
+            "img": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Partial_Omit_Job.id__": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"description":{"dataType":"string"},"tier":{"dataType":"double"},"img":{"dataType":"string"}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "JobUpdateBody": {
+        "dataType": "refAlias",
+        "type": {"ref":"Partial_Omit_Job.id__","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "LocationTypes": {
+        "dataType": "refEnum",
+        "enums": ["CONTINENT","REALM","CITY","VILLAGE"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Location": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"string","required":true},
+            "type": {"ref":"LocationTypes","required":true},
+            "name": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "img": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Partial_Omit_Location.id__": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"description":{"dataType":"string"},"img":{"dataType":"string"},"type":{"ref":"LocationTypes"}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "LocationUpdateBody": {
+        "dataType": "refAlias",
+        "type": {"ref":"Partial_Omit_Location.id__","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Npc": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "img": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Partial_Omit_Npc.id__": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"description":{"dataType":"string"},"img":{"dataType":"string"}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "NpcUpdateBody": {
+        "dataType": "refAlias",
+        "type": {"ref":"Partial_Omit_Npc.id__","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "UserRoles": {
@@ -75,6 +151,309 @@ export function RegisterRoutes(app: express.Router) {
 
 
               const promise = controller.userRegister.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/jobs/:jobId',
+            ...(fetchMiddlewares<RequestHandler>(JobsController)),
+            ...(fetchMiddlewares<RequestHandler>(JobsController.prototype.getJobById)),
+
+            function JobsController_getJobById(request: any, response: any, next: any) {
+            const args = {
+                    jobId: {"in":"path","name":"jobId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new JobsController();
+
+
+              const promise = controller.getJobById.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/jobs',
+            ...(fetchMiddlewares<RequestHandler>(JobsController)),
+            ...(fetchMiddlewares<RequestHandler>(JobsController.prototype.createJob)),
+
+            function JobsController_createJob(request: any, response: any, next: any) {
+            const args = {
+                    body: {"in":"body","name":"body","required":true,"ref":"Job"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new JobsController();
+
+
+              const promise = controller.createJob.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.put('/jobs/:jobId',
+            ...(fetchMiddlewares<RequestHandler>(JobsController)),
+            ...(fetchMiddlewares<RequestHandler>(JobsController.prototype.updateJob)),
+
+            function JobsController_updateJob(request: any, response: any, next: any) {
+            const args = {
+                    jobId: {"in":"path","name":"jobId","required":true,"dataType":"string"},
+                    body: {"in":"body","name":"body","required":true,"ref":"JobUpdateBody"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new JobsController();
+
+
+              const promise = controller.updateJob.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/jobs/:jobId',
+            ...(fetchMiddlewares<RequestHandler>(JobsController)),
+            ...(fetchMiddlewares<RequestHandler>(JobsController.prototype.deleteJob)),
+
+            function JobsController_deleteJob(request: any, response: any, next: any) {
+            const args = {
+                    jobId: {"in":"path","name":"jobId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new JobsController();
+
+
+              const promise = controller.deleteJob.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/locations/:locationId',
+            ...(fetchMiddlewares<RequestHandler>(LocationsController)),
+            ...(fetchMiddlewares<RequestHandler>(LocationsController.prototype.getLocationById)),
+
+            function LocationsController_getLocationById(request: any, response: any, next: any) {
+            const args = {
+                    locationId: {"in":"path","name":"locationId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new LocationsController();
+
+
+              const promise = controller.getLocationById.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/locations',
+            ...(fetchMiddlewares<RequestHandler>(LocationsController)),
+            ...(fetchMiddlewares<RequestHandler>(LocationsController.prototype.createLocation)),
+
+            function LocationsController_createLocation(request: any, response: any, next: any) {
+            const args = {
+                    body: {"in":"body","name":"body","required":true,"ref":"Location"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new LocationsController();
+
+
+              const promise = controller.createLocation.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.put('/locations/:locationId',
+            ...(fetchMiddlewares<RequestHandler>(LocationsController)),
+            ...(fetchMiddlewares<RequestHandler>(LocationsController.prototype.updateLocation)),
+
+            function LocationsController_updateLocation(request: any, response: any, next: any) {
+            const args = {
+                    locationId: {"in":"path","name":"locationId","required":true,"dataType":"string"},
+                    body: {"in":"body","name":"body","required":true,"ref":"LocationUpdateBody"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new LocationsController();
+
+
+              const promise = controller.updateLocation.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/locations/:locationId',
+            ...(fetchMiddlewares<RequestHandler>(LocationsController)),
+            ...(fetchMiddlewares<RequestHandler>(LocationsController.prototype.deleteLocation)),
+
+            function LocationsController_deleteLocation(request: any, response: any, next: any) {
+            const args = {
+                    locationId: {"in":"path","name":"locationId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new LocationsController();
+
+
+              const promise = controller.deleteLocation.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/npcs/:npcId',
+            ...(fetchMiddlewares<RequestHandler>(NpcsController)),
+            ...(fetchMiddlewares<RequestHandler>(NpcsController.prototype.getNpcById)),
+
+            function NpcsController_getNpcById(request: any, response: any, next: any) {
+            const args = {
+                    npcId: {"in":"path","name":"npcId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new NpcsController();
+
+
+              const promise = controller.getNpcById.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/npcs',
+            ...(fetchMiddlewares<RequestHandler>(NpcsController)),
+            ...(fetchMiddlewares<RequestHandler>(NpcsController.prototype.createNpc)),
+
+            function NpcsController_createNpc(request: any, response: any, next: any) {
+            const args = {
+                    body: {"in":"body","name":"body","required":true,"ref":"Npc"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new NpcsController();
+
+
+              const promise = controller.createNpc.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.put('/npcs/:npcId',
+            ...(fetchMiddlewares<RequestHandler>(NpcsController)),
+            ...(fetchMiddlewares<RequestHandler>(NpcsController.prototype.updateNpc)),
+
+            function NpcsController_updateNpc(request: any, response: any, next: any) {
+            const args = {
+                    npcId: {"in":"path","name":"npcId","required":true,"dataType":"string"},
+                    body: {"in":"body","name":"body","required":true,"ref":"NpcUpdateBody"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new NpcsController();
+
+
+              const promise = controller.updateNpc.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/npcs/:npcId',
+            ...(fetchMiddlewares<RequestHandler>(NpcsController)),
+            ...(fetchMiddlewares<RequestHandler>(NpcsController.prototype.deleteNpc)),
+
+            function NpcsController_deleteNpc(request: any, response: any, next: any) {
+            const args = {
+                    npcId: {"in":"path","name":"npcId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new NpcsController();
+
+
+              const promise = controller.deleteNpc.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);

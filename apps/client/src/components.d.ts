@@ -7,14 +7,17 @@ declare module 'vue' {
     'IconAkarIcons:circleX': typeof import('~icons/akar-icons/circle-x')['default']
     'IconAntDesign:eyeFilled': typeof import('~icons/ant-design/eye-filled')['default']
     'IconAntDesign:eyeInvisibleFilled': typeof import('~icons/ant-design/eye-invisible-filled')['default']
-    'IconBx:user': typeof import('~icons/bx/user')['default']
+    'IconCarbon:image': typeof import('~icons/carbon/image')['default']
     'IconCarbon:password': typeof import('~icons/carbon/password')['default']
+    'IconCarbon:save': typeof import('~icons/carbon/save')['default']
+    'IconCarbon:trashCan': typeof import('~icons/carbon/trash-can')['default']
     'IconDashicons:menuAlt3': typeof import('~icons/dashicons/menu-alt3')['default']
     'IconEosIcons:loading': typeof import('~icons/eos-icons/loading')['default']
     'IconIc:roundAlternateEmail': typeof import('~icons/ic/round-alternate-email')['default']
     'IconPandoraGateRpgHelper:pandoraGate': typeof import('~icons/pandora-gate-rpg-helper/pandora-gate')['default']
     'IconRi:loginBoxLine': typeof import('~icons/ri/login-box-line')['default']
     'IconRi:logoutBoxLine': typeof import('~icons/ri/logout-box-line')['default']
+    LocationForm: typeof import('./components/location-form.vue')['default']
     Navbar: typeof import('./components/navbar.vue')['default']
   }
 }

@@ -25,6 +25,157 @@
 				],
 				"type": "object"
 			},
+			"Job": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"tier": {
+						"type": "number",
+						"format": "double"
+					},
+					"img": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description",
+					"tier",
+					"img"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_Omit_Job.id__": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"tier": {
+						"type": "number",
+						"format": "double"
+					},
+					"img": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"JobUpdateBody": {
+				"$ref": "#/components/schemas/Partial_Omit_Job.id__"
+			},
+			"LocationTypes": {
+				"enum": [
+					"CONTINENT",
+					"REALM",
+					"CITY",
+					"VILLAGE"
+				],
+				"type": "string"
+			},
+			"Location": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/LocationTypes"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"img": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"type",
+					"name",
+					"description",
+					"img"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_Omit_Location.id__": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"img": {
+						"type": "string"
+					},
+					"type": {
+						"$ref": "#/components/schemas/LocationTypes"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"LocationUpdateBody": {
+				"$ref": "#/components/schemas/Partial_Omit_Location.id__"
+			},
+			"Npc": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"img": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description",
+					"img"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_Omit_Npc.id__": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"img": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"NpcUpdateBody": {
+				"$ref": "#/components/schemas/Partial_Omit_Npc.id__"
+			},
 			"UserRoles": {
 				"enum": [
 					"PLAYER",
@@ -108,6 +259,336 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/UserRegisterBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/jobs/{jobId}": {
+			"get": {
+				"operationId": "GetJobById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Job"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Jobs Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "jobId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateJob",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Jobs Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "jobId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/JobUpdateBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteJob",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Jobs Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "jobId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/jobs": {
+			"post": {
+				"operationId": "CreateJob",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Jobs Service"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Job"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/locations/{locationId}": {
+			"get": {
+				"operationId": "GetLocationById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Location"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Locations Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "locationId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateLocation",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Locations Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "locationId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LocationUpdateBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteLocation",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Locations Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "locationId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/locations": {
+			"post": {
+				"operationId": "CreateLocation",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Locations Service"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Location"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/npcs/{npcId}": {
+			"get": {
+				"operationId": "GetNpcById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Npc"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Npcs Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "npcId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateNpc",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Npcs Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "npcId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/NpcUpdateBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteNpc",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Npcs Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "npcId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/npcs": {
+			"post": {
+				"operationId": "CreateNpc",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Npcs Service"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Npc"
 							}
 						}
 					}

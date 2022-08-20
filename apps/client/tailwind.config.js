@@ -26,6 +26,11 @@ module.exports = {
       colors: {
         primary: {
           black: '#1d1d1d',
+          blue: {
+            DEFAULT: '#00aeff',
+            light: '#adebff',
+            dark: '#0085ff',
+          },
           gray: {
             DEFAULT: '#525c63',
             light: '#c0c0c0',
@@ -36,7 +41,11 @@ module.exports = {
             light: '#c8fcea',
             dark: '#518071',
           },
-          red: '#d47e6c',
+          red: {
+            DEFAULT: '#d47e6c',
+            light: '#ffe5da',
+            dark: '#bd6c7d',
+          },
           white: '#f2ecff',
         },
       },

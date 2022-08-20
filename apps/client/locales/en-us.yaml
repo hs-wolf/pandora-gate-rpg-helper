@@ -7,6 +7,7 @@ general:
   register: Register
   logging: Logging
   registering: Registering
+  edit: Edit
   form-validations:
     required: '{label} is required.'
     min: '{label} needs a minimum of {min} characters.'
@@ -14,17 +15,32 @@ general:
     not-number: '{label} must have only numbers.'
     not-date: '{label} must be a valid date.'
     array-min: You need to select at least {min} options from {label}.
+  location-types:
+    continent: Continent
+    realm: Realm
+    city: City
+    village: Village
 
 # COMPONENTS
 navbar:
   characters: Characters
   npcs: NPCs
-  classes: Classes
+  jobs: Jobs
   locations: Locations
   notifications: Notifications
   name: Name
   logout: Logout
   login: Login
+location-form:
+  name:
+    label: Name
+    placeholder: Location name...
+  description:
+    label: Description
+    placeholder: Location description...
+  location-type:
+    label: Location type
+    placeholder: Select type
 
 #PAGES
 login:
@@ -52,12 +68,16 @@ register:
     placeholder: Type your password...
   got-account: Already have an account? {field}
   login-here: Login here!
-classes:
-  head-title: Pandora Gate Classes
-  page-title: List of Classes
+jobs:
+  head-title: Pandora Gate Jobs
+  page-title: List of Jobs
 locations:
   head-title: Pandora Gate Locations
   page-title: List of Locations
+  page-title-edit: Editing List of Locations
+  filter-by-type: Filter by type
+  all: All
+  no-locations: There are no locations available.
 npcs:
   head-title: Pandora Gate NPCs
   page-title: List of NPCs

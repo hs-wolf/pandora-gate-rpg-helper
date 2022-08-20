@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-useHead({ title: computed(() => t('classes.head-title')) });
+useHead({ title: computed(() => t('jobs.head-title')) });
 
 const nameFilter = ref('');
 const tierFilter = ref('');
 
-const mockClasses = [
+const mockJobs = [
   {
     id: '1',
     name: 'Lich',
@@ -49,8 +49,8 @@ const mockClasses = [
   },
 ];
 
-const filteredClasses = computed(() => {
-  let filterByName = mockClasses;
+const filteredJobs = computed(() => {
+  let filterByName = mockJobs;
   if (nameFilter.value) {
     filterByName = filterByName.filter((characterClass) =>
       characterClass.name.toLowerCase().includes(nameFilter.value.toLowerCase())
@@ -67,7 +67,7 @@ const filteredClasses = computed(() => {
 
 <template>
   <div class="flex flex-col gap-4 lg:gap-8 w-full">
-    <h1 class="text-2xl font-semibold">{{ t('classes.page-title') }}</h1>
+    <h1 class="text-2xl font-semibold">{{ t('jobs.page-title') }}</h1>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <div class="input-with-icon">
         <input
@@ -81,7 +81,7 @@ const filteredClasses = computed(() => {
           class="absolute right-2 text-primary-gray"
           @click.prevent="nameFilter = ''"
         >
-          <icon-akar-icons:circle-x class="text-xl" />
+          <icon-akar-icons:circle-x class="text-lg" />
         </button>
       </div>
       <select
@@ -100,7 +100,7 @@ const filteredClasses = computed(() => {
     </div>
     <div class="grid lg:grid-cols-3 gap-4">
       <div
-        v-for="characterClasss in filteredClasses"
+        v-for="characterClasss in filteredJobs"
         :key="characterClasss.id"
         class="relative flex p-4 border border-primary-gray-dark rounded shadow"
       >
