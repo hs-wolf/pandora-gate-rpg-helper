@@ -7,8 +7,6 @@ export const LOCALE_LOCAL_KEY = 'LOCALE_LOCAL_KEY';
 // STORES KEYS
 export const AUTH_STORE = 'AUTH_STORE';
 export const ALERTS_STORE = 'ALERTS_STORE';
+export const CHARACTERS_STORE = 'CHARACTERS_STORE';
+export const DATA_STORE = 'DATA_STORE';
 export const LOCALES_STORE = 'LOCALES_STORE';
-
-// API URLS
-export const API_GET_USER_BY_ID = (id: string) => `/users/${id}`;
-export const API_USER_REGISTER = '/auth/register';

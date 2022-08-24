@@ -114,9 +114,7 @@ const filteredLocations = computed(() => {
 
 <template>
   <div class="flex flex-col gap-4 lg:gap-8 w-full">
-    <div
-      class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4"
-    >
+    <div class="flex flex-col lg:flex-row lg:justify-between gap-4">
       <h1 class="text-2xl font-semibold">{{ t('locations.page-title') }}</h1>
       <button class="btn-blue" @click.prevent="router.push('/locations/edit')">
         {{ t('general.edit') }}

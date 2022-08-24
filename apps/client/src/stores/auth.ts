@@ -1,14 +1,14 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import {
-  AUTH_STORE,
-  API_GET_USER_BY_ID,
-  API_USER_REGISTER,
-} from '@src/constants';
+import { AUTH_STORE } from '@src/constants';
 import { http } from '@plugins/axios';
 import { auth } from '@plugins/firebase';
 import { useAlertsStore } from '@stores/alerts';
 import { User, UserRegisterBody } from '@pandora-gate-rpg-helper/models';
+import {
+  API_GET_USER_BY_ID,
+  API_USER_REGISTER,
+} from '@pandora-gate-rpg-helper/utilities';
 
 export interface IState {
   currentUser: User | null;

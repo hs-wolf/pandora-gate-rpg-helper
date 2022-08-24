@@ -5,6 +5,10 @@ import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute, H
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { AuthController } from './../src/app/auth/authController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { CharactersController } from './../src/app/characters/charactersController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { ElementsController } from './../src/app/elements/elementsController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { JobsController } from './../src/app/jobs/jobsController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { LocationsController } from './../src/app/locations/locationsController';
@@ -24,6 +28,66 @@ const models: TsoaRoute.Models = {
     "UserRegisterBody": {
         "dataType": "refAlias",
         "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"password":{"dataType":"string","required":true},"email":{"dataType":"string","required":true},"name":{"dataType":"string","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Element": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "double": {"dataType":"string","required":true},
+            "triple": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "image": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Character": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"string","required":true},
+            "ownerId": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "guild": {"dataType":"string","required":true},
+            "elements": {"dataType":"array","array":{"dataType":"refObject","ref":"Element"},"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Partial_Pick_Character.ownerId-or-name__": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"ownerId":{"dataType":"string"},"name":{"dataType":"string"}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "CharacterCreateBody": {
+        "dataType": "refAlias",
+        "type": {"ref":"Partial_Pick_Character.ownerId-or-name__","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Partial_Omit_Character.id-or-ownerId__": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"guild":{"dataType":"string"},"elements":{"dataType":"array","array":{"dataType":"refObject","ref":"Element"}}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "CharacterUpdateBody": {
+        "dataType": "refAlias",
+        "type": {"ref":"Partial_Omit_Character.id-or-ownerId__","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Partial_Omit_Element.id__": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"double":{"dataType":"string"},"triple":{"dataType":"string"},"description":{"dataType":"string"},"image":{"dataType":"string"}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ElementCreateBody": {
+        "dataType": "refAlias",
+        "type": {"ref":"Partial_Omit_Element.id__","validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ElementUpdateBody": {
+        "dataType": "refAlias",
+        "type": {"ref":"Partial_Omit_Element.id__","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Job": {
@@ -151,6 +215,257 @@ export function RegisterRoutes(app: express.Router) {
 
 
               const promise = controller.userRegister.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/characters/users/:userId',
+            ...(fetchMiddlewares<RequestHandler>(CharactersController)),
+            ...(fetchMiddlewares<RequestHandler>(CharactersController.prototype.getCharactersByUserId)),
+
+            function CharactersController_getCharactersByUserId(request: any, response: any, next: any) {
+            const args = {
+                    userId: {"in":"path","name":"userId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new CharactersController();
+
+
+              const promise = controller.getCharactersByUserId.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/characters/:characterId',
+            ...(fetchMiddlewares<RequestHandler>(CharactersController)),
+            ...(fetchMiddlewares<RequestHandler>(CharactersController.prototype.getCharacterById)),
+
+            function CharactersController_getCharacterById(request: any, response: any, next: any) {
+            const args = {
+                    characterId: {"in":"path","name":"characterId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new CharactersController();
+
+
+              const promise = controller.getCharacterById.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/characters',
+            ...(fetchMiddlewares<RequestHandler>(CharactersController)),
+            ...(fetchMiddlewares<RequestHandler>(CharactersController.prototype.createCharacter)),
+
+            function CharactersController_createCharacter(request: any, response: any, next: any) {
+            const args = {
+                    body: {"in":"body","name":"body","required":true,"ref":"CharacterCreateBody"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new CharactersController();
+
+
+              const promise = controller.createCharacter.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.put('/characters/:characterId',
+            ...(fetchMiddlewares<RequestHandler>(CharactersController)),
+            ...(fetchMiddlewares<RequestHandler>(CharactersController.prototype.updateCharacter)),
+
+            function CharactersController_updateCharacter(request: any, response: any, next: any) {
+            const args = {
+                    characterId: {"in":"path","name":"characterId","required":true,"dataType":"string"},
+                    body: {"in":"body","name":"body","required":true,"ref":"CharacterUpdateBody"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new CharactersController();
+
+
+              const promise = controller.updateCharacter.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/characters/:characterId',
+            ...(fetchMiddlewares<RequestHandler>(CharactersController)),
+            ...(fetchMiddlewares<RequestHandler>(CharactersController.prototype.deleteCharacter)),
+
+            function CharactersController_deleteCharacter(request: any, response: any, next: any) {
+            const args = {
+                    characterId: {"in":"path","name":"characterId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new CharactersController();
+
+
+              const promise = controller.deleteCharacter.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/elements',
+            ...(fetchMiddlewares<RequestHandler>(ElementsController)),
+            ...(fetchMiddlewares<RequestHandler>(ElementsController.prototype.getAllElements)),
+
+            function ElementsController_getAllElements(request: any, response: any, next: any) {
+            const args = {
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new ElementsController();
+
+
+              const promise = controller.getAllElements.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/elements/:elementId',
+            ...(fetchMiddlewares<RequestHandler>(ElementsController)),
+            ...(fetchMiddlewares<RequestHandler>(ElementsController.prototype.getElementById)),
+
+            function ElementsController_getElementById(request: any, response: any, next: any) {
+            const args = {
+                    elementId: {"in":"path","name":"elementId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new ElementsController();
+
+
+              const promise = controller.getElementById.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.post('/elements',
+            ...(fetchMiddlewares<RequestHandler>(ElementsController)),
+            ...(fetchMiddlewares<RequestHandler>(ElementsController.prototype.createElement)),
+
+            function ElementsController_createElement(request: any, response: any, next: any) {
+            const args = {
+                    body: {"in":"body","name":"body","required":true,"ref":"ElementCreateBody"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new ElementsController();
+
+
+              const promise = controller.createElement.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.put('/elements/:elementId',
+            ...(fetchMiddlewares<RequestHandler>(ElementsController)),
+            ...(fetchMiddlewares<RequestHandler>(ElementsController.prototype.updateElement)),
+
+            function ElementsController_updateElement(request: any, response: any, next: any) {
+            const args = {
+                    elementId: {"in":"path","name":"elementId","required":true,"dataType":"string"},
+                    body: {"in":"body","name":"body","required":true,"ref":"ElementUpdateBody"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new ElementsController();
+
+
+              const promise = controller.updateElement.apply(controller, validatedArgs as any);
+              promiseHandler(controller, promise, response, undefined, next);
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.delete('/elements/:elementId',
+            ...(fetchMiddlewares<RequestHandler>(ElementsController)),
+            ...(fetchMiddlewares<RequestHandler>(ElementsController.prototype.deleteElement)),
+
+            function ElementsController_deleteElement(request: any, response: any, next: any) {
+            const args = {
+                    elementId: {"in":"path","name":"elementId","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+
+                const controller = new ElementsController();
+
+
+              const promise = controller.deleteElement.apply(controller, validatedArgs as any);
               promiseHandler(controller, promise, response, undefined, next);
             } catch (err) {
                 return next(err);

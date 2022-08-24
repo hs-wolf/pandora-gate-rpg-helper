@@ -45,6 +45,11 @@ const navbarLinks = [
     page: 'locations',
     hash: '',
   },
+  {
+    id: 'data',
+    page: 'data',
+    hash: '',
+  },
 ];
 </script>
 
@@ -76,10 +81,10 @@ const navbarLinks = [
           {{ t(`navbar.${link.id}`) }}
         </button>
         <div v-if="authStore.currentUser" class="flex gap-2 overflow-hidden">
-          <button class="link" @click.prevent="goToPage('notifications')">
+          <!-- <button class="link" @click.prevent="goToPage('notifications')">
             <span>{{ t('navbar.notifications') }}</span>
             <span class="text-primary-green font-semibold">6</span>
-          </button>
+          </button> -->
           <button
             class="login font-semibold overflow-hidden"
             @click.prevent="goToPage('profile')"
@@ -125,10 +130,10 @@ const navbarLinks = [
         {{ t(`navbar.${link.id}`) }}
       </button>
       <div v-if="authStore.currentUser" class="flex flex-col">
-        <button class="link" @click.prevent="closeMobileMenu('notifications')">
+        <!-- <button class="link" @click.prevent="closeMobileMenu('notifications')">
           <span>{{ t('navbar.notifications') }}</span>
           <span class="text-primary-green font-semibold">6</span>
-        </button>
+        </button> -->
         <button
           class="login font-semibold overflow-hidden"
           @click.prevent="closeMobileMenu('profile')"

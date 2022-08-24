@@ -7,7 +7,10 @@ general:
   register: Register
   logging: Logging
   registering: Registering
+  create: Create
   edit: Edit
+  import: Import
+  export: Export
   form-validations:
     required: '{label} is required.'
     min: '{label} needs a minimum of {min} characters.'
@@ -27,6 +30,7 @@ navbar:
   npcs: NPCs
   jobs: Jobs
   locations: Locations
+  data: Data
   notifications: Notifications
   name: Name
   logout: Logout
@@ -81,3 +85,22 @@ locations:
 npcs:
   head-title: Pandora Gate NPCs
   page-title: List of NPCs
+data:
+  head-title: Pandora Gate Data
+  elements: List of elements ({0})
+elements-form:
+  name:
+    label: Name
+    placeholder: Element name
+  double:
+    label: Double
+    placeholder: Double name
+  triple:
+    label: Triple
+    placeholder: Triple name
+  description:
+    label: Description
+    placeholder: Element description
+  image:
+    label: Image
+    placeholder: Element image url

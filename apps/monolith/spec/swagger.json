@@ -25,6 +25,132 @@
 				],
 				"type": "object"
 			},
+			"Element": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"double": {
+						"type": "string"
+					},
+					"triple": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"double",
+					"triple",
+					"description",
+					"image"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Character": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"ownerId": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"guild": {
+						"type": "string"
+					},
+					"elements": {
+						"items": {
+							"$ref": "#/components/schemas/Element"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"ownerId",
+					"name",
+					"guild",
+					"elements"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_Pick_Character.ownerId-or-name__": {
+				"properties": {
+					"ownerId": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"CharacterCreateBody": {
+				"$ref": "#/components/schemas/Partial_Pick_Character.ownerId-or-name__"
+			},
+			"Partial_Omit_Character.id-or-ownerId__": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"guild": {
+						"type": "string"
+					},
+					"elements": {
+						"items": {
+							"$ref": "#/components/schemas/Element"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"CharacterUpdateBody": {
+				"$ref": "#/components/schemas/Partial_Omit_Character.id-or-ownerId__"
+			},
+			"Partial_Omit_Element.id__": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"double": {
+						"type": "string"
+					},
+					"triple": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"image": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"ElementCreateBody": {
+				"$ref": "#/components/schemas/Partial_Omit_Element.id__"
+			},
+			"ElementUpdateBody": {
+				"$ref": "#/components/schemas/Partial_Omit_Element.id__"
+			},
 			"Job": {
 				"properties": {
 					"id": {
@@ -263,6 +389,311 @@
 						}
 					}
 				}
+			}
+		},
+		"/characters/users/{userId}": {
+			"get": {
+				"operationId": "GetCharactersByUserId",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Character"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Characters Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/characters/{characterId}": {
+			"get": {
+				"operationId": "GetCharacterById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Character"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Characters Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "characterId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateCharacter",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Character"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Characters Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "characterId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CharacterUpdateBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteCharacter",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Characters Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "characterId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/characters": {
+			"post": {
+				"operationId": "CreateCharacter",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Character"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Characters Service"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CharacterCreateBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/elements": {
+			"get": {
+				"operationId": "GetAllElements",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Element"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Elements Service"
+				],
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateElement",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Element"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Elements Service"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ElementCreateBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/elements/{elementId}": {
+			"get": {
+				"operationId": "GetElementById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Element"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Elements Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "elementId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"put": {
+				"operationId": "UpdateElement",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Element"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Elements Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "elementId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ElementUpdateBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteElement",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Elements Service"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "elementId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
 			}
 		},
 		"/jobs/{jobId}": {

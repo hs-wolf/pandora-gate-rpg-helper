@@ -85,8 +85,6 @@ const filteredJobs = computed(() => {
         </button>
       </div>
       <select
-        name=""
-        id=""
         v-model="tierFilter"
         class="px-2 py-3 text-primary-black rounded bg-primary-white col-start-1"
       >
