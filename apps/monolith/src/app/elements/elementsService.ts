@@ -47,7 +47,7 @@ export class ElementsService {
   async createElement(body: ElementCreateBody): Promise<Element> {
     try {
       const element = Element.fromMap(body);
-      element.image = DEFAULT_ELEMENT_IMAGE;
+      element.image = element.image ?? DEFAULT_ELEMENT_IMAGE;
       return await this._elementsRepo.createElement(element);
     } catch (error) {
       handleError(error);

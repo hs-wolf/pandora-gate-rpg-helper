@@ -9,6 +9,9 @@ general:
   registering: Registering
   create: Create
   edit: Edit
+  view: View
+  yes: 'Yes'
+  no: 'No'
   import: Import
   export: Export
   form-validations:
@@ -45,6 +48,9 @@ location-form:
   location-type:
     label: Location type
     placeholder: Select type
+characters-confirm-remove:
+  title: Removing character
+  message: Do you really want to remove {name}?
 
 #PAGES
 login:
@@ -72,6 +78,45 @@ register:
     placeholder: Type your password...
   got-account: Already have an account? {field}
   login-here: Login here!
+characters:
+  yours: You have {0} characters.
+  none: You have no characters yet, create one.
+  creating: Creating character
+  new: Create new
+  name: Character name...
+  basic-data: Basic data
+  guild: 'Guild:'
+  elements: 'Elements:'
+  jobs: 'Jobs:'
+  level: 'Level:'
+  exp: 'Exp:'
+  jp: 'JP:'
+  enhancements: 'Enhancements:'
+  skillRegen: 'Skill regen:'
+  hunger: '🍖 Hunger:'
+  gold: '💰 Gold:'
+  attributes: Attributes
+  strength:
+    label: Strength
+    acronym: STR
+  agility:
+    label: Agility
+    acronym: AGI
+  dexterity:
+    label: Dexterity
+    acronym: DEX
+  vitality:
+    label: Vitality
+    acronym: VIT
+  spirit:
+    label: Spirit
+    acronym: SPR
+  luck:
+    label: Luck
+    acronym: LCK
+  modificator:
+    label: Modificator
+    acronym: MOD
 jobs:
   head-title: Pandora Gate Jobs
   page-title: List of Jobs

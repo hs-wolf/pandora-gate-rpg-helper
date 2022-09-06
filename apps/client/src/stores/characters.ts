@@ -6,23 +6,32 @@ import { useAuthStore } from '@stores/auth';
 import {
   Character,
   CharacterCreateBody,
+  CharacterUpdateBody,
 } from '@pandora-gate-rpg-helper/models';
 import {
   API_GET_CHARACTERS_BY_USER_ID,
   API_POST_CREATE_CHARACTER,
+  API_PUT_UPDATE_CHARACTER,
+  API_DELETE_DELETE_CHARACTER,
 } from '@pandora-gate-rpg-helper/utilities';
 
 interface IState {
-  currentCharacters: Character[];
+  currentCharacters: Map<string, Character | null>;
   updatingUserCharacters: boolean;
   creatingCharacter: boolean;
+  showConfirmRemoveDialog: boolean;
+  removingCharacter: boolean;
+  characterBeingRemoved: string;
 }
 
 export const useCharactersStore = defineStore(CHARACTERS_STORE, {
   state: (): IState => ({
-    currentCharacters: [],
+    currentCharacters: new Map(),
     updatingUserCharacters: false,
     creatingCharacter: false,
+    showConfirmRemoveDialog: false,
+    removingCharacter: false,
+    characterBeingRemoved: '',
   }),
   getters: {},
   actions: {
@@ -36,7 +45,9 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
         const { data } = await http.get(
           API_GET_CHARACTERS_BY_USER_ID(authStore.currentUser?.id ?? '')
         );
-        this.currentCharacters = data ?? [];
+        (data as Character[]).forEach((character) =>
+          this.currentCharacters.set(character.id, Character.fromMap(character))
+        );
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
@@ -58,11 +69,47 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
           ownerId: authStore.currentUser.id,
         };
         const { data } = await http.post(API_POST_CREATE_CHARACTER, finalBody);
-        this.currentCharacters.push(data);
+        this.currentCharacters.set(data.id, data);
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
         this.creatingCharacter = false;
+      }
+    },
+    async updateCharacter(characterId: string, body: CharacterUpdateBody) {
+      if (this.creatingCharacter) {
+        return;
+      }
+      this.creatingCharacter = true;
+      try {
+        const { data } = await http.put(
+          API_PUT_UPDATE_CHARACTER(characterId),
+          body
+        );
+        this.currentCharacters.set(characterId, Character.fromMap(data));
+      } catch (error) {
+        useAlertsStore().handleError(error);
+      } finally {
+        this.creatingCharacter = false;
+      }
+    },
+    toggleConfirmRemoveDialog(value?: boolean, characterId?: string) {
+      this.showConfirmRemoveDialog = value ?? !this.showConfirmRemoveDialog;
+      this.characterBeingRemoved = characterId ?? '';
+    },
+    async removeCharacter(characterId: string) {
+      if (this.removingCharacter) {
+        return;
+      }
+      this.removingCharacter = true;
+      try {
+        await http.delete(API_DELETE_DELETE_CHARACTER(characterId));
+        this.currentCharacters.delete(characterId);
+      } catch (error) {
+        useAlertsStore().handleError(error);
+      } finally {
+        this.showConfirmRemoveDialog = false;
+        this.removingCharacter = false;
       }
     },
   },

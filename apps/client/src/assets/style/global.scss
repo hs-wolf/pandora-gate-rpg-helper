@@ -33,8 +33,23 @@ body {
 }
 
 @layer components {
+  .modal {
+    @apply z-50 fixed inset-0 flex flex-col items-center p-4 bg-primary-black/80 overflow-y-auto;
+  }
   .card {
-    @apply flex p-8 bg-primary-white shadow rounded-md;
+    @apply flex p-4 bg-primary-white shadow rounded-md;
+  }
+  .btn-gray {
+    @apply flex justify-center items-center px-4 py-2 bg-primary-gray rounded transition-all duration-100 ease-out;
+    &:hover {
+      @apply bg-primary-gray-light;
+    }
+    &:active {
+      @apply bg-primary-gray-dark text-primary-gray;
+    }
+    &:disabled {
+      @apply bg-primary-gray text-primary-black pointer-events-none;
+    }
   }
   .btn-green {
     @apply flex justify-center items-center px-4 py-2 bg-primary-green-dark rounded transition-all duration-100 ease-out;

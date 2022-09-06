@@ -6,6 +6,7 @@ import { updateHeaders } from '@plugins/axios';
 import { pinia } from '@plugins/pinia';
 import { router } from '@plugins/router';
 import { useAuthStore } from '@stores/auth';
+import { useCharactersStore } from '@stores/characters';
 import { useLocalesStore } from '@stores/locales';
 
 const app = initializeApp(environment.firebaseConfig);
@@ -17,12 +18,14 @@ auth.onAuthStateChanged(async (user) => {
     updateHeaders(token ?? '');
 
     const authStore = useAuthStore(pinia);
+    const charactersStore = useCharactersStore(pinia);
     const localesStore = useLocalesStore(pinia);
 
     localesStore.loadLocale();
     await authStore.updateCurrentUser();
 
     if (authStore.currentUser) {
+      charactersStore.getUserCharacters();
       if (router.currentRoute.value.meta.requiresOffline) {
         router.push({ name: 'index' });
       }

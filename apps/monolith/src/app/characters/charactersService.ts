@@ -53,6 +53,16 @@ export class CharactersService {
   async createCharacter(body: CharacterCreateBody): Promise<Character> {
     try {
       const character = Character.fromMap(body);
+      character.attributes = {
+        strength: 0,
+        agility: 0,
+        dexterity: 0,
+        vitality: 0,
+        spirit: 0,
+        luck: 0,
+      };
+      character.fixedEffects = [];
+      character.percentageEffects = [];
       return await this._charactersRepo.createCharacter(character);
     } catch (error) {
       handleError(error);
