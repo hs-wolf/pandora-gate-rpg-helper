@@ -16,7 +16,7 @@ import {
 } from '@pandora-gate-rpg-helper/utilities';
 
 interface IState {
-  currentCharacters: Map<string, Character | null>;
+  charactersList: Character[];
   updatingUserCharacters: boolean;
   creatingCharacter: boolean;
   showConfirmRemoveDialog: boolean;
@@ -26,7 +26,7 @@ interface IState {
 
 export const useCharactersStore = defineStore(CHARACTERS_STORE, {
   state: (): IState => ({
-    currentCharacters: new Map(),
+    charactersList: [],
     updatingUserCharacters: false,
     creatingCharacter: false,
     showConfirmRemoveDialog: false,
@@ -45,8 +45,8 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
         const { data } = await http.get(
           API_GET_CHARACTERS_BY_USER_ID(authStore.currentUser?.id ?? '')
         );
-        (data as Character[]).forEach((character) =>
-          this.currentCharacters.set(character.id, Character.fromMap(character))
+        this.charactersList = data.map((character: Character) =>
+          Character.fromMap(character)
         );
       } catch (error) {
         useAlertsStore().handleError(error);
@@ -69,7 +69,7 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
           ownerId: authStore.currentUser.id,
         };
         const { data } = await http.post(API_POST_CREATE_CHARACTER, finalBody);
-        this.currentCharacters.set(data.id, data);
+        this.charactersList.push(Character.fromMap(data)!);
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
@@ -86,7 +86,10 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
           API_PUT_UPDATE_CHARACTER(characterId),
           body
         );
-        this.currentCharacters.set(characterId, Character.fromMap(data));
+        const characterIndex = this.charactersList.findIndex(
+          (character) => character?.id === characterId
+        );
+        this.charactersList[characterIndex] = Character.fromMap(data)!;
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
@@ -104,7 +107,10 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
       this.removingCharacter = true;
       try {
         await http.delete(API_DELETE_DELETE_CHARACTER(characterId));
-        this.currentCharacters.delete(characterId);
+        const characterIndex = this.charactersList.findIndex(
+          (character) => character?.id === characterId
+        );
+        this.charactersList.splice(characterIndex, 1);
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {

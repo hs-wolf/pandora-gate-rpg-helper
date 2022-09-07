@@ -4,7 +4,7 @@ import { useCharactersStore } from '@src/stores/characters';
 const { t } = useI18n();
 const charactersStore = useCharactersStore();
 const {
-  currentCharacters,
+  charactersList,
   showConfirmRemoveDialog,
   removingCharacter,
   characterBeingRemoved,
@@ -39,7 +39,11 @@ const {
       >
         <template v-slot:name>
           <span class="font-bold">
-            {{ currentCharacters.get(characterBeingRemoved)?.name ?? 'EMPTY' }}
+            {{
+              charactersList.find(
+                (character) => character.id === characterBeingRemoved
+              )?.name ?? 'EMPTY'
+            }}
           </span>
         </template>
       </i18n-t>

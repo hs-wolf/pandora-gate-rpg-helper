@@ -10,6 +10,9 @@ body {
 }
 
 @layer base {
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -25,10 +28,10 @@ body {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
-    background: url('https://api.iconify.design/akar-icons/arrow-down.svg')
+    background: url('https://api.iconify.design/carbon/chevron-down.svg')
       no-repeat right #ddd;
     background-size: 1rem;
-    background-position-x: right 0.7rem;
+    background-position-x: right 0.25rem;
   }
 }
 

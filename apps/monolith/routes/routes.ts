@@ -43,6 +43,53 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Job": {
+        "dataType": "refObject",
+        "properties": {
+            "id": {"dataType":"string","required":true},
+            "name": {"dataType":"string","required":true},
+            "description": {"dataType":"string","required":true},
+            "tier": {"dataType":"double","required":true},
+            "img": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Exp": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"next":{"dataType":"double","required":true},"current":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Hunger": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"max":{"dataType":"double","required":true},"current":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Attributes": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"luck":{"dataType":"double","required":true},"spirit":{"dataType":"double","required":true},"vitality":{"dataType":"double","required":true},"dexterity":{"dataType":"double","required":true},"agility":{"dataType":"double","required":true},"strength":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "FixedOperators": {
+        "dataType": "refEnum",
+        "enums": ["SUM","SUBTRACTION","MULTIPLICATION","DIVISION"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "FixedEffect": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"value":{"dataType":"double","required":true},"operator":{"ref":"FixedOperators","required":true},"field":{"dataType":"string","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "PercentageOperators": {
+        "dataType": "refEnum",
+        "enums": ["SUM","SUBTRACTION"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "PercentageEffect": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"value":{"dataType":"double","required":true},"operator":{"ref":"PercentageOperators","required":true},"field":{"dataType":"string","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Character": {
         "dataType": "refObject",
         "properties": {
@@ -51,6 +98,17 @@ const models: TsoaRoute.Models = {
             "name": {"dataType":"string","required":true},
             "guild": {"dataType":"string","required":true},
             "elements": {"dataType":"array","array":{"dataType":"refObject","ref":"Element"},"required":true},
+            "jobs": {"dataType":"array","array":{"dataType":"refObject","ref":"Job"},"required":true},
+            "level": {"dataType":"double","required":true},
+            "exp": {"ref":"Exp","required":true},
+            "jp": {"dataType":"double","required":true},
+            "enhancements": {"dataType":"double","required":true},
+            "skillRegen": {"dataType":"double","required":true},
+            "hunger": {"ref":"Hunger","required":true},
+            "gold": {"dataType":"double","required":true},
+            "attributes": {"ref":"Attributes","required":true},
+            "fixedEffects": {"dataType":"array","array":{"dataType":"refAlias","ref":"FixedEffect"},"required":true},
+            "percentageEffects": {"dataType":"array","array":{"dataType":"refAlias","ref":"PercentageEffect"},"required":true},
         },
         "additionalProperties": false,
     },
@@ -67,7 +125,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Partial_Omit_Character.id-or-ownerId__": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"guild":{"dataType":"string"},"elements":{"dataType":"array","array":{"dataType":"refObject","ref":"Element"}}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"guild":{"dataType":"string"},"elements":{"dataType":"array","array":{"dataType":"refObject","ref":"Element"}},"jobs":{"dataType":"array","array":{"dataType":"refObject","ref":"Job"}},"level":{"dataType":"double"},"exp":{"ref":"Exp"},"jp":{"dataType":"double"},"enhancements":{"dataType":"double"},"skillRegen":{"dataType":"double"},"hunger":{"ref":"Hunger"},"gold":{"dataType":"double"},"attributes":{"ref":"Attributes"},"fixedEffects":{"dataType":"array","array":{"dataType":"refAlias","ref":"FixedEffect"}},"percentageEffects":{"dataType":"array","array":{"dataType":"refAlias","ref":"PercentageEffect"}}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "CharacterUpdateBody": {
@@ -88,18 +146,6 @@ const models: TsoaRoute.Models = {
     "ElementUpdateBody": {
         "dataType": "refAlias",
         "type": {"ref":"Partial_Omit_Element.id__","validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Job": {
-        "dataType": "refObject",
-        "properties": {
-            "id": {"dataType":"string","required":true},
-            "name": {"dataType":"string","required":true},
-            "description": {"dataType":"string","required":true},
-            "tier": {"dataType":"double","required":true},
-            "img": {"dataType":"string","required":true},
-        },
-        "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Partial_Omit_Job.id__": {

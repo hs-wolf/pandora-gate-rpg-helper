@@ -57,6 +57,162 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"Job": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"tier": {
+						"type": "number",
+						"format": "double"
+					},
+					"img": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description",
+					"tier",
+					"img"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Exp": {
+				"properties": {
+					"next": {
+						"type": "number",
+						"format": "double"
+					},
+					"current": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"next",
+					"current"
+				],
+				"type": "object"
+			},
+			"Hunger": {
+				"properties": {
+					"max": {
+						"type": "number",
+						"format": "double"
+					},
+					"current": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"max",
+					"current"
+				],
+				"type": "object"
+			},
+			"Attributes": {
+				"properties": {
+					"luck": {
+						"type": "number",
+						"format": "double"
+					},
+					"spirit": {
+						"type": "number",
+						"format": "double"
+					},
+					"vitality": {
+						"type": "number",
+						"format": "double"
+					},
+					"dexterity": {
+						"type": "number",
+						"format": "double"
+					},
+					"agility": {
+						"type": "number",
+						"format": "double"
+					},
+					"strength": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"luck",
+					"spirit",
+					"vitality",
+					"dexterity",
+					"agility",
+					"strength"
+				],
+				"type": "object"
+			},
+			"FixedOperators": {
+				"enum": [
+					"SUM",
+					"SUBTRACTION",
+					"MULTIPLICATION",
+					"DIVISION"
+				],
+				"type": "string"
+			},
+			"FixedEffect": {
+				"properties": {
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
+					"operator": {
+						"$ref": "#/components/schemas/FixedOperators"
+					},
+					"field": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"value",
+					"operator",
+					"field"
+				],
+				"type": "object"
+			},
+			"PercentageOperators": {
+				"enum": [
+					"SUM",
+					"SUBTRACTION"
+				],
+				"type": "string"
+			},
+			"PercentageEffect": {
+				"properties": {
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
+					"operator": {
+						"$ref": "#/components/schemas/PercentageOperators"
+					},
+					"field": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"value",
+					"operator",
+					"field"
+				],
+				"type": "object"
+			},
 			"Character": {
 				"properties": {
 					"id": {
@@ -76,6 +232,53 @@
 							"$ref": "#/components/schemas/Element"
 						},
 						"type": "array"
+					},
+					"jobs": {
+						"items": {
+							"$ref": "#/components/schemas/Job"
+						},
+						"type": "array"
+					},
+					"level": {
+						"type": "number",
+						"format": "double"
+					},
+					"exp": {
+						"$ref": "#/components/schemas/Exp"
+					},
+					"jp": {
+						"type": "number",
+						"format": "double"
+					},
+					"enhancements": {
+						"type": "number",
+						"format": "double"
+					},
+					"skillRegen": {
+						"type": "number",
+						"format": "double"
+					},
+					"hunger": {
+						"$ref": "#/components/schemas/Hunger"
+					},
+					"gold": {
+						"type": "number",
+						"format": "double"
+					},
+					"attributes": {
+						"$ref": "#/components/schemas/Attributes"
+					},
+					"fixedEffects": {
+						"items": {
+							"$ref": "#/components/schemas/FixedEffect"
+						},
+						"type": "array"
+					},
+					"percentageEffects": {
+						"items": {
+							"$ref": "#/components/schemas/PercentageEffect"
+						},
+						"type": "array"
 					}
 				},
 				"required": [
@@ -83,7 +286,18 @@
 					"ownerId",
 					"name",
 					"guild",
-					"elements"
+					"elements",
+					"jobs",
+					"level",
+					"exp",
+					"jp",
+					"enhancements",
+					"skillRegen",
+					"hunger",
+					"gold",
+					"attributes",
+					"fixedEffects",
+					"percentageEffects"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -114,6 +328,53 @@
 					"elements": {
 						"items": {
 							"$ref": "#/components/schemas/Element"
+						},
+						"type": "array"
+					},
+					"jobs": {
+						"items": {
+							"$ref": "#/components/schemas/Job"
+						},
+						"type": "array"
+					},
+					"level": {
+						"type": "number",
+						"format": "double"
+					},
+					"exp": {
+						"$ref": "#/components/schemas/Exp"
+					},
+					"jp": {
+						"type": "number",
+						"format": "double"
+					},
+					"enhancements": {
+						"type": "number",
+						"format": "double"
+					},
+					"skillRegen": {
+						"type": "number",
+						"format": "double"
+					},
+					"hunger": {
+						"$ref": "#/components/schemas/Hunger"
+					},
+					"gold": {
+						"type": "number",
+						"format": "double"
+					},
+					"attributes": {
+						"$ref": "#/components/schemas/Attributes"
+					},
+					"fixedEffects": {
+						"items": {
+							"$ref": "#/components/schemas/FixedEffect"
+						},
+						"type": "array"
+					},
+					"percentageEffects": {
+						"items": {
+							"$ref": "#/components/schemas/PercentageEffect"
 						},
 						"type": "array"
 					}
@@ -150,35 +411,6 @@
 			},
 			"ElementUpdateBody": {
 				"$ref": "#/components/schemas/Partial_Omit_Element.id__"
-			},
-			"Job": {
-				"properties": {
-					"id": {
-						"type": "string"
-					},
-					"name": {
-						"type": "string"
-					},
-					"description": {
-						"type": "string"
-					},
-					"tier": {
-						"type": "number",
-						"format": "double"
-					},
-					"img": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"id",
-					"name",
-					"description",
-					"tier",
-					"img"
-				],
-				"type": "object",
-				"additionalProperties": false
 			},
 			"Partial_Omit_Job.id__": {
 				"properties": {

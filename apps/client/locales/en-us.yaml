@@ -51,6 +51,150 @@ location-form:
 characters-confirm-remove:
   title: Removing character
   message: Do you really want to remove {name}?
+characters-basic-data:
+  title: Basic data
+  currentHP: 💖 HP
+  maxHP: Max
+  currentMP: 💙 MP
+  maxMP: Max
+  currentSP: 💛 SP
+  maxSP: Max
+  level: Level
+  exp: Exp
+  next: Next
+  jp: JP
+  enhancements: Enhancements
+  skillRegen: Skill Regen
+  currentHunger: 🍖 Hunger
+  maxHunger: Max
+  gold: 💰 Gold
+characters-attributes-form:
+  title: Attributes
+  strength:
+    label: Strength
+    acronym: STR
+  agility:
+    label: Agility
+    acronym: AGI
+  dexterity:
+    label: Dexterity
+    acronym: DEX
+  vitality:
+    label: Vitality
+    acronym: VIT
+  spirit:
+    label: Spirit
+    acronym: SPR
+  luck:
+    label: Luck
+    acronym: LCK
+  modificator:
+    label: Modificator
+    acronym: MOD
+characters-basic-stats-form:
+  title: Basic Stats
+  initiative: initiative
+  dodge: Dodge
+  move: Move
+  critical: Critical
+  physicalDefense: Physical defense
+  physicalDice: Physical dice
+  magicalDefense: Magical defense
+  magicalDice: Magical dice
+characters-ranges-form:
+  title: Ranges
+  unarmedRange: Unarmed
+  meleeRange: Melee
+  rangedRange: Ranged
+  fireWeaponRange: Fire Weapon
+characters-accuracies-form:
+  title: Accuracies
+  unarmedAccuracy: Unarmed
+  meleeAccuracy: Melee
+  rangedAccuracy: Ranged
+  fireWeaponAccuracy: Fire Weapon
+characters-physical-bonus-form:
+  title: Physical Bonus
+  unarmedBonus: Unarmed
+  meleeBonus: Melee
+  rangedBonus: Ranged
+  fireWeaponBonus: Fire Weapon
+characters-magical-bonus-form:
+  title: Magical Bonus
+  waterBonus: Water
+  etherealBonus: Ethereal
+  fireBonus: Fire
+  iceBonus: Ice
+  moonBonus: Moon
+  lightBonus: Light
+  magickBonus: Magick
+  natureBonus: Nature
+  sunBonus: Sun
+  soulBonus: Soul
+  earthBonus: Earth
+  darkBonus: Dark
+  thunderBonus: Thunder
+  windBonus: Wind
+  astralBonus: Astral
+characters-effects-form:
+  title: Effects
+  fixedEffects: Fixed effects
+  linkedEffects: Linked effects
+  percentageEffects: Percentage effects
+  fields-list:
+    currentHP: Current HP
+    maxHP: Max HP
+    currentMP: Current MP
+    maxMP: Max MP
+    currentSP: Current SP
+    maxSP: Max SP
+    level: LVL
+    strength: STR
+    agility: AGI
+    dexterity: DEX
+    vitality: VIT
+    spirit: SPR
+    luck: LCK
+    initiative: INI
+    dodge: DGE
+    move: MOVE
+    critical: CRIT
+    physicalDefense: P. DEF
+    physicalDice: P. DICE
+    magicalDefense: M. DEF
+    magicalDice: M. DICE
+    unarmedRange: Unarmed Range
+    meleeRange: Melee Range
+    rangedRange: Ranged Range
+    fireWeaponRange: Fire Weapon Range
+    unarmedAccuracy: Unarmed Accuracy
+    meleeAccuracy: Melee Accuracy
+    rangedAccuracy: Ranged Accuracy
+    fireWeaponAccuracy: Fire Weapon Accuracy
+    unarmedBonus: Unarmed Bonus
+    meleeBonus: Melee Bonus
+    rangedBonus: Ranged Bonus
+    fireWeaponBonus: Fire Weapon Bonus
+    waterBonus: Water Bonus
+    etherealBonus: Ethereal Bonus
+    fireBonus: Fire Bonus
+    iceBonus: Ice Bonus
+    moonBonus: Moon Bonus
+    lightBonus: Light Bonus
+    magickBonus: Magick Bonus
+    natureBonus: Nature Bonus
+    sunBonus: Sun Bonus
+    soulBonus: Soul Bonus
+    earthBonus: Earth Bonus
+    darkBonus: Dark Bonus
+    thunderBonus: Thunder Bonus
+    windBonus: Wind Bonus
+    astralBonus: Astral Bonus
+  operators:
+    sum: +
+    subtraction: –
+    multiplication: ⁕
+    division: /
 
 #PAGES
 login:
@@ -84,39 +228,6 @@ characters:
   creating: Creating character
   new: Create new
   name: Character name...
-  basic-data: Basic data
-  guild: 'Guild:'
-  elements: 'Elements:'
-  jobs: 'Jobs:'
-  level: 'Level:'
-  exp: 'Exp:'
-  jp: 'JP:'
-  enhancements: 'Enhancements:'
-  skillRegen: 'Skill regen:'
-  hunger: '🍖 Hunger:'
-  gold: '💰 Gold:'
-  attributes: Attributes
-  strength:
-    label: Strength
-    acronym: STR
-  agility:
-    label: Agility
-    acronym: AGI
-  dexterity:
-    label: Dexterity
-    acronym: DEX
-  vitality:
-    label: Vitality
-    acronym: VIT
-  spirit:
-    label: Spirit
-    acronym: SPR
-  luck:
-    label: Luck
-    acronym: LCK
-  modificator:
-    label: Modificator
-    acronym: MOD
 jobs:
   head-title: Pandora Gate Jobs
   page-title: List of Jobs

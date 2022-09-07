@@ -5,7 +5,7 @@ import { CharacterCreateBody } from '@pandora-gate-rpg-helper/models';
 
 const { t } = useI18n();
 const charactersStore = useCharactersStore();
-const { currentCharacters, creatingCharacter } = storeToRefs(charactersStore);
+const { charactersList, creatingCharacter } = storeToRefs(charactersStore);
 
 const characterName = ref('');
 
@@ -19,10 +19,6 @@ const createCharacter = async () => {
   await charactersStore.createCharacter(body);
   characterName.value = '';
 };
-
-onBeforeMount(async () => {
-  await charactersStore.getUserCharacters();
-});
 </script>
 
 <template>
@@ -30,8 +26,8 @@ onBeforeMount(async () => {
     <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
       <p class="lg:whitespace-nowrap">
         {{
-          currentCharacters.size
-            ? t('characters.yours', [currentCharacters.size])
+          charactersList.length
+            ? t('characters.yours', [charactersList.length])
             : t('characters.none')
         }}
       </p>
@@ -56,9 +52,9 @@ onBeforeMount(async () => {
       </div>
     </div>
     <hr class="border-primary-gray-dark" />
-    <div v-if="currentCharacters.size" class="flex flex-col gap-4">
+    <div v-if="charactersList.length" class="flex flex-col gap-4">
       <div
-        v-for="character in currentCharacters.values()"
+        v-for="character in charactersList.values()"
         :key="character?.id"
         class="flex justify-between items-center gap-2 rounded"
       >
@@ -69,13 +65,7 @@ onBeforeMount(async () => {
           {{ character?.name }}
         </button>
         <button
-          class="btn-blue gap-2"
-          @click.prevent="router.push(`/characters/${character?.id}/edit`)"
-        >
-          <icon-carbon:edit />
-        </button>
-        <button
-          class="btn-red gap-2"
+          class="text-primary-red"
           @click.prevent="
             charactersStore.toggleConfirmRemoveDialog(true, character?.id)
           "
