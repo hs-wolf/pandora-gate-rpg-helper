@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { router } from '@src/plugins/router';
+import { useAuthStore } from '@src/stores/auth';
 import { useCharactersStore } from '@src/stores/characters';
 import { CharacterCreateBody } from '@pandora-gate-rpg-helper/models';
 
 const { t } = useI18n();
+const authStore = useAuthStore();
 const charactersStore = useCharactersStore();
 const { charactersList, creatingCharacter } = storeToRefs(charactersStore);
 
 const characterName = ref('');
-
 const createCharacter = async () => {
   if (!characterName.value) {
     return;
@@ -23,54 +23,66 @@ const createCharacter = async () => {
 
 <template>
   <div class="flex flex-col gap-4 lg:gap-8 w-full">
-    <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
-      <p class="lg:whitespace-nowrap">
+    <div
+      v-if="authStore.currentUser"
+      class="flex flex-col lg:flex-row justify-between items-center gap-4"
+    >
+      <p class="text-sm">
         {{
-          charactersList.length
-            ? t('characters.yours', [charactersList.length])
+          charactersList.size
+            ? t('characters.yours', [charactersList.size])
             : t('characters.none')
         }}
       </p>
       <div
         v-if="creatingCharacter"
-        class="flex flex-col lg:flex-row justify-end items-center gap-2 w-full"
+        class="flex flex-col lg:flex-row justify-end items-center gap-2"
       >
         <icon-eos-icons:loading />
         <p>{{ t('characters.creating') }}</p>
       </div>
-      <div v-else class="flex justify-end items-center gap-2 w-full">
+      <div v-else class="flex justify-end w-full lg:w-auto">
         <input
           type="text"
           :placeholder="t('characters.name')"
           v-model="characterName"
-          class="form-input"
+          class="form-input w-full rounded-l"
         />
-        <button class="lg:w-auto btn-green" @click.prevent="createCharacter">
-          <icon-carbon:add />
-          <p class="hidden lg:block text-sm">{{ t('characters.new') }}</p>
+        <button
+          class="btn-green shrink-0 rounded-r"
+          @click.prevent="createCharacter"
+        >
+          <icon-carbon:add class="text-lg" />
+          <p class="hidden lg:block">{{ t('characters.new') }}</p>
         </button>
       </div>
     </div>
+    <p v-else class="py-2 text-sm">
+      {{ t('characters.no-auth') }}
+    </p>
     <hr class="border-primary-gray-dark" />
-    <div v-if="charactersList.length" class="flex flex-col gap-4">
+    <div
+      v-if="authStore.currentUser && charactersList.size"
+      class="flex flex-col gap-4"
+    >
       <div
         v-for="character in charactersList.values()"
         :key="character?.id"
-        class="flex justify-between items-center gap-2 rounded"
+        class="flex justify-between rounded shadow overflow-hidden"
       >
-        <button
-          class="btn-gray justify-start gap-2 w-full break-all"
-          @click.prevent="router.push(`/characters/${character?.id}`)"
+        <router-link
+          :to="`/characters/${character?.id}`"
+          class="btn-gray justify-start w-full break-all rounded-none"
         >
           {{ character?.name }}
-        </button>
+        </router-link>
         <button
-          class="text-primary-red"
+          class="btn-red rounded-none"
           @click.prevent="
             charactersStore.toggleConfirmRemoveDialog(true, character?.id)
           "
         >
-          <icon-carbon:trash-can />
+          <icon-carbon:trash-can class="text-lg" />
         </button>
       </div>
     </div>
@@ -80,6 +92,6 @@ const createCharacter = async () => {
 
 <style scoped lang="scss">
 .form-input {
-  @apply w-full lg:w-auto lg:min-w-dialog p-2 bg-transparent border border-primary-gray rounded text-sm text-primary-white placeholder:text-primary-gray outline-none;
+  @apply w-full p-2 bg-transparent border border-primary-gray outline-none;
 }
 </style>

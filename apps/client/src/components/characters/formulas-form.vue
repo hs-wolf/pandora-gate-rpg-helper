@@ -15,23 +15,23 @@ const showForm = ref(false);
 const editing = ref(false);
 const saveEdits = () => {
   charactersStore.updateCharacter(currentCharacter.value?.id ?? '', {
-    fixedEffects: currentCharacter.value?.fixedEffects,
-    linkedEffects: currentCharacter.value?.linkedEffects,
-    percentageEffects: currentCharacter.value?.percentageEffects,
+    fixedFormulas: currentCharacter.value?.fixedFormulas,
+    linkedFormulas: currentCharacter.value?.linkedFormulas,
+    percentageFormulas: currentCharacter.value?.percentageFormulas,
   });
   editing.value = false;
 };
 
-const addFixedEffect = () => {
-  currentCharacter.value?.fixedEffects.push({
+const addFixedFormula = () => {
+  currentCharacter.value?.fixedFormulas.push({
     target: EffectFieldsList.STRENGTH,
     operator: FixedOperators.SUM,
     value: 1,
   });
 };
 
-const addLinkedEffect = () => {
-  currentCharacter.value?.linkedEffects.push({
+const addLinkedFormula = () => {
+  currentCharacter.value?.linkedFormulas.push({
     target: EffectFieldsList.STRENGTH,
     targetOperator: FixedOperators.SUM,
     field: EffectFieldsList.AGILITY,
@@ -40,8 +40,8 @@ const addLinkedEffect = () => {
   });
 };
 
-const addPercentageEffect = () => {
-  currentCharacter.value?.percentageEffects.push({
+const addPercentageformula = () => {
+  currentCharacter.value?.percentageFormulas.push({
     target: EffectFieldsList.STRENGTH,
     operator: PercentageOperators.SUM,
     value: 1,
@@ -58,7 +58,7 @@ const addPercentageEffect = () => {
       class="flex justify-between items-center gap-2 font-semibold"
       @click.prevent="showForm = !showForm"
     >
-      <p>{{ t('characters-effects-form.title') }}</p>
+      <p>{{ t('characters-formulas-form.title') }}</p>
       <icon-carbon:chevron-up v-if="showForm" />
       <icon-carbon:chevron-down v-else />
     </button>
@@ -67,15 +67,15 @@ const addPercentageEffect = () => {
         <div class="flex flex-col gap-4">
           <div class="flex justify-between items-center gap-4">
             <div class="flex gap-2 text-primary-gray-light">
-              <p>{{ t('characters-effects-form.fixedEffects') }}</p>
-              <p>{{ `(${currentCharacter.fixedEffects.length})` }}</p>
+              <p>{{ t('characters-formulas-form.fixedEffects') }}</p>
+              <p>{{ `(${currentCharacter.fixedFormulas.length})` }}</p>
             </div>
-            <button @click.prevent="addFixedEffect" class="text-primary-blue">
+            <button @click.prevent="addFixedFormula" class="text-primary-blue">
               <icon-carbon:add-alt class="text-xl" />
             </button>
           </div>
           <div
-            v-for="(effect, index) in currentCharacter.fixedEffects"
+            v-for="(effect, index) in currentCharacter.fixedFormulas"
             :key="index"
             class="flex items-center gap-2"
           >
@@ -103,7 +103,7 @@ const addPercentageEffect = () => {
               />
             </div>
             <button
-              @click.prevent="currentCharacter?.fixedEffects.splice(index, 1)"
+              @click.prevent="currentCharacter?.fixedFormulas.splice(index, 1)"
             >
               <icon-carbon:trash-can
                 class="shrink-0 text-primary-red text-xl"
@@ -115,15 +115,15 @@ const addPercentageEffect = () => {
         <div class="flex flex-col gap-4">
           <div class="flex justify-between items-center gap-2">
             <div class="flex gap-1 text-primary-gray-light">
-              <p>{{ t('characters-effects-form.linkedEffects') }}</p>
-              <p>{{ `(${currentCharacter.linkedEffects.length})` }}</p>
+              <p>{{ t('characters-formulas-form.linkedEffects') }}</p>
+              <p>{{ `(${currentCharacter.linkedFormulas.length})` }}</p>
             </div>
-            <button @click.prevent="addLinkedEffect" class="text-primary-blue">
+            <button @click.prevent="addLinkedFormula" class="text-primary-blue">
               <icon-carbon:add-alt class="text-xl" />
             </button>
           </div>
           <div
-            v-for="(effect, index) in currentCharacter.linkedEffects"
+            v-for="(effect, index) in currentCharacter.linkedFormulas"
             :key="index"
             class="flex items-center gap-2"
           >
@@ -167,7 +167,7 @@ const addPercentageEffect = () => {
               />
             </div>
             <button
-              @click.prevent="currentCharacter?.linkedEffects.splice(index, 1)"
+              @click.prevent="currentCharacter?.linkedFormulas.splice(index, 1)"
             >
               <icon-carbon:trash-can
                 class="shrink-0 text-primary-red text-xl"
@@ -179,18 +179,18 @@ const addPercentageEffect = () => {
         <div class="flex flex-col gap-4">
           <div class="flex justify-between items-center gap-4">
             <div class="flex gap-2 text-primary-gray-light">
-              <p>{{ t('characters-effects-form.percentageEffects') }}</p>
-              <p>{{ `(${currentCharacter.percentageEffects.length})` }}</p>
+              <p>{{ t('characters-formulas-form.percentageEffects') }}</p>
+              <p>{{ `(${currentCharacter.percentageFormulas.length})` }}</p>
             </div>
             <button
-              @click.prevent="addPercentageEffect"
+              @click.prevent="addPercentageformula"
               class="text-primary-blue"
             >
               <icon-carbon:add-alt class="text-xl" />
             </button>
           </div>
           <div
-            v-for="(effect, index) in currentCharacter.percentageEffects"
+            v-for="(effect, index) in currentCharacter.percentageFormulas"
             :key="effect.target"
             class="flex items-center gap-2"
           >
@@ -219,7 +219,7 @@ const addPercentageEffect = () => {
             </div>
             <button
               @click.prevent="
-                currentCharacter?.percentageEffects.splice(index, 1)
+                currentCharacter?.percentageFormulas.splice(index, 1)
               "
             >
               <icon-carbon:trash-can
@@ -236,10 +236,10 @@ const addPercentageEffect = () => {
       <div v-else class="flex flex-col gap-4">
         <div class="flex flex-col gap-2">
           <h1 class="text-primary-gray-light">
-            {{ t('characters-effects-form.fixedEffects') }}
+            {{ t('characters-formulas-form.fixedEffects') }}
           </h1>
           <div
-            v-for="(effect, index) in currentCharacter?.fixedEffects"
+            v-for="(effect, index) in currentCharacter?.fixedFormulas"
             :key="index"
             class="flex items-center gap-2"
           >
@@ -255,10 +255,10 @@ const addPercentageEffect = () => {
         <hr class="border-primary-gray" />
         <div class="flex flex-col gap-2">
           <h1 class="text-primary-gray-light">
-            {{ t('characters-effects-form.linkedEffects') }}
+            {{ t('characters-formulas-form.linkedEffects') }}
           </h1>
           <div
-            v-for="(effect, index) in currentCharacter?.linkedEffects"
+            v-for="(effect, index) in currentCharacter?.linkedFormulas"
             :key="index"
             class="flex items-center gap-2"
           >
@@ -280,10 +280,10 @@ const addPercentageEffect = () => {
         <hr class="border-primary-gray" />
         <div class="flex flex-col gap-2">
           <h1 class="text-primary-gray-light">
-            {{ t('characters-effects-form.percentageEffects') }}
+            {{ t('characters-formulas-form.percentageEffects') }}
           </h1>
           <div
-            v-for="(effect, index) in currentCharacter?.percentageEffects"
+            v-for="(effect, index) in currentCharacter?.percentageFormulas"
             :key="index"
             class="flex items-center gap-2"
           >

@@ -1,5 +1,4 @@
 # GENERAL
-key: Value
 general:
   pandora-gate: PANDORA GATE
   cancel: Cancel
@@ -26,121 +25,6 @@ general:
     realm: Realm
     city: City
     village: Village
-
-# COMPONENTS
-navbar:
-  characters: Characters
-  npcs: NPCs
-  jobs: Jobs
-  locations: Locations
-  data: Data
-  notifications: Notifications
-  name: Name
-  logout: Logout
-  login: Login
-location-form:
-  name:
-    label: Name
-    placeholder: Location name...
-  description:
-    label: Description
-    placeholder: Location description...
-  location-type:
-    label: Location type
-    placeholder: Select type
-characters-confirm-remove:
-  title: Removing character
-  message: Do you really want to remove {name}?
-characters-basic-data:
-  title: Basic data
-  currentHP: 💖 HP
-  maxHP: Max
-  currentMP: 💙 MP
-  maxMP: Max
-  currentSP: 💛 SP
-  maxSP: Max
-  level: Level
-  exp: Exp
-  next: Next
-  jp: JP
-  enhancements: Enhancements
-  skillRegen: Skill Regen
-  currentHunger: 🍖 Hunger
-  maxHunger: Max
-  gold: 💰 Gold
-characters-attributes-form:
-  title: Attributes
-  strength:
-    label: Strength
-    acronym: STR
-  agility:
-    label: Agility
-    acronym: AGI
-  dexterity:
-    label: Dexterity
-    acronym: DEX
-  vitality:
-    label: Vitality
-    acronym: VIT
-  spirit:
-    label: Spirit
-    acronym: SPR
-  luck:
-    label: Luck
-    acronym: LCK
-  modificator:
-    label: Modificator
-    acronym: MOD
-characters-basic-stats-form:
-  title: Basic Stats
-  initiative: initiative
-  dodge: Dodge
-  move: Move
-  critical: Critical
-  physicalDefense: Physical defense
-  physicalDice: Physical dice
-  magicalDefense: Magical defense
-  magicalDice: Magical dice
-characters-ranges-form:
-  title: Ranges
-  unarmedRange: Unarmed
-  meleeRange: Melee
-  rangedRange: Ranged
-  fireWeaponRange: Fire Weapon
-characters-accuracies-form:
-  title: Accuracies
-  unarmedAccuracy: Unarmed
-  meleeAccuracy: Melee
-  rangedAccuracy: Ranged
-  fireWeaponAccuracy: Fire Weapon
-characters-physical-bonus-form:
-  title: Physical Bonus
-  unarmedBonus: Unarmed
-  meleeBonus: Melee
-  rangedBonus: Ranged
-  fireWeaponBonus: Fire Weapon
-characters-magical-bonus-form:
-  title: Magical Bonus
-  waterBonus: Water
-  etherealBonus: Ethereal
-  fireBonus: Fire
-  iceBonus: Ice
-  moonBonus: Moon
-  lightBonus: Light
-  magickBonus: Magick
-  natureBonus: Nature
-  sunBonus: Sun
-  soulBonus: Soul
-  earthBonus: Earth
-  darkBonus: Dark
-  thunderBonus: Thunder
-  windBonus: Wind
-  astralBonus: Astral
-characters-effects-form:
-  title: Effects
-  fixedEffects: Fixed effects
-  linkedEffects: Linked effects
-  percentageEffects: Percentage effects
   fields-list:
     currentHP: Current HP
     maxHP: Max HP
@@ -190,11 +74,300 @@ characters-effects-form:
     thunderBonus: Thunder Bonus
     windBonus: Wind Bonus
     astralBonus: Astral Bonus
+    expertiseMeleeWeapons: E. Melee Weapons
+    expertiseMechanicalWeapons: E. Mechanical Weapons
+    expertiseWillpower: E. Willpower
+    expertiseForge: E. Forge
+    expertiseImmobilize: E. Immobilize
+    expertiseUnarmedFight: E. Unarmed Fight
+    expertiseMine: E. Mine
+    expertiseMount: E. Mount
+    expertiseTrack: E. Track
+    expertiseMislead: E. Mislead
+    expertiseDisguise: E. Disguise
+    expertiseDualWield: E. DualWield
+    expertiseHide: E. Hide
+    expertiseDodge: E. Dodge
+    expertiseEscape: E. Escape
+    expertiseJump: E. Jump
+    expertiseAgriculture: E. Agriculture
+    expertiseRangedWeapons: E. Ranged Weapons
+    expertiseFireGuns: E. Fire Guns
+    expertiseMasonry: E. Masonry
+    expertiseThrowObject: E. Throw Object
+    expertiseClimb: E. Climb
+    expertiseMakeBoat: E. Make Boat
+    expertiseSwim: E. Swim
+    expertisePrepareTrap: E. Prepare Trap
+    expertiseFirstAid: E. First Aid
+    expertiseCharisma: E. Charisma
+    expertisePhysicalDefense: E. Physical Defense
+    expertiseLeadership: E. Leadership
+    expertiseSurvival: E. Survival
+    expertiseCritical: E. Critical
+    expertisePlayCalculate: E. Play / Calculate
+    expertiseMagickFind: E. Magick Find
+    expertiseAid: E. Aid
+    expertiseBluff: E. Bluff
+    expertiseConjuration: E. Conjuration
+    expertiseMagicDefense: E. Magic Defense
+    expertiseWaterElement: E. WaterElement
+    expertiseEtherealElement: E. Ethereal Element
+    expertiseFireElement: E. Fire Element
+    expertiseIceElement: E. Ice Element
+    expertiseMoonElement: E. Moon Element
+    expertiseLightElement: E. Light Element
+    expertiseMagickElement: E. Magick Element
+    expertiseNatureElement: E. Nature Element
+    expertiseSunElement: E. Sun Element
+    expertiseSoulElement: E. Soul Element
+    expertiseEarthElement: E. Earth Element
+    expertiseDarknessElement: E. Darkness Element
+    expertiseThunderElement: E. Thunder Element
+    expertiseWindElement: E. Wind Element
+    expertiseAstralElement: E. Astral Element
+    expertiseInterpretDreams: E. Interpret Dreams
+    expertiseInterrogate: E. Interrogate
+    expertiseIntimidate: E. Intimidate
+    expertiseLanguage: E. Language
+    expertiseCurse: E. Curse
+    expertiseMysticism: E. Mysticism
+    expertiseNegotiate: E. Negotiate
+    expertisePerception: E. Perception
+    expertiseForecastWeather: E. Forecast Weather
+    expertiseTactic: E. Tactic
+    expertiseCombo: E. Combo
+    expertiseMVP: E. MVP
+    expertisePVP: E. PVP
+    expertiseSynergy: E. Synergy
+    expertiseStunt: E. Stunt
+    expertiseAstronomy: E. Astronomy
+    expertiseFaith: E. Faith
+    expertiseSteal: E. Steal
+    expertiseSpecialWeapon: E. Special Weapon
+    expertiseChemistry: E. Chemistry
+    expertiseRelaxation: E. Relaxation
   operators:
     sum: +
     subtraction: –
     multiplication: ⁕
     division: /
+
+# COMPONENTS
+navbar:
+  characters: Characters
+  npcs: NPCs
+  jobs: Jobs
+  locations: Locations
+  data: Data
+  notifications: Notifications
+  name: Name
+  logout: Logout
+  login: Login
+location-form:
+  name:
+    label: Name
+    placeholder: Location name...
+  description:
+    label: Description
+    placeholder: Location description...
+  location-type:
+    label: Location type
+    placeholder: Select type
+characters-confirm-remove:
+  title: Removing character
+  message: Do you really want to remove {name}?
+characters-main-info-form:
+  name: Name
+  guild: Guild
+  no-guild: No guild.
+  no-element: No elements.
+  no-job: No jobs.
+characters-basic-data-form:
+  title: Basic data
+  currentHP: 💖 HP
+  maxHP: Max
+  currentMP: 💙 MP
+  maxMP: Max
+  currentSP: 💛 SP
+  maxSP: Max
+  level: Level
+  exp: Exp
+  next: Next
+  jp: JP
+  enhancements: Enhancements
+  skillRegen: Skill Regen
+  currentHunger: 🍖 Hunger
+  maxHunger: Max
+  gold: 💰 Gold
+characters-attributes-form:
+  title: Attributes
+  strength:
+    label: Strength
+    acronym: STR
+  agility:
+    label: Agility
+    acronym: AGI
+  dexterity:
+    label: Dexterity
+    acronym: DEX
+  vitality:
+    label: Vitality
+    acronym: VIT
+  spirit:
+    label: Spirit
+    acronym: SPR
+  luck:
+    label: Luck
+    acronym: LCK
+  modificator:
+    label: Modificator
+    acronym: MOD
+characters-basic-stats-form:
+  title: Basic Stats
+  initiative: Initiative
+  dodge: Dodge
+  move: Move
+  critical: Critical
+  physicalDefense: Physical Defense
+  physicalDice: Physical Dice
+  magicalDefense: Magical Defense
+  magicalDice: Magical Dice
+characters-ranges-form:
+  title: Ranges
+  unarmedRange: Unarmed
+  meleeRange: Melee
+  rangedRange: Ranged
+  fireWeaponRange: Fire Weapon
+characters-accuracies-form:
+  title: Accuracies
+  unarmedAccuracy: Unarmed
+  meleeAccuracy: Melee
+  rangedAccuracy: Ranged
+  fireWeaponAccuracy: Fire Weapon
+characters-physical-bonus-form:
+  title: Physical Bonus
+  unarmedBonus: Unarmed
+  meleeBonus: Melee
+  rangedBonus: Ranged
+  fireWeaponBonus: Fire Weapon
+characters-magical-bonus-form:
+  title: Magical Bonus
+  waterBonus: Water
+  etherealBonus: Ethereal
+  fireBonus: Fire
+  iceBonus: Ice
+  moonBonus: Moon
+  lightBonus: Light
+  magickBonus: Magick
+  natureBonus: Nature
+  sunBonus: Sun
+  soulBonus: Soul
+  earthBonus: Earth
+  darkBonus: Dark
+  thunderBonus: Thunder
+  windBonus: Wind
+  astralBonus: Astral
+characters-expertises-form:
+  title: Expertises
+  expertiseMeleeWeapons: Expertise Melee Weapons
+  expertiseMechanicalWeapons: Expertise Mechanical Weapons
+  expertiseWillpower: Expertise Willpower
+  expertiseForge: Expertise Forge
+  expertiseImmobilize: Expertise Immobilize
+  expertiseUnarmedFight: Expertise Unarmed Fight
+  expertiseMine: Expertise Mine
+  expertiseMount: Expertise Mount
+  expertiseTrack: Expertise Track
+  expertiseMislead: Expertise Mislead
+  expertiseDisguise: Expertise Disguise
+  expertiseDualWield: Expertise DualWield
+  expertiseHide: Expertise Hide
+  expertiseDodge: Expertise Dodge
+  expertiseEscape: Expertise Escape
+  expertiseJump: Expertise Jump
+  expertiseAgriculture: Expertise Agriculture
+  expertiseRangedWeapons: Expertise Ranged Weapons
+  expertiseFireGuns: Expertise Fire Guns
+  expertiseMasonry: Expertise Masonry
+  expertiseThrowObject: Expertise Throw Object
+  expertiseClimb: Expertise Climb
+  expertiseMakeBoat: Expertise Make Boat
+  expertiseSwim: Expertise Swim
+  expertisePrepareTrap: Expertise Prepare Trap
+  expertiseFirstAid: Expertise First Aid
+  expertiseCharisma: Expertise Charisma
+  expertisePhysicalDefense: Expertise Physical Defense
+  expertiseLeadership: Expertise Leadership
+  expertiseSurvival: Expertise Survival
+  expertiseCritical: Expertise Critical
+  expertisePlayCalculate: Expertise Play / Calculate
+  expertiseMagickFind: Expertise Magick Find
+  expertiseAid: Expertise Aid
+  expertiseBluff: Expertise Bluff
+  expertiseConjuration: Expertise Conjuration
+  expertiseMagicDefense: Expertise Magic Defense
+  expertiseWaterElement: Expertise WaterElement
+  expertiseEtherealElement: Expertise Ethereal Element
+  expertiseFireElement: Expertise Fire Element
+  expertiseIceElement: Expertise Ice Element
+  expertiseMoonElement: Expertise Moon Element
+  expertiseLightElement: Expertise Light Element
+  expertiseMagickElement: Expertise Magick Element
+  expertiseNatureElement: Expertise Nature Element
+  expertiseSunElement: Expertise Sun Element
+  expertiseSoulElement: Expertise Soul Element
+  expertiseEarthElement: Expertise Earth Element
+  expertiseDarknessElement: Expertise Darkness Element
+  expertiseThunderElement: Expertise Thunder Element
+  expertiseWindElement: Expertise Wind Element
+  expertiseInterpretDreams: Expertise Interpret Dreams
+  expertiseInterrogate: Expertise Interrogate
+  expertiseIntimidate: Expertise Intimidate
+  expertiseLanguage: Expertise Language
+  expertiseCurse: Expertise Curse
+  expertiseMysticism: Expertise Mysticism
+  expertiseNegotiate: Expertise Negotiate
+  expertisePerception: Expertise Perception
+  expertiseForecastWeather: Expertise Forecast Weather
+  expertiseTactic: Expertise Tactic
+  expertiseCombo: Expertise Combo
+  expertiseMVP: Expertise MVP
+  expertisePVP: Expertise PVP
+  expertiseSynergy: Expertise Synergy
+  expertiseStunt: Expertise Stunt
+  expertiseAstronomy: Expertise Astronomy
+  expertiseFaith: Expertise Faith
+  expertiseSteal: Expertise Steal
+  expertiseSpecialWeapon: Expertise Special Weapon
+  expertiseChemistry: Expertise Chemistry
+  expertiseRelaxation: Expertise Relaxation
+characters-effects-form:
+  title: Effects
+  fixedEffects: Fixed effects
+  linkedEffects: Linked effects
+  percentageEffects: Percentage effects
+characters-formulas-form:
+  title: Formulas
+  fixedEffects: Fixed formulas
+  linkedEffects: Linked formulas
+  percentageEffects: Percentage formulas
+data-elements-form:
+  name:
+    label: Name
+    placeholder: Element name
+  double:
+    label: Double
+    placeholder: Double name
+  triple:
+    label: Triple
+    placeholder: Triple name
+  description:
+    label: Description
+    placeholder: Element description
+  image:
+    label: Image
+    placeholder: Element image url
 
 #PAGES
 login:
@@ -223,6 +396,7 @@ register:
   got-account: Already have an account? {field}
   login-here: Login here!
 characters:
+  no-auth: You must be logged in to create characters.
   yours: You have {0} characters.
   none: You have no characters yet, create one.
   creating: Creating character
@@ -244,19 +418,6 @@ npcs:
 data:
   head-title: Pandora Gate Data
   elements: List of elements ({0})
-elements-form:
-  name:
-    label: Name
-    placeholder: Element name
-  double:
-    label: Double
-    placeholder: Double name
-  triple:
-    label: Triple
-    placeholder: Triple name
-  description:
-    label: Description
-    placeholder: Element description
-  image:
-    label: Image
-    placeholder: Element image url
+  creating-element: Creating element
+  importing-element: Importing elements
+  exporting-element: Exporting elements

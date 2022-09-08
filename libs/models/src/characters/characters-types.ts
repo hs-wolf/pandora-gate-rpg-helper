@@ -81,6 +81,83 @@ export type MagicalBonus = {
   astralBonus: number;
 };
 
+export type Expertises = {
+  expertiseMeleeWeapons: number;
+  expertiseMechanicalWeapons: number;
+  expertiseWillpower: number;
+  expertiseForge: number;
+  expertiseImmobilize: number;
+  expertiseUnarmedFight: number;
+  expertiseMine: number;
+  expertiseMount: number;
+  expertiseTrack: number;
+  expertiseMislead: number;
+  expertiseDisguise: number;
+  expertiseDualWield: number;
+  expertiseHide: number;
+  expertiseDodge: number;
+  expertiseEscape: number;
+  expertiseJump: number;
+  expertiseAgriculture: number;
+  expertiseRangedWeapons: number;
+  expertiseFireGuns: number;
+  expertiseMasonry: number;
+  expertiseThrowObject: number;
+  expertiseClimb: number;
+  expertiseMakeBoat: number;
+  expertiseSwim: number;
+  expertisePilot: number;
+  expertisePrepareTrap: number;
+  expertiseFirstAid: number;
+  expertiseCharisma: number;
+  expertisePhysicalDefense: number;
+  expertiseLeadership: number;
+  expertiseSurvival: number;
+  expertiseCritical: number;
+  expertisePlayCalculate: number;
+  expertiseMagickFind: number;
+  expertiseAid: number;
+  expertiseBluff: number;
+  expertiseConjuration: number;
+  expertiseMagicDefense: number;
+  expertiseWaterElement: number;
+  expertiseEtherealElement: number;
+  expertiseFireElement: number;
+  expertiseIceElement: number;
+  expertiseMoonElement: number;
+  expertiseLightElement: number;
+  expertiseMagickElement: number;
+  expertiseNatureElement: number;
+  expertiseSunElement: number;
+  expertiseSoulElement: number;
+  expertiseEarthElement: number;
+  expertiseDarknessElement: number;
+  expertiseThunderElement: number;
+  expertiseWindElement: number;
+  expertiseAstralElement: number;
+  expertiseInterpretDreams: number;
+  expertiseInterrogate: number;
+  expertiseIntimidate: number;
+  expertiseLanguage: number;
+  expertiseCurse: number;
+  expertiseMysticism: number;
+  expertiseNegotiate: number;
+  expertisePerception: number;
+  expertiseForecastWeather: number;
+  expertiseTactic: number;
+  expertiseCombo: number;
+  expertiseMVP: number;
+  expertisePVP: number;
+  expertiseSynergy: number;
+  expertiseStunt: number;
+  expertiseAstronomy: number;
+  expertiseFaith: number;
+  expertiseSteal: number;
+  expertiseSpecialWeapon: number;
+  expertiseChemistry: number;
+  expertiseRelaxation: number;
+};
+
 export type FixedEffect = {
   target: string;
   operator: FixedOperators;
@@ -88,7 +165,7 @@ export type FixedEffect = {
 };
 
 export type LinkedEffect = {
-  target: string;
+  target: EffectFieldsList;
   targetOperator: FixedOperators;
   field: EffectFieldsList;
   fieldOperator: LinkedOperators;
@@ -150,6 +227,80 @@ export enum EffectFieldsList {
   THUNDER_BONUS = 'thunderBonus',
   WIND_BONUS = 'windBonus',
   ASTRAL_BONUS = 'astralBonus',
+  EXPERTISE_MELEE_WEAPONS = 'expertiseMeleeWeapons',
+  EXPERTISE_MECHANICAL_WEAPONS = 'expertiseMechanicalWeapons',
+  EXPERTISE_WILLPOWER = 'expertiseWillpower',
+  EXPERTISE_FORGE = 'expertiseForge',
+  EXPERTISE_IMMOBILIZE = 'expertiseImmobilize',
+  EXPERTISE_UNARMED_FIGHT = 'expertiseUnarmedFight',
+  EXPERTISE_MINE = 'expertiseMine',
+  EXPERTISE_MOUNT = 'expertiseMount',
+  EXPERTISE_TRACK = 'expertiseTrack',
+  EXPERTISE_MISLEAD = 'expertiseMislead',
+  EXPERTISE_DISGUISE = 'expertiseDisguise',
+  EXPERTISE_DUALWIELD = 'expertiseDualWield',
+  EXPERTISE_HIDE = 'expertiseHide',
+  EXPERTISE_DODGE = 'expertiseDodge',
+  EXPERTISE_ESCAPE = 'expertiseEscape',
+  EXPERTISE_JUMP = 'expertiseJump',
+  EXPERTISE_AGRICULTURE = 'expertiseAgriculture',
+  EXPERTISE_RANGED_WEAPONS = 'expertiseRangedWeapons',
+  EXPERTISE_FIREGUNS = 'expertiseFireGuns',
+  EXPERTISE_MASONRY = 'expertiseMasonry',
+  EXPERTISE_THROW_OBJECT = 'expertiseThrowObject',
+  EXPERTISE_CLIMB = 'expertiseClimb',
+  EXPERTISE_MAKEBOAT = 'expertiseMakeBoat',
+  EXPERTISE_SWIM = 'expertiseSwim',
+  EXPERTISE_PILOT = 'expertisePilot',
+  EXPERTISE_PREPARE_TRAP = 'expertisePrepareTrap',
+  EXPERTISE_FIRST_AID = 'expertiseFirstAid',
+  EXPERTISE_CHARISMA = 'expertiseCharisma',
+  EXPERTISE_PHYSICAL_DEFENSE = 'expertisePhysicalDefense',
+  EXPERTISE_LEADERSHIP = 'expertiseLeadership',
+  EXPERTISE_SURVIVAL = 'expertiseSurvival',
+  EXPERTISE_CRITICAL = 'expertiseCritical',
+  EXPERTISE_PLAY_CALCULATE = 'expertisePlayCalculate',
+  EXPERTISE_MAGICK_FIND = 'expertiseMagickFind',
+  EXPERTISE_AID = 'expertiseAid',
+  EXPERTISE_BLUFF = 'expertiseBluff',
+  EXPERTISE_CONJURATION = 'expertiseConjuration',
+  EXPERTISE_MAGIC_DEFENSE = 'expertiseMagicDefense',
+  EXPERTISE_WATER_ELEMENT = 'expertiseWaterElement',
+  EXPERTISE_ETHEREAL_ELEMENT = 'expertiseEtherealElement',
+  EXPERTISE_FIRE_ELEMENT = 'expertiseFireElement',
+  EXPERTISE_ICE_ELEMENT = 'expertiseIceElement',
+  EXPERTISE_MOON_ELEMENT = 'expertiseMoonElement',
+  EXPERTISE_LIGHT_ELEMENT = 'expertiseLightElement',
+  EXPERTISE_MAGICK_ELEMENT = 'expertiseMagickElement',
+  EXPERTISE_NATURE_ELEMENT = 'expertiseNatureElement',
+  EXPERTISE_SUN_ELEMENT = 'expertiseSunElement',
+  EXPERTISE_SOUL_ELEMENT = 'expertiseSoulElement',
+  EXPERTISE_EARTH_ELEMENT = 'expertiseEarthElement',
+  EXPERTISE_DARKNESS_ELEMENT = 'expertiseDarknessElement',
+  EXPERTISE_THUNDER_ELEMENT = 'expertiseThunderElement',
+  EXPERTISE_WIND_ELEMENT = 'expertiseWindElement',
+  EXPERTISE_ASTRAL_ELEMENT = 'expertiseAstralElement',
+  EXPERTISE_INTERPRET_DREAMS = 'expertiseInterpretDreams',
+  EXPERTISE_INTERROGATE = 'expertiseInterrogate',
+  EXPERTISE_INTIMIDATE = 'expertiseIntimidate',
+  EXPERTISE_LANGUAGE = 'expertiseLanguage',
+  EXPERTISE_CURSE = 'expertiseCurse',
+  EXPERTISE_MYSTICISM = 'expertiseMysticism',
+  EXPERTISE_NEGOTIATE = 'expertiseNegotiate',
+  EXPERTISE_PERCEPTION = 'expertisePerception',
+  EXPERTISE_FORECAST_WEATHER = 'expertiseForecastWeather',
+  EXPERTISE_TACTIC = 'expertiseTactic',
+  EXPERTISE_COMBO = 'expertiseCombo',
+  EXPERTISE_MVP = 'expertiseMVP',
+  EXPERTISE_PVP = 'expertisePVP',
+  EXPERTISE_SYNERGY = 'expertiseSynergy',
+  EXPERTISE_STUNT = 'expertiseStunt',
+  EXPERTISE_ASTRONOMY = 'expertiseAstronomy',
+  EXPERTISE_FAITH = 'expertiseFaith',
+  EXPERTISE_STEAL = 'expertiseSteal',
+  EXPERTISE_SPECIAL_WEAPON = 'expertiseSpecialWeapon',
+  EXPERTISE_CHEMISTRY = 'expertiseChemistry',
+  EXPERTISE_RELAXATION = 'expertiseRelaxation',
 }
 
 export enum FixedOperators {

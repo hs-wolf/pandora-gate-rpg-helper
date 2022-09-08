@@ -6,7 +6,6 @@ meta:
 <script setup lang="ts">
 import { object, string } from 'zod';
 import { toFormValidator } from '@vee-validate/zod';
-import { router } from '@plugins/router';
 import { useAuthStore } from '@src/stores/auth';
 
 const { t } = useI18n();
@@ -118,7 +117,7 @@ const showPassword = ref(false);
       </span>
       <button
         type="button"
-        class="btn-green mt-2"
+        class="btn-green mt-2 rounded"
         :disabled="authStore.registering"
         @click.prevent="onSubmit"
       >
@@ -136,12 +135,12 @@ const showPassword = ref(false);
       scope="global"
     >
       <template #field>
-        <button
+        <router-link
+          :to="{ name: 'login' }"
           class="text-primary-green font-semibold"
-          @click.prevent="router.push({ name: 'login' })"
         >
           {{ t('register.login-here') }}
-        </button>
+        </router-link>
       </template>
     </i18n-t>
   </div>

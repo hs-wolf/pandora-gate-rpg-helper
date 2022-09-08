@@ -16,8 +16,9 @@ import {
 } from '@pandora-gate-rpg-helper/utilities';
 
 interface IState {
-  charactersList: Character[];
-  updatingUserCharacters: boolean;
+  currentCharacter: Character | undefined;
+  charactersList: Map<string, Character>;
+  updatingCharactersList: boolean;
   creatingCharacter: boolean;
   showConfirmRemoveDialog: boolean;
   removingCharacter: boolean;
@@ -26,8 +27,9 @@ interface IState {
 
 export const useCharactersStore = defineStore(CHARACTERS_STORE, {
   state: (): IState => ({
-    charactersList: [],
-    updatingUserCharacters: false,
+    currentCharacter: undefined,
+    charactersList: new Map(),
+    updatingCharactersList: false,
     creatingCharacter: false,
     showConfirmRemoveDialog: false,
     removingCharacter: false,
@@ -35,23 +37,26 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
   }),
   getters: {},
   actions: {
-    async getUserCharacters() {
-      if (this.updatingUserCharacters) {
+    async getCharactersList() {
+      if (this.updatingCharactersList) {
         return;
       }
-      this.updatingUserCharacters = true;
+      this.updatingCharactersList = true;
       try {
         const authStore = useAuthStore();
         const { data } = await http.get(
           API_GET_CHARACTERS_BY_USER_ID(authStore.currentUser?.id ?? '')
         );
-        this.charactersList = data.map((character: Character) =>
-          Character.fromMap(character)
-        );
+        data.forEach((character: Character) => {
+          const complete = Character.fromMap(character);
+          if (complete) {
+            this.charactersList.set(character.id, complete);
+          }
+        });
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
-        this.updatingUserCharacters = false;
+        this.updatingCharactersList = false;
       }
     },
     async createCharacter(body: CharacterCreateBody) {
@@ -61,15 +66,15 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
       this.creatingCharacter = true;
       try {
         const authStore = useAuthStore();
-        if (!authStore.currentUser?.id) {
-          return;
-        }
         const finalBody: CharacterCreateBody = {
           ...body,
-          ownerId: authStore.currentUser.id,
+          ownerId: authStore.currentUser?.id ?? '',
         };
         const { data } = await http.post(API_POST_CREATE_CHARACTER, finalBody);
-        this.charactersList.push(Character.fromMap(data)!);
+        const complete = Character.fromMap(data);
+        if (complete) {
+          this.charactersList.set(data.id, complete);
+        }
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
@@ -86,19 +91,15 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
           API_PUT_UPDATE_CHARACTER(characterId),
           body
         );
-        const characterIndex = this.charactersList.findIndex(
-          (character) => character?.id === characterId
-        );
-        this.charactersList[characterIndex] = Character.fromMap(data)!;
+        const complete = Character.fromMap(data);
+        if (complete) {
+          this.charactersList.set(data.id, complete);
+        }
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
         this.creatingCharacter = false;
       }
-    },
-    toggleConfirmRemoveDialog(value?: boolean, characterId?: string) {
-      this.showConfirmRemoveDialog = value ?? !this.showConfirmRemoveDialog;
-      this.characterBeingRemoved = characterId ?? '';
     },
     async removeCharacter(characterId: string) {
       if (this.removingCharacter) {
@@ -107,16 +108,20 @@ export const useCharactersStore = defineStore(CHARACTERS_STORE, {
       this.removingCharacter = true;
       try {
         await http.delete(API_DELETE_DELETE_CHARACTER(characterId));
-        const characterIndex = this.charactersList.findIndex(
-          (character) => character?.id === characterId
-        );
-        this.charactersList.splice(characterIndex, 1);
+        this.charactersList.delete(characterId);
       } catch (error) {
         useAlertsStore().handleError(error);
       } finally {
         this.showConfirmRemoveDialog = false;
         this.removingCharacter = false;
       }
+    },
+    toggleConfirmRemoveDialog(value?: boolean, characterId?: string) {
+      this.showConfirmRemoveDialog = value ?? !this.showConfirmRemoveDialog;
+      this.characterBeingRemoved = characterId ?? '';
+    },
+    selectCharacter(id: string) {
+      this.currentCharacter = this.charactersList.get(id);
     },
   },
 });

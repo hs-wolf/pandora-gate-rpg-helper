@@ -86,37 +86,85 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Exp": {
+			"BasicData": {
 				"properties": {
+					"gold": {
+						"type": "number",
+						"format": "double"
+					},
+					"maxHunger": {
+						"type": "number",
+						"format": "double"
+					},
+					"currentHunger": {
+						"type": "number",
+						"format": "double"
+					},
+					"skillRegen": {
+						"type": "number",
+						"format": "double"
+					},
+					"enhancements": {
+						"type": "number",
+						"format": "double"
+					},
+					"jp": {
+						"type": "number",
+						"format": "double"
+					},
 					"next": {
 						"type": "number",
 						"format": "double"
 					},
-					"current": {
-						"type": "number",
-						"format": "double"
-					}
-				},
-				"required": [
-					"next",
-					"current"
-				],
-				"type": "object"
-			},
-			"Hunger": {
-				"properties": {
-					"max": {
+					"exp": {
 						"type": "number",
 						"format": "double"
 					},
-					"current": {
+					"level": {
+						"type": "number",
+						"format": "double"
+					},
+					"maxSP": {
+						"type": "number",
+						"format": "double"
+					},
+					"currentSP": {
+						"type": "number",
+						"format": "double"
+					},
+					"maxMP": {
+						"type": "number",
+						"format": "double"
+					},
+					"currentMP": {
+						"type": "number",
+						"format": "double"
+					},
+					"maxHP": {
+						"type": "number",
+						"format": "double"
+					},
+					"currentHP": {
 						"type": "number",
 						"format": "double"
 					}
 				},
 				"required": [
-					"max",
-					"current"
+					"gold",
+					"maxHunger",
+					"currentHunger",
+					"skillRegen",
+					"enhancements",
+					"jp",
+					"next",
+					"exp",
+					"level",
+					"maxSP",
+					"currentSP",
+					"maxMP",
+					"currentMP",
+					"maxHP",
+					"currentHP"
 				],
 				"type": "object"
 			},
@@ -157,6 +205,593 @@
 				],
 				"type": "object"
 			},
+			"BasicStats": {
+				"properties": {
+					"magicalDice": {
+						"type": "number",
+						"format": "double"
+					},
+					"magicalDefense": {
+						"type": "number",
+						"format": "double"
+					},
+					"physicalDice": {
+						"type": "number",
+						"format": "double"
+					},
+					"physicalDefense": {
+						"type": "number",
+						"format": "double"
+					},
+					"critical": {
+						"type": "number",
+						"format": "double"
+					},
+					"move": {
+						"type": "number",
+						"format": "double"
+					},
+					"dodge": {
+						"type": "number",
+						"format": "double"
+					},
+					"initiative": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"magicalDice",
+					"magicalDefense",
+					"physicalDice",
+					"physicalDefense",
+					"critical",
+					"move",
+					"dodge",
+					"initiative"
+				],
+				"type": "object"
+			},
+			"Ranges": {
+				"properties": {
+					"fireWeaponRange": {
+						"type": "number",
+						"format": "double"
+					},
+					"rangedRange": {
+						"type": "number",
+						"format": "double"
+					},
+					"meleeRange": {
+						"type": "number",
+						"format": "double"
+					},
+					"unarmedRange": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"fireWeaponRange",
+					"rangedRange",
+					"meleeRange",
+					"unarmedRange"
+				],
+				"type": "object"
+			},
+			"Accuracies": {
+				"properties": {
+					"fireWeaponAccuracy": {
+						"type": "number",
+						"format": "double"
+					},
+					"rangedAccuracy": {
+						"type": "number",
+						"format": "double"
+					},
+					"meleeAccuracy": {
+						"type": "number",
+						"format": "double"
+					},
+					"unarmedAccuracy": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"fireWeaponAccuracy",
+					"rangedAccuracy",
+					"meleeAccuracy",
+					"unarmedAccuracy"
+				],
+				"type": "object"
+			},
+			"PhysicalBonus": {
+				"properties": {
+					"fireWeaponBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"rangedBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"meleeBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"unarmedBonus": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"fireWeaponBonus",
+					"rangedBonus",
+					"meleeBonus",
+					"unarmedBonus"
+				],
+				"type": "object"
+			},
+			"MagicalBonus": {
+				"properties": {
+					"astralBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"windBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"thunderBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"darkBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"earthBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"soulBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"sunBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"natureBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"magickBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"lightBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"moonBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"iceBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"fireBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"etherealBonus": {
+						"type": "number",
+						"format": "double"
+					},
+					"waterBonus": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"astralBonus",
+					"windBonus",
+					"thunderBonus",
+					"darkBonus",
+					"earthBonus",
+					"soulBonus",
+					"sunBonus",
+					"natureBonus",
+					"magickBonus",
+					"lightBonus",
+					"moonBonus",
+					"iceBonus",
+					"fireBonus",
+					"etherealBonus",
+					"waterBonus"
+				],
+				"type": "object"
+			},
+			"Expertises": {
+				"properties": {
+					"expertiseRelaxation": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseChemistry": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseSpecialWeapon": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseSteal": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseFaith": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseAstronomy": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseStunt": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseSynergy": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertisePVP": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMVP": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseCombo": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseTactic": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseForecastWeather": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertisePerception": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseNegotiate": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMysticism": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseCurse": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseLanguage": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseIntimidate": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseInterrogate": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseInterpretDreams": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseAstralElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseWindElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseThunderElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseDarknessElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseEarthElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseSoulElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseSunElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseNatureElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMagickElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseLightElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMoonElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseIceElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseFireElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseEtherealElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseWaterElement": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMagicDefense": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseConjuration": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseBluff": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseAid": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMagickFind": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertisePlayCalculate": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseCritical": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseSurvival": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseLeadership": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertisePhysicalDefense": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseCharisma": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseFirstAid": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertisePrepareTrap": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertisePilot": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseSwim": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMakeBoat": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseClimb": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseThrowObject": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMasonry": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseFireGuns": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseRangedWeapons": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseAgriculture": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseJump": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseEscape": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseDodge": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseHide": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseDualWield": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseDisguise": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMislead": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseTrack": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMount": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMine": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseUnarmedFight": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseImmobilize": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseForge": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseWillpower": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMechanicalWeapons": {
+						"type": "number",
+						"format": "double"
+					},
+					"expertiseMeleeWeapons": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"expertiseRelaxation",
+					"expertiseChemistry",
+					"expertiseSpecialWeapon",
+					"expertiseSteal",
+					"expertiseFaith",
+					"expertiseAstronomy",
+					"expertiseStunt",
+					"expertiseSynergy",
+					"expertisePVP",
+					"expertiseMVP",
+					"expertiseCombo",
+					"expertiseTactic",
+					"expertiseForecastWeather",
+					"expertisePerception",
+					"expertiseNegotiate",
+					"expertiseMysticism",
+					"expertiseCurse",
+					"expertiseLanguage",
+					"expertiseIntimidate",
+					"expertiseInterrogate",
+					"expertiseInterpretDreams",
+					"expertiseAstralElement",
+					"expertiseWindElement",
+					"expertiseThunderElement",
+					"expertiseDarknessElement",
+					"expertiseEarthElement",
+					"expertiseSoulElement",
+					"expertiseSunElement",
+					"expertiseNatureElement",
+					"expertiseMagickElement",
+					"expertiseLightElement",
+					"expertiseMoonElement",
+					"expertiseIceElement",
+					"expertiseFireElement",
+					"expertiseEtherealElement",
+					"expertiseWaterElement",
+					"expertiseMagicDefense",
+					"expertiseConjuration",
+					"expertiseBluff",
+					"expertiseAid",
+					"expertiseMagickFind",
+					"expertisePlayCalculate",
+					"expertiseCritical",
+					"expertiseSurvival",
+					"expertiseLeadership",
+					"expertisePhysicalDefense",
+					"expertiseCharisma",
+					"expertiseFirstAid",
+					"expertisePrepareTrap",
+					"expertisePilot",
+					"expertiseSwim",
+					"expertiseMakeBoat",
+					"expertiseClimb",
+					"expertiseThrowObject",
+					"expertiseMasonry",
+					"expertiseFireGuns",
+					"expertiseRangedWeapons",
+					"expertiseAgriculture",
+					"expertiseJump",
+					"expertiseEscape",
+					"expertiseDodge",
+					"expertiseHide",
+					"expertiseDualWield",
+					"expertiseDisguise",
+					"expertiseMislead",
+					"expertiseTrack",
+					"expertiseMount",
+					"expertiseMine",
+					"expertiseUnarmedFight",
+					"expertiseImmobilize",
+					"expertiseForge",
+					"expertiseWillpower",
+					"expertiseMechanicalWeapons",
+					"expertiseMeleeWeapons"
+				],
+				"type": "object"
+			},
 			"FixedOperators": {
 				"enum": [
 					"SUM",
@@ -175,14 +810,176 @@
 					"operator": {
 						"$ref": "#/components/schemas/FixedOperators"
 					},
-					"field": {
+					"target": {
 						"type": "string"
 					}
 				},
 				"required": [
 					"value",
 					"operator",
-					"field"
+					"target"
+				],
+				"type": "object"
+			},
+			"EffectFieldsList": {
+				"enum": [
+					"currentHP",
+					"maxHP",
+					"currentMP",
+					"maxMP",
+					"currentSP",
+					"maxSP",
+					"level",
+					"strength",
+					"agility",
+					"dexterity",
+					"vitality",
+					"spirit",
+					"luck",
+					"initiative",
+					"dodge",
+					"move",
+					"critical",
+					"physicalDefense",
+					"physicalDice",
+					"magicalDefense",
+					"magicalDice",
+					"unarmedRange",
+					"meleeRange",
+					"rangedRange",
+					"fireWeaponRange",
+					"unarmedAccuracy",
+					"meleeAccuracy",
+					"rangedAccuracy",
+					"fireWeaponAccuracy",
+					"unarmedBonus",
+					"meleeBonus",
+					"rangedBonus",
+					"fireWeaponBonus",
+					"waterBonus",
+					"etherealBonus",
+					"fireBonus",
+					"iceBonus",
+					"moonBonus",
+					"lightBonus",
+					"magickBonus",
+					"natureBonus",
+					"sunBonus",
+					"soulBonus",
+					"earthBonus",
+					"darkBonus",
+					"thunderBonus",
+					"windBonus",
+					"astralBonus",
+					"expertiseMeleeWeapons",
+					"expertiseMechanicalWeapons",
+					"expertiseWillpower",
+					"expertiseForge",
+					"expertiseImmobilize",
+					"expertiseUnarmedFight",
+					"expertiseMine",
+					"expertiseMount",
+					"expertiseTrack",
+					"expertiseMislead",
+					"expertiseDisguise",
+					"expertiseDualWield",
+					"expertiseHide",
+					"expertiseDodge",
+					"expertiseEscape",
+					"expertiseJump",
+					"expertiseAgriculture",
+					"expertiseRangedWeapons",
+					"expertiseFireGuns",
+					"expertiseMasonry",
+					"expertiseThrowObject",
+					"expertiseClimb",
+					"expertiseMakeBoat",
+					"expertiseSwim",
+					"expertisePilot",
+					"expertisePrepareTrap",
+					"expertiseFirstAid",
+					"expertiseCharisma",
+					"expertisePhysicalDefense",
+					"expertiseLeadership",
+					"expertiseSurvival",
+					"expertiseCritical",
+					"expertisePlayCalculate",
+					"expertiseMagickFind",
+					"expertiseAid",
+					"expertiseBluff",
+					"expertiseConjuration",
+					"expertiseMagicDefense",
+					"expertiseWaterElement",
+					"expertiseEtherealElement",
+					"expertiseFireElement",
+					"expertiseIceElement",
+					"expertiseMoonElement",
+					"expertiseLightElement",
+					"expertiseMagickElement",
+					"expertiseNatureElement",
+					"expertiseSunElement",
+					"expertiseSoulElement",
+					"expertiseEarthElement",
+					"expertiseDarknessElement",
+					"expertiseThunderElement",
+					"expertiseWindElement",
+					"expertiseAstralElement",
+					"expertiseInterpretDreams",
+					"expertiseInterrogate",
+					"expertiseIntimidate",
+					"expertiseLanguage",
+					"expertiseCurse",
+					"expertiseMysticism",
+					"expertiseNegotiate",
+					"expertisePerception",
+					"expertiseForecastWeather",
+					"expertiseTactic",
+					"expertiseCombo",
+					"expertiseMVP",
+					"expertisePVP",
+					"expertiseSynergy",
+					"expertiseStunt",
+					"expertiseAstronomy",
+					"expertiseFaith",
+					"expertiseSteal",
+					"expertiseSpecialWeapon",
+					"expertiseChemistry",
+					"expertiseRelaxation"
+				],
+				"type": "string"
+			},
+			"LinkedOperators": {
+				"enum": [
+					"MULTIPLICATION",
+					"DIVISION"
+				],
+				"type": "string"
+			},
+			"LinkedEffect": {
+				"properties": {
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
+					"fieldOperator": {
+						"$ref": "#/components/schemas/LinkedOperators"
+					},
+					"field": {
+						"$ref": "#/components/schemas/EffectFieldsList"
+					},
+					"targetOperator": {
+						"$ref": "#/components/schemas/FixedOperators"
+					},
+					"target": {
+						"$ref": "#/components/schemas/EffectFieldsList"
+					}
+				},
+				"required": [
+					"value",
+					"fieldOperator",
+					"field",
+					"targetOperator",
+					"target"
 				],
 				"type": "object"
 			},
@@ -202,14 +999,14 @@
 					"operator": {
 						"$ref": "#/components/schemas/PercentageOperators"
 					},
-					"field": {
+					"target": {
 						"type": "string"
 					}
 				},
 				"required": [
 					"value",
 					"operator",
-					"field"
+					"target"
 				],
 				"type": "object"
 			},
@@ -239,34 +1036,29 @@
 						},
 						"type": "array"
 					},
-					"level": {
-						"type": "number",
-						"format": "double"
-					},
-					"exp": {
-						"$ref": "#/components/schemas/Exp"
-					},
-					"jp": {
-						"type": "number",
-						"format": "double"
-					},
-					"enhancements": {
-						"type": "number",
-						"format": "double"
-					},
-					"skillRegen": {
-						"type": "number",
-						"format": "double"
-					},
-					"hunger": {
-						"$ref": "#/components/schemas/Hunger"
-					},
-					"gold": {
-						"type": "number",
-						"format": "double"
+					"basicData": {
+						"$ref": "#/components/schemas/BasicData"
 					},
 					"attributes": {
 						"$ref": "#/components/schemas/Attributes"
+					},
+					"basicStats": {
+						"$ref": "#/components/schemas/BasicStats"
+					},
+					"ranges": {
+						"$ref": "#/components/schemas/Ranges"
+					},
+					"accuracies": {
+						"$ref": "#/components/schemas/Accuracies"
+					},
+					"physicalBonus": {
+						"$ref": "#/components/schemas/PhysicalBonus"
+					},
+					"magicalBonus": {
+						"$ref": "#/components/schemas/MagicalBonus"
+					},
+					"expertises": {
+						"$ref": "#/components/schemas/Expertises"
 					},
 					"fixedEffects": {
 						"items": {
@@ -274,7 +1066,31 @@
 						},
 						"type": "array"
 					},
+					"linkedEffects": {
+						"items": {
+							"$ref": "#/components/schemas/LinkedEffect"
+						},
+						"type": "array"
+					},
 					"percentageEffects": {
+						"items": {
+							"$ref": "#/components/schemas/PercentageEffect"
+						},
+						"type": "array"
+					},
+					"fixedFormulas": {
+						"items": {
+							"$ref": "#/components/schemas/FixedEffect"
+						},
+						"type": "array"
+					},
+					"linkedFormulas": {
+						"items": {
+							"$ref": "#/components/schemas/LinkedEffect"
+						},
+						"type": "array"
+					},
+					"percentageFormulas": {
 						"items": {
 							"$ref": "#/components/schemas/PercentageEffect"
 						},
@@ -288,16 +1104,20 @@
 					"guild",
 					"elements",
 					"jobs",
-					"level",
-					"exp",
-					"jp",
-					"enhancements",
-					"skillRegen",
-					"hunger",
-					"gold",
+					"basicData",
 					"attributes",
+					"basicStats",
+					"ranges",
+					"accuracies",
+					"physicalBonus",
+					"magicalBonus",
+					"expertises",
 					"fixedEffects",
-					"percentageEffects"
+					"linkedEffects",
+					"percentageEffects",
+					"fixedFormulas",
+					"linkedFormulas",
+					"percentageFormulas"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -337,34 +1157,29 @@
 						},
 						"type": "array"
 					},
-					"level": {
-						"type": "number",
-						"format": "double"
-					},
-					"exp": {
-						"$ref": "#/components/schemas/Exp"
-					},
-					"jp": {
-						"type": "number",
-						"format": "double"
-					},
-					"enhancements": {
-						"type": "number",
-						"format": "double"
-					},
-					"skillRegen": {
-						"type": "number",
-						"format": "double"
-					},
-					"hunger": {
-						"$ref": "#/components/schemas/Hunger"
-					},
-					"gold": {
-						"type": "number",
-						"format": "double"
+					"basicData": {
+						"$ref": "#/components/schemas/BasicData"
 					},
 					"attributes": {
 						"$ref": "#/components/schemas/Attributes"
+					},
+					"basicStats": {
+						"$ref": "#/components/schemas/BasicStats"
+					},
+					"ranges": {
+						"$ref": "#/components/schemas/Ranges"
+					},
+					"accuracies": {
+						"$ref": "#/components/schemas/Accuracies"
+					},
+					"physicalBonus": {
+						"$ref": "#/components/schemas/PhysicalBonus"
+					},
+					"magicalBonus": {
+						"$ref": "#/components/schemas/MagicalBonus"
+					},
+					"expertises": {
+						"$ref": "#/components/schemas/Expertises"
 					},
 					"fixedEffects": {
 						"items": {
@@ -372,7 +1187,31 @@
 						},
 						"type": "array"
 					},
+					"linkedEffects": {
+						"items": {
+							"$ref": "#/components/schemas/LinkedEffect"
+						},
+						"type": "array"
+					},
 					"percentageEffects": {
+						"items": {
+							"$ref": "#/components/schemas/PercentageEffect"
+						},
+						"type": "array"
+					},
+					"fixedFormulas": {
+						"items": {
+							"$ref": "#/components/schemas/FixedEffect"
+						},
+						"type": "array"
+					},
+					"linkedFormulas": {
+						"items": {
+							"$ref": "#/components/schemas/LinkedEffect"
+						},
+						"type": "array"
+					},
+					"percentageFormulas": {
 						"items": {
 							"$ref": "#/components/schemas/PercentageEffect"
 						},

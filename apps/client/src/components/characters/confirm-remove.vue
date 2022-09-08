@@ -15,7 +15,7 @@ const {
   <div v-if="showConfirmRemoveDialog" class="modal">
     <div
       v-if="removingCharacter"
-      class="card flex-col gap-2 max-w-dialog my-auto"
+      class="card flex-col gap-2 max-w-dialog my-auto rounded"
     >
       <div class="flex items-center gap-2">
         <icon-eos-icons:loading class="text-lg text-primary-red-dark" />
@@ -39,17 +39,13 @@ const {
       >
         <template v-slot:name>
           <span class="font-bold">
-            {{
-              charactersList.find(
-                (character) => character.id === characterBeingRemoved
-              )?.name ?? 'EMPTY'
-            }}
+            {{ charactersList.get(characterBeingRemoved)?.name ?? 'EMPTY' }}
           </span>
         </template>
       </i18n-t>
       <div class="flex items-center gap-2 mt-4">
         <button
-          class="btn-red gap-2 flex-1"
+          class="btn-red gap-2 flex-1 rounded"
           @click.prevent="
             charactersStore.removeCharacter(characterBeingRemoved)
           "
@@ -57,7 +53,7 @@ const {
           {{ t('general.yes') }}
         </button>
         <button
-          class="btn-gray gap-2 flex-1"
+          class="btn-gray gap-2 flex-1 rounded"
           @click.prevent="charactersStore.toggleConfirmRemoveDialog(false, '')"
         >
           {{ t('general.no') }}

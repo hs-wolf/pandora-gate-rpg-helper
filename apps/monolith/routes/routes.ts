@@ -55,19 +55,44 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Exp": {
+    "BasicData": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"next":{"dataType":"double","required":true},"current":{"dataType":"double","required":true}},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Hunger": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"max":{"dataType":"double","required":true},"current":{"dataType":"double","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"gold":{"dataType":"double","required":true},"maxHunger":{"dataType":"double","required":true},"currentHunger":{"dataType":"double","required":true},"skillRegen":{"dataType":"double","required":true},"enhancements":{"dataType":"double","required":true},"jp":{"dataType":"double","required":true},"next":{"dataType":"double","required":true},"exp":{"dataType":"double","required":true},"level":{"dataType":"double","required":true},"maxSP":{"dataType":"double","required":true},"currentSP":{"dataType":"double","required":true},"maxMP":{"dataType":"double","required":true},"currentMP":{"dataType":"double","required":true},"maxHP":{"dataType":"double","required":true},"currentHP":{"dataType":"double","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Attributes": {
         "dataType": "refAlias",
         "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"luck":{"dataType":"double","required":true},"spirit":{"dataType":"double","required":true},"vitality":{"dataType":"double","required":true},"dexterity":{"dataType":"double","required":true},"agility":{"dataType":"double","required":true},"strength":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "BasicStats": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"magicalDice":{"dataType":"double","required":true},"magicalDefense":{"dataType":"double","required":true},"physicalDice":{"dataType":"double","required":true},"physicalDefense":{"dataType":"double","required":true},"critical":{"dataType":"double","required":true},"move":{"dataType":"double","required":true},"dodge":{"dataType":"double","required":true},"initiative":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Ranges": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"fireWeaponRange":{"dataType":"double","required":true},"rangedRange":{"dataType":"double","required":true},"meleeRange":{"dataType":"double","required":true},"unarmedRange":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Accuracies": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"fireWeaponAccuracy":{"dataType":"double","required":true},"rangedAccuracy":{"dataType":"double","required":true},"meleeAccuracy":{"dataType":"double","required":true},"unarmedAccuracy":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "PhysicalBonus": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"fireWeaponBonus":{"dataType":"double","required":true},"rangedBonus":{"dataType":"double","required":true},"meleeBonus":{"dataType":"double","required":true},"unarmedBonus":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "MagicalBonus": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"astralBonus":{"dataType":"double","required":true},"windBonus":{"dataType":"double","required":true},"thunderBonus":{"dataType":"double","required":true},"darkBonus":{"dataType":"double","required":true},"earthBonus":{"dataType":"double","required":true},"soulBonus":{"dataType":"double","required":true},"sunBonus":{"dataType":"double","required":true},"natureBonus":{"dataType":"double","required":true},"magickBonus":{"dataType":"double","required":true},"lightBonus":{"dataType":"double","required":true},"moonBonus":{"dataType":"double","required":true},"iceBonus":{"dataType":"double","required":true},"fireBonus":{"dataType":"double","required":true},"etherealBonus":{"dataType":"double","required":true},"waterBonus":{"dataType":"double","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Expertises": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"expertiseRelaxation":{"dataType":"double","required":true},"expertiseChemistry":{"dataType":"double","required":true},"expertiseSpecialWeapon":{"dataType":"double","required":true},"expertiseSteal":{"dataType":"double","required":true},"expertiseFaith":{"dataType":"double","required":true},"expertiseAstronomy":{"dataType":"double","required":true},"expertiseStunt":{"dataType":"double","required":true},"expertiseSynergy":{"dataType":"double","required":true},"expertisePVP":{"dataType":"double","required":true},"expertiseMVP":{"dataType":"double","required":true},"expertiseCombo":{"dataType":"double","required":true},"expertiseTactic":{"dataType":"double","required":true},"expertiseForecastWeather":{"dataType":"double","required":true},"expertisePerception":{"dataType":"double","required":true},"expertiseNegotiate":{"dataType":"double","required":true},"expertiseMysticism":{"dataType":"double","required":true},"expertiseCurse":{"dataType":"double","required":true},"expertiseLanguage":{"dataType":"double","required":true},"expertiseIntimidate":{"dataType":"double","required":true},"expertiseInterrogate":{"dataType":"double","required":true},"expertiseInterpretDreams":{"dataType":"double","required":true},"expertiseAstralElement":{"dataType":"double","required":true},"expertiseWindElement":{"dataType":"double","required":true},"expertiseThunderElement":{"dataType":"double","required":true},"expertiseDarknessElement":{"dataType":"double","required":true},"expertiseEarthElement":{"dataType":"double","required":true},"expertiseSoulElement":{"dataType":"double","required":true},"expertiseSunElement":{"dataType":"double","required":true},"expertiseNatureElement":{"dataType":"double","required":true},"expertiseMagickElement":{"dataType":"double","required":true},"expertiseLightElement":{"dataType":"double","required":true},"expertiseMoonElement":{"dataType":"double","required":true},"expertiseIceElement":{"dataType":"double","required":true},"expertiseFireElement":{"dataType":"double","required":true},"expertiseEtherealElement":{"dataType":"double","required":true},"expertiseWaterElement":{"dataType":"double","required":true},"expertiseMagicDefense":{"dataType":"double","required":true},"expertiseConjuration":{"dataType":"double","required":true},"expertiseBluff":{"dataType":"double","required":true},"expertiseAid":{"dataType":"double","required":true},"expertiseMagickFind":{"dataType":"double","required":true},"expertisePlayCalculate":{"dataType":"double","required":true},"expertiseCritical":{"dataType":"double","required":true},"expertiseSurvival":{"dataType":"double","required":true},"expertiseLeadership":{"dataType":"double","required":true},"expertisePhysicalDefense":{"dataType":"double","required":true},"expertiseCharisma":{"dataType":"double","required":true},"expertiseFirstAid":{"dataType":"double","required":true},"expertisePrepareTrap":{"dataType":"double","required":true},"expertisePilot":{"dataType":"double","required":true},"expertiseSwim":{"dataType":"double","required":true},"expertiseMakeBoat":{"dataType":"double","required":true},"expertiseClimb":{"dataType":"double","required":true},"expertiseThrowObject":{"dataType":"double","required":true},"expertiseMasonry":{"dataType":"double","required":true},"expertiseFireGuns":{"dataType":"double","required":true},"expertiseRangedWeapons":{"dataType":"double","required":true},"expertiseAgriculture":{"dataType":"double","required":true},"expertiseJump":{"dataType":"double","required":true},"expertiseEscape":{"dataType":"double","required":true},"expertiseDodge":{"dataType":"double","required":true},"expertiseHide":{"dataType":"double","required":true},"expertiseDualWield":{"dataType":"double","required":true},"expertiseDisguise":{"dataType":"double","required":true},"expertiseMislead":{"dataType":"double","required":true},"expertiseTrack":{"dataType":"double","required":true},"expertiseMount":{"dataType":"double","required":true},"expertiseMine":{"dataType":"double","required":true},"expertiseUnarmedFight":{"dataType":"double","required":true},"expertiseImmobilize":{"dataType":"double","required":true},"expertiseForge":{"dataType":"double","required":true},"expertiseWillpower":{"dataType":"double","required":true},"expertiseMechanicalWeapons":{"dataType":"double","required":true},"expertiseMeleeWeapons":{"dataType":"double","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "FixedOperators": {
@@ -77,7 +102,22 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "FixedEffect": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"value":{"dataType":"double","required":true},"operator":{"ref":"FixedOperators","required":true},"field":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"value":{"dataType":"double","required":true},"operator":{"ref":"FixedOperators","required":true},"target":{"dataType":"string","required":true}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "EffectFieldsList": {
+        "dataType": "refEnum",
+        "enums": ["currentHP","maxHP","currentMP","maxMP","currentSP","maxSP","level","strength","agility","dexterity","vitality","spirit","luck","initiative","dodge","move","critical","physicalDefense","physicalDice","magicalDefense","magicalDice","unarmedRange","meleeRange","rangedRange","fireWeaponRange","unarmedAccuracy","meleeAccuracy","rangedAccuracy","fireWeaponAccuracy","unarmedBonus","meleeBonus","rangedBonus","fireWeaponBonus","waterBonus","etherealBonus","fireBonus","iceBonus","moonBonus","lightBonus","magickBonus","natureBonus","sunBonus","soulBonus","earthBonus","darkBonus","thunderBonus","windBonus","astralBonus","expertiseMeleeWeapons","expertiseMechanicalWeapons","expertiseWillpower","expertiseForge","expertiseImmobilize","expertiseUnarmedFight","expertiseMine","expertiseMount","expertiseTrack","expertiseMislead","expertiseDisguise","expertiseDualWield","expertiseHide","expertiseDodge","expertiseEscape","expertiseJump","expertiseAgriculture","expertiseRangedWeapons","expertiseFireGuns","expertiseMasonry","expertiseThrowObject","expertiseClimb","expertiseMakeBoat","expertiseSwim","expertisePilot","expertisePrepareTrap","expertiseFirstAid","expertiseCharisma","expertisePhysicalDefense","expertiseLeadership","expertiseSurvival","expertiseCritical","expertisePlayCalculate","expertiseMagickFind","expertiseAid","expertiseBluff","expertiseConjuration","expertiseMagicDefense","expertiseWaterElement","expertiseEtherealElement","expertiseFireElement","expertiseIceElement","expertiseMoonElement","expertiseLightElement","expertiseMagickElement","expertiseNatureElement","expertiseSunElement","expertiseSoulElement","expertiseEarthElement","expertiseDarknessElement","expertiseThunderElement","expertiseWindElement","expertiseAstralElement","expertiseInterpretDreams","expertiseInterrogate","expertiseIntimidate","expertiseLanguage","expertiseCurse","expertiseMysticism","expertiseNegotiate","expertisePerception","expertiseForecastWeather","expertiseTactic","expertiseCombo","expertiseMVP","expertisePVP","expertiseSynergy","expertiseStunt","expertiseAstronomy","expertiseFaith","expertiseSteal","expertiseSpecialWeapon","expertiseChemistry","expertiseRelaxation"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "LinkedOperators": {
+        "dataType": "refEnum",
+        "enums": ["MULTIPLICATION","DIVISION"],
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "LinkedEffect": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"value":{"dataType":"double","required":true},"fieldOperator":{"ref":"LinkedOperators","required":true},"field":{"ref":"EffectFieldsList","required":true},"targetOperator":{"ref":"FixedOperators","required":true},"target":{"ref":"EffectFieldsList","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "PercentageOperators": {
@@ -87,7 +127,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "PercentageEffect": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"value":{"dataType":"double","required":true},"operator":{"ref":"PercentageOperators","required":true},"field":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"value":{"dataType":"double","required":true},"operator":{"ref":"PercentageOperators","required":true},"target":{"dataType":"string","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Character": {
@@ -99,16 +139,20 @@ const models: TsoaRoute.Models = {
             "guild": {"dataType":"string","required":true},
             "elements": {"dataType":"array","array":{"dataType":"refObject","ref":"Element"},"required":true},
             "jobs": {"dataType":"array","array":{"dataType":"refObject","ref":"Job"},"required":true},
-            "level": {"dataType":"double","required":true},
-            "exp": {"ref":"Exp","required":true},
-            "jp": {"dataType":"double","required":true},
-            "enhancements": {"dataType":"double","required":true},
-            "skillRegen": {"dataType":"double","required":true},
-            "hunger": {"ref":"Hunger","required":true},
-            "gold": {"dataType":"double","required":true},
+            "basicData": {"ref":"BasicData","required":true},
             "attributes": {"ref":"Attributes","required":true},
+            "basicStats": {"ref":"BasicStats","required":true},
+            "ranges": {"ref":"Ranges","required":true},
+            "accuracies": {"ref":"Accuracies","required":true},
+            "physicalBonus": {"ref":"PhysicalBonus","required":true},
+            "magicalBonus": {"ref":"MagicalBonus","required":true},
+            "expertises": {"ref":"Expertises","required":true},
             "fixedEffects": {"dataType":"array","array":{"dataType":"refAlias","ref":"FixedEffect"},"required":true},
+            "linkedEffects": {"dataType":"array","array":{"dataType":"refAlias","ref":"LinkedEffect"},"required":true},
             "percentageEffects": {"dataType":"array","array":{"dataType":"refAlias","ref":"PercentageEffect"},"required":true},
+            "fixedFormulas": {"dataType":"array","array":{"dataType":"refAlias","ref":"FixedEffect"},"required":true},
+            "linkedFormulas": {"dataType":"array","array":{"dataType":"refAlias","ref":"LinkedEffect"},"required":true},
+            "percentageFormulas": {"dataType":"array","array":{"dataType":"refAlias","ref":"PercentageEffect"},"required":true},
         },
         "additionalProperties": false,
     },
@@ -125,7 +169,7 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Partial_Omit_Character.id-or-ownerId__": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"guild":{"dataType":"string"},"elements":{"dataType":"array","array":{"dataType":"refObject","ref":"Element"}},"jobs":{"dataType":"array","array":{"dataType":"refObject","ref":"Job"}},"level":{"dataType":"double"},"exp":{"ref":"Exp"},"jp":{"dataType":"double"},"enhancements":{"dataType":"double"},"skillRegen":{"dataType":"double"},"hunger":{"ref":"Hunger"},"gold":{"dataType":"double"},"attributes":{"ref":"Attributes"},"fixedEffects":{"dataType":"array","array":{"dataType":"refAlias","ref":"FixedEffect"}},"percentageEffects":{"dataType":"array","array":{"dataType":"refAlias","ref":"PercentageEffect"}}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"name":{"dataType":"string"},"guild":{"dataType":"string"},"elements":{"dataType":"array","array":{"dataType":"refObject","ref":"Element"}},"jobs":{"dataType":"array","array":{"dataType":"refObject","ref":"Job"}},"basicData":{"ref":"BasicData"},"attributes":{"ref":"Attributes"},"basicStats":{"ref":"BasicStats"},"ranges":{"ref":"Ranges"},"accuracies":{"ref":"Accuracies"},"physicalBonus":{"ref":"PhysicalBonus"},"magicalBonus":{"ref":"MagicalBonus"},"expertises":{"ref":"Expertises"},"fixedEffects":{"dataType":"array","array":{"dataType":"refAlias","ref":"FixedEffect"}},"linkedEffects":{"dataType":"array","array":{"dataType":"refAlias","ref":"LinkedEffect"}},"percentageEffects":{"dataType":"array","array":{"dataType":"refAlias","ref":"PercentageEffect"}},"fixedFormulas":{"dataType":"array","array":{"dataType":"refAlias","ref":"FixedEffect"}},"linkedFormulas":{"dataType":"array","array":{"dataType":"refAlias","ref":"LinkedEffect"}},"percentageFormulas":{"dataType":"array","array":{"dataType":"refAlias","ref":"PercentageEffect"}}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "CharacterUpdateBody": {

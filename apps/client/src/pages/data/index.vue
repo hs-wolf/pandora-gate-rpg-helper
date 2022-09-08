@@ -13,12 +13,6 @@ const {
 
 useHead({ title: computed(() => t('data.head-title')) });
 
-onBeforeMount(async () => {
-  if (!currentElements.value.length) {
-    await dataStore.getCurrentElements();
-  }
-});
-
 const elementName = ref('');
 
 const createElement = () => {
@@ -47,45 +41,52 @@ const onImportingFileUploaded = async (e: any) => {
       </h1>
       <div v-if="creatingElement" class="flex items-center gap-2">
         <icon-eos-icons:loading />
-        <p>Creating element</p>
+        <p>{{ t('data.creating-element') }}</p>
       </div>
       <div v-else-if="importingElements" class="flex items-center gap-2">
         <icon-eos-icons:loading />
-        <p>Importing elements</p>
+        <p>{{ t('data.importing-element') }}</p>
       </div>
       <div v-else-if="exportingElements" class="flex items-center gap-2">
         <icon-eos-icons:loading />
-        <p>Exporting elements</p>
+        <p>{{ t('data.exporting-element') }}</p>
       </div>
-      <div v-else class="flex flex-col lg:flex-row items-center gap-4">
-        <input
-          type="text"
-          placeholder="Element name..."
-          v-model="elementName"
-          class="form-input pl-3 pr-8"
-        />
-        <button class="w-full btn-green" @click.prevent="createElement">
-          {{ t('general.create') }}
-        </button>
-        <button
-          class="w-full btn-blue"
-          @click.prevent="router.push('/data/edit')"
-        >
-          {{ t('general.edit') }}
-        </button>
-        <input
-          id="importingFile"
-          type="file"
-          accept=".csv"
-          class="hidden"
-          @change="onImportingFileUploaded"
-        />
-        <label for="importingFile" class="w-full btn-blue cursor-pointer">
-          {{ t('general.import') }}
-        </label>
-        <button class="w-full btn-blue" @click.prevent="">
-          {{ t('general.export') }}
-        </button>
+      <div v-else class="flex flex-col lg:flex-row gap-4 lg:w-1/2">
+        <div class="flex w-full">
+          <input
+            type="text"
+            placeholder="Element name..."
+            v-model="elementName"
+            class="form-input rounded-l"
+          />
+          <button class="btn-green rounded-r" @click.prevent="createElement">
+            <icon-carbon:add class="text-xl" />
+          </button>
+        </div>
+        <div class="flex gap-[1px] w-full lg:w-auto">
+          <button
+            class="w-full lg:w-auto btn-blue rounded-l"
+            @click.prevent="router.push('/data/edit')"
+          >
+            <icon-carbon:edit class="text-xl" />
+          </button>
+          <input
+            id="importingFile"
+            type="file"
+            accept=".csv"
+            class="hidden"
+            @change="onImportingFileUploaded"
+          />
+          <label
+            for="importingFile"
+            class="w-full lg:w-auto btn-blue cursor-pointer"
+          >
+            <icon-carbon:document-import class="text-xl" />
+          </label>
+          <button class="w-full lg:w-auto btn-blue rounded-r" @click.prevent="">
+            <icon-carbon:export class="text-xl" />
+          </button>
+        </div>
       </div>
     </div>
     <p v-if="!currentElements.length">There are no elements available yet.</p>
@@ -115,6 +116,6 @@ const onImportingFileUploaded = async (e: any) => {
 
 <style scoped lang="scss">
 .form-input {
-  @apply w-full lg:w-auto py-2 bg-transparent border border-primary-gray rounded text-primary-white placeholder:text-primary-gray outline-none;
+  @apply w-full p-2 bg-transparent border border-primary-gray outline-none;
 }
 </style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCharactersStore } from '@src/stores/characters';
-import { Accuracies, EffectFieldsList } from '@pandora-gate-rpg-helper/models';
+import { Expertises, EffectFieldsList } from '@pandora-gate-rpg-helper/models';
 
 const { t } = useI18n();
 const charactersStore = useCharactersStore();
@@ -10,7 +10,7 @@ const showForm = ref(false);
 const editing = ref(false);
 const saveEdits = () => {
   charactersStore.updateCharacter(currentCharacter.value?.id ?? '', {
-    accuracies: currentCharacter.value?.accuracies,
+    expertises: currentCharacter.value?.expertises,
   });
   editing.value = false;
 };
@@ -25,21 +25,21 @@ const saveEdits = () => {
       class="flex justify-between items-center gap-2 font-semibold"
       @click.prevent="showForm = !showForm"
     >
-      <p>{{ t('characters-accuracies-form.title') }}</p>
+      <p>{{ t('characters-expertises-form.title') }}</p>
       <icon-carbon:chevron-up v-if="showForm" />
       <icon-carbon:chevron-down v-else />
     </button>
     <div v-if="showForm" class="flex flex-col gap-4">
       <div v-if="editing" class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.accuracies).sort()"
+          v-for="field in Object.keys(currentCharacter.expertises).sort()"
           :key="field"
           class="form-section"
         >
-          <h1>{{ t(`characters-accuracies-form.${field}`) }}</h1>
+          <h1>{{ t(`characters-expertises-form.${field}`) }}</h1>
           <input
             type="number"
-            v-model="currentCharacter.accuracies[field as keyof Accuracies]"
+            v-model="currentCharacter.expertises[field as keyof Expertises]"
             class="form-input"
           />
           <p class="ml-4">
@@ -52,13 +52,13 @@ const saveEdits = () => {
       </div>
       <div v-else class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.accuracies).sort()"
+          v-for="field in Object.keys(currentCharacter.expertises).sort()"
           :key="field"
           class="display-section"
         >
-          <h1>{{ t(`characters-accuracies-form.${field}`) }}</h1>
+          <h1>{{ t(`characters-expertises-form.${field}`) }}</h1>
           <span class="text-sm font-normal">
-            ({{ currentCharacter.accuracies[field as keyof Accuracies] }})
+            ({{ currentCharacter.expertises[field as keyof Expertises] }})
           </span>
           <p>
             {{ currentCharacter.getFieldFinalValue(field as EffectFieldsList) }}

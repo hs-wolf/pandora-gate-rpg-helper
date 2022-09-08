@@ -1,242 +1,74 @@
 <script setup lang="ts">
-import { Character, EffectFieldsList } from '@pandora-gate-rpg-helper/models';
-
-const props = defineProps<{ character: Character }>();
+import { useCharactersStore } from '@src/stores/characters';
+import { BasicStats, EffectFieldsList } from '@pandora-gate-rpg-helper/models';
 
 const { t } = useI18n();
+const charactersStore = useCharactersStore();
+const { currentCharacter } = storeToRefs(charactersStore);
 
-const showData = ref(false);
+const showForm = ref(false);
 const editing = ref(false);
-
-const editableBasicStats = computed(() => props.character.basicStats);
-
-const save = () => {
-  // Call store here.
+const saveEdits = () => {
+  charactersStore.updateCharacter(currentCharacter.value?.id ?? '', {
+    basicStats: currentCharacter.value?.basicStats,
+  });
   editing.value = false;
 };
 </script>
 
 <template>
   <div
-    class="flex flex-col border border-primary-gray-dark rounded-md overflow-hidden"
+    v-if="currentCharacter"
+    class="flex flex-col gap-4 p-4 bg-primary-gray-dark rounded-md overflow-hidden"
   >
     <button
-      class="flex items-center justify-between gap-2 px-4 py-2 bg-primary-gray-dark"
-      @click.prevent="showData = !showData"
+      class="flex justify-between items-center gap-2 font-semibold"
+      @click.prevent="showForm = !showForm"
     >
-      <p class="text-sm font-semibold">
-        {{ t('characters-basic-stats-form.title') }}
-      </p>
-      <icon-carbon:chevron-up v-if="showData" class="text-xl" />
-      <icon-carbon:chevron-down v-else class="text-xl" />
+      <p>{{ t('characters-basic-stats-form.title') }}</p>
+      <icon-carbon:chevron-up v-if="showForm" />
+      <icon-carbon:chevron-down v-else />
     </button>
-    <div v-if="showData" class="flex flex-col p-4 gap-4">
-      <div class="item-simple">
-        <h1>
-          {{ t(`characters-basic-stats-form.${EffectFieldsList.INITIATIVE}`) }}
-        </h1>
-        <p v-if="editing" class="flex items-center gap-2">
+    <div v-if="showForm" class="flex flex-col gap-4">
+      <div v-if="editing" class="flex flex-col gap-4">
+        <div
+          v-for="field in Object.keys(currentCharacter.basicStats).sort()"
+          :key="field"
+          class="form-section"
+        >
+          <h1>{{ t(`characters-basic-stats-form.${field}`) }}</h1>
           <input
             type="number"
-            v-model="editableBasicStats[EffectFieldsList.INITIATIVE]"
-            class="editing-input w-full"
+            v-model="currentCharacter.basicStats[field as keyof BasicStats]"
+            class="form-input"
           />
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.INITIATIVE) }}
-          </span>
-        </p>
-        <p v-else class="flex items-center gap-1">
-          <span class="text-sm font-normal">
-            ({{ editableBasicStats[EffectFieldsList.INITIATIVE] }})
-          </span>
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.INITIATIVE) }}
-          </span>
-        </p>
-      </div>
-      <div class="item-simple">
-        <h1>
-          {{ t(`characters-basic-stats-form.${EffectFieldsList.DODGE}`) }}
-        </h1>
-        <p v-if="editing" class="flex items-center gap-2">
-          <input
-            type="number"
-            v-model="editableBasicStats[EffectFieldsList.DODGE]"
-            class="editing-input w-full"
-          />
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.DODGE) }}
-          </span>
-        </p>
-        <p v-else class="flex items-center gap-1">
-          <span class="text-sm font-normal">
-            ({{ editableBasicStats[EffectFieldsList.DODGE] }})
-          </span>
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.DODGE) }}
-          </span>
-        </p>
-      </div>
-      <div class="item-simple">
-        <h1>
-          {{ t(`characters-basic-stats-form.${EffectFieldsList.MOVE}`) }}
-        </h1>
-        <p v-if="editing" class="flex items-center gap-2">
-          <input
-            type="number"
-            v-model="editableBasicStats[EffectFieldsList.MOVE]"
-            class="editing-input w-full"
-          />
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.MOVE) }}
-          </span>
-        </p>
-        <p v-else class="flex items-center gap-1">
-          <span class="text-sm font-normal">
-            ({{ editableBasicStats[EffectFieldsList.MOVE] }})
-          </span>
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.MOVE) }}
-          </span>
-        </p>
-      </div>
-      <div class="item-simple">
-        <h1>
-          {{ t(`characters-basic-stats-form.${EffectFieldsList.CRITICAL}`) }}
-        </h1>
-        <p v-if="editing" class="flex items-center gap-2">
-          <input
-            type="number"
-            v-model="editableBasicStats[EffectFieldsList.CRITICAL]"
-            class="editing-input w-full"
-          />
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.CRITICAL) }}
-          </span>
-        </p>
-        <p v-else class="flex items-center gap-1">
-          <span class="text-sm font-normal">
-            ({{ editableBasicStats[EffectFieldsList.CRITICAL] }})
-          </span>
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.CRITICAL) }}
-          </span>
-        </p>
-      </div>
-      <div class="item-simple">
-        <h1>
-          {{
-            t(
-              `characters-basic-stats-form.${EffectFieldsList.PHYSICAL_DEFENSE}`
-            )
-          }}
-        </h1>
-        <p v-if="editing" class="flex items-center gap-2">
-          <input
-            type="number"
-            v-model="editableBasicStats[EffectFieldsList.PHYSICAL_DEFENSE]"
-            class="editing-input w-full"
-          />
-          <span>
-            {{
-              character.getFieldFinalValue(EffectFieldsList.PHYSICAL_DEFENSE)
-            }}
-          </span>
-        </p>
-        <p v-else class="flex items-center gap-1">
-          <span class="text-sm font-normal">
-            ({{ editableBasicStats[EffectFieldsList.PHYSICAL_DEFENSE] }})
-          </span>
-          <span>
-            {{
-              character.getFieldFinalValue(EffectFieldsList.PHYSICAL_DEFENSE)
-            }}
-          </span>
-        </p>
-      </div>
-      <div class="item-simple">
-        <h1>
-          {{
-            t(`characters-basic-stats-form.${EffectFieldsList.PHYSICAL_DICE}`)
-          }}
-        </h1>
-        <p v-if="editing" class="flex items-center gap-2">
-          <input
-            type="number"
-            v-model="editableBasicStats[EffectFieldsList.PHYSICAL_DICE]"
-            class="editing-input w-full"
-          />
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.PHYSICAL_DICE) }}
-          </span>
-        </p>
-        <p v-else class="flex items-center gap-1">
-          <span class="text-sm font-normal">
-            ({{ editableBasicStats[EffectFieldsList.PHYSICAL_DICE] }})
-          </span>
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.PHYSICAL_DICE) }}
-          </span>
-        </p>
-      </div>
-      <div class="item-simple">
-        <h1>
-          {{
-            t(`characters-basic-stats-form.${EffectFieldsList.MAGICAL_DEFENSE}`)
-          }}
-        </h1>
-        <p v-if="editing" class="flex items-center gap-2">
-          <input
-            type="number"
-            v-model="editableBasicStats[EffectFieldsList.MAGICAL_DEFENSE]"
-            class="editing-input w-full"
-          />
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.MAGICAL_DEFENSE) }}
-          </span>
-        </p>
-        <p v-else class="flex items-center gap-1">
-          <span class="text-sm font-normal">
-            ({{ editableBasicStats[EffectFieldsList.MAGICAL_DEFENSE] }})
-          </span>
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.MAGICAL_DEFENSE) }}
-          </span>
-        </p>
-      </div>
-      <div class="item-simple">
-        <h1>
-          {{
-            t(`characters-basic-stats-form.${EffectFieldsList.MAGICAL_DICE}`)
-          }}
-        </h1>
-        <p v-if="editing" class="flex items-center gap-2">
-          <input
-            type="number"
-            v-model="editableBasicStats[EffectFieldsList.MAGICAL_DICE]"
-            class="editing-input w-full"
-          />
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.MAGICAL_DICE) }}
-          </span>
-        </p>
-        <p v-else class="flex items-center gap-1">
-          <span class="text-sm font-normal">
-            ({{ editableBasicStats[EffectFieldsList.MAGICAL_DICE] }})
-          </span>
-          <span>
-            {{ character.getFieldFinalValue(EffectFieldsList.MAGICAL_DICE) }}
-          </span>
-        </p>
-      </div>
-      <div v-if="editing" class="flex justify-end">
-        <button class="btn-green" @click.prevent="save">
-          <icon-carbon:save />
+          <p class="ml-4">
+            {{ currentCharacter.getFieldFinalValue(field as EffectFieldsList) }}
+          </p>
+        </div>
+        <button class="self-end btn-green rounded" @click.prevent="saveEdits">
+          <icon-carbon:save class="text-xl" />
         </button>
       </div>
-      <div v-else class="flex justify-end">
-        <button class="btn-blue" @click.prevent="editing = !editing">
-          <icon-carbon:edit />
+      <div v-else class="flex flex-col gap-4">
+        <div
+          v-for="field in Object.keys(currentCharacter.basicStats).sort()"
+          :key="field"
+          class="display-section"
+        >
+          <h1>{{ t(`characters-basic-stats-form.${field}`) }}</h1>
+          <span class="text-sm font-normal">
+            ({{ currentCharacter.basicStats[field as keyof BasicStats] }})
+          </span>
+          <p>
+            {{ currentCharacter.getFieldFinalValue(field as EffectFieldsList) }}
+          </p>
+        </div>
+        <button
+          class="self-end btn-blue rounded"
+          @click.prevent="editing = !editing"
+        >
+          <icon-carbon:edit class="text-xl" />
         </button>
       </div>
     </div>
@@ -244,16 +76,34 @@ const save = () => {
 </template>
 
 <style scoped lang="scss">
-.item-simple {
-  @apply flex items-center gap-2;
+.form-section {
+  @apply flex items-center;
   h1 {
-    @apply text-sm text-primary-gray-light whitespace-nowrap;
+    @apply p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap;
   }
   p {
-    @apply font-semibold whitespace-nowrap;
+    @apply font-semibold;
+  }
+  span {
+    @apply text-xs;
+  }
+  input {
+    @apply rounded-r;
   }
 }
-.editing-input {
-  @apply px-2 py-1 bg-transparent border border-primary-gray rounded outline-none;
+.display-section {
+  @apply flex items-center gap-2;
+  h1 {
+    @apply text-primary-gray-light whitespace-nowrap;
+  }
+  p {
+    @apply font-semibold;
+  }
+  span {
+    @apply text-xs;
+  }
+}
+.form-input {
+  @apply w-full p-2 bg-transparent border border-primary-gray outline-none;
 }
 </style>

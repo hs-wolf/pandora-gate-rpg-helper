@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { router } from '@plugins/router';
 import { useAuthStore } from '@stores/auth';
+import { useLocalesStore } from '@stores/locales';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const authStore = useAuthStore();
+const localesStore = useLocalesStore();
 
 const isLargeScreen = useMediaQuery('(min-width: 1024px)');
 
@@ -30,27 +32,14 @@ const navbarLinks = [
     page: 'characters',
     hash: '',
   },
-  {
-    id: 'npcs',
-    page: 'npcs',
-    hash: '',
-  },
-  {
-    id: 'jobs',
-    page: 'jobs',
-    hash: '',
-  },
-  {
-    id: 'locations',
-    page: 'locations',
-    hash: '',
-  },
-  {
-    id: 'data',
-    page: 'data',
-    hash: '',
-  },
 ];
+
+const changeLanguage = () => {
+  if (locale.value === 'en-US') {
+    return localesStore.changeLocale('pt-BR');
+  }
+  localesStore.changeLocale('en-US');
+};
 </script>
 
 <template>
@@ -73,6 +62,19 @@ const navbarLinks = [
       </button>
       <div v-if="isLargeScreen" class="desktop-menu">
         <button
+          class="flex items-center gap-1 mr-2"
+          @click.prevent="changeLanguage"
+        >
+          <icon-twemoji:flag-us-outlying-islands
+            v-if="locale === 'en-US'"
+            class="text-xl"
+          />
+          <icon-twemoji:flag-brazil v-else class="text-xl" />
+          <icon-akar-icons:triangle-right />
+          <icon-twemoji:flag-brazil v-if="locale === 'en-US'" class="text-xl" />
+          <icon-twemoji:flag-us-outlying-islands v-else class="text-xl" />
+        </button>
+        <button
           v-for="link in navbarLinks"
           :key="link.id"
           class="link"
@@ -81,10 +83,6 @@ const navbarLinks = [
           {{ t(`navbar.${link.id}`) }}
         </button>
         <div v-if="authStore.currentUser" class="flex gap-2 overflow-hidden">
-          <!-- <button class="link" @click.prevent="goToPage('notifications')">
-            <span>{{ t('navbar.notifications') }}</span>
-            <span class="text-primary-green font-semibold">6</span>
-          </button> -->
           <button
             class="login font-semibold overflow-hidden"
             @click.prevent="goToPage('profile')"
@@ -130,14 +128,7 @@ const navbarLinks = [
         {{ t(`navbar.${link.id}`) }}
       </button>
       <div v-if="authStore.currentUser" class="flex flex-col">
-        <!-- <button class="link" @click.prevent="closeMobileMenu('notifications')">
-          <span>{{ t('navbar.notifications') }}</span>
-          <span class="text-primary-green font-semibold">6</span>
-        </button> -->
-        <button
-          class="login font-semibold overflow-hidden"
-          @click.prevent="closeMobileMenu('profile')"
-        >
+        <button class="login font-semibold overflow-hidden" @click.prevent="">
           <span class="truncate">
             {{ authStore.currentUser.name ?? t('navbar.name') }}
           </span>
@@ -151,13 +142,23 @@ const navbarLinks = [
         <span>{{ t('navbar.login') }}</span>
         <icon-ri:logout-box-line />
       </button>
+      <button class="link" @click.prevent="changeLanguage">
+        <icon-twemoji:flag-us-outlying-islands
+          v-if="locale === 'en-US'"
+          class="text-xl"
+        />
+        <icon-twemoji:flag-brazil v-else class="text-xl" />
+        <icon-akar-icons:triangle-right />
+        <icon-twemoji:flag-brazil v-if="locale === 'en-US'" class="text-xl" />
+        <icon-twemoji:flag-us-outlying-islands v-else class="text-xl" />
+      </button>
     </div>
   </nav>
 </template>
 
 <style scoped lang="scss">
 .desktop-menu {
-  @apply flex gap-1 max-w-full text-sm overflow-hidden;
+  @apply flex items-center gap-2 max-w-full text-sm overflow-hidden;
   .link {
     @apply flex items-center gap-2 p-3 rounded whitespace-nowrap;
     &:hover {
@@ -187,7 +188,7 @@ const navbarLinks = [
   }
 }
 .mobile-menu {
-  @apply z-50 inset-x-4 top-4 fixed flex flex-col px-0 py-2 bg-primary-white shadow rounded text-primary-black text-sm;
+  @apply z-50 right-0 inset-y-0 w-3/5 fixed flex flex-col px-0 py-2 bg-primary-white shadow rounded text-primary-black text-sm;
   .link {
     @apply flex items-center gap-2 px-4 py-3 text-left truncate;
     &:hover {

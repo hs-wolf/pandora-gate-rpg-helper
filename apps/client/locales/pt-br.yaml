@@ -1,1 +1,424 @@
-key: Valor
+# GENERAL
+general:
+  pandora-gate: PANDORA GATE
+  cancel: Cancelar
+  login: Login
+  register: Registrar
+  logging: Logando
+  registering: Registrando
+  create: Criar
+  edit: Editar
+  view: Visualizar
+  yes: 'Sim'
+  no: 'Não'
+  import: Importar
+  export: Exportar
+  form-validations:
+    required: '{label} é requerido.'
+    min: '{label} precisa de um mínimo de {min} carácteres.'
+    email: '{label} precisa ser um e-mail válido.'
+    not-number: '{label} precisa ter apenas números.'
+    not-date: '{label} precisa ser uma data válida.'
+    array-min: Precisa selectionar pelo menos {min} opção de {label}.
+  location-types:
+    continent: Continente
+    realm: Domínio
+    city: Cidade
+    village: Vila
+  fields-list:
+    currentHP: HP Atual
+    maxHP: HP Máximo
+    currentMP: MP Atual
+    maxMP: MP Máximo
+    currentSP: SP Atual
+    maxSP: SP Máximo
+    level: LVL
+    strength: FOR
+    agility: AGI
+    dexterity: DES
+    vitality: VIT
+    spirit: ESP
+    luck: SOR
+    initiative: INI
+    dodge: ESQ
+    move: MOVE
+    critical: CRIT
+    physicalDefense: Def. F.
+    physicalDice: Dado F.
+    magicalDefense: Def. M.
+    magicalDice: Dado M.
+    unarmedRange: Alcance Desarmado
+    meleeRange: Alcance Arma Branca
+    rangedRange: Alcance Arma de Alcance
+    fireWeaponRange: Alcance Arma de Fogo
+    unarmedAccuracy: Acerto Desarmado
+    meleeAccuracy: Acerto Arma Branca
+    rangedAccuracy: Acerto Arma de Alcance
+    fireWeaponAccuracy: Acerto Arma de Fogo
+    unarmedBonus: Bonus Desarmado
+    meleeBonus: Bonus Arma Branca
+    rangedBonus: Bonus Arma de Alcance
+    fireWeaponBonus: Bonus Arma de Fogo
+    waterBonus: Bonus Água
+    etherealBonus: Bonus Etéreo
+    fireBonus: Bonus Fogo
+    iceBonus: Bonus Gelo
+    moonBonus: Bonus Lua
+    lightBonus: Bonus Luz
+    magickBonus: Bonus Magick
+    natureBonus: Bonus Natureza
+    sunBonus: Bonus Sol
+    soulBonus: Bonus Alma
+    earthBonus: Bonus Terra
+    darkBonus: Bonus Trevas
+    thunderBonus: Bonus Trovão
+    windBonus: Bonus Vento
+    astralBonus: Bonus Astral
+    expertiseMeleeWeapons: P. Armas Branca
+    expertiseMechanicalWeapons: P. Armas Mecânicas
+    expertiseWillpower: P. Força de Vontade
+    expertiseForge: P. Forjar
+    expertiseImmobilize: P. Imobilizar
+    expertiseUnarmedFight: P. Luta Desarmada
+    expertiseMine: P. Minerar
+    expertiseMount: P. Montar
+    expertiseTrack: P. Rastrear
+    expertiseMislead: P. Despistar
+    expertiseDisguise: P. Disfarce
+    expertiseDualWield: P. Dual Wield
+    expertiseHide: P. Esconder
+    expertiseDodge: P. Esquiva
+    expertiseEscape: P. Fugir
+    expertiseJump: P. Pular
+    expertiseAgriculture: P. Agricultura
+    expertiseRangedWeapons: P. Arma de Alcance
+    expertiseFireGuns: P. Arma de Fogo
+    expertiseMasonry: P. Alvenaria
+    expertiseThrowObject: P. Arremessar Objeto
+    expertiseClimb: P. Escalar
+    expertiseMakeBoat: P. Fazer Barco
+    expertiseSwim: P. Nadar
+    expertisePilot: P. Pilotagem
+    expertisePrepareTrap: P. Preparar Armadilha
+    expertiseFirstAid: P. Primeiros Socorros
+    expertiseCharisma: P. Carisma
+    expertisePhysicalDefense: P. Defesa Física
+    expertiseLeadership: P. Liderança
+    expertiseSurvival: P. Sobrevivência
+    expertiseCritical: P. Crítico
+    expertisePlayCalculate: Jogar / Calcular
+    expertiseMagickFind: P. Magick Find
+    expertiseAid: P. Auxílio
+    expertiseBluff: P. Blefar
+    expertiseConjuration: P. Conjuração
+    expertiseMagicDefense: P. Defesa Mágica
+    expertiseWaterElement: P. Elemento Água
+    expertiseEtherealElement: P. Elemento Etéreo
+    expertiseFireElement: P. Elemento Fogo
+    expertiseIceElement: P. Elemento Gelo
+    expertiseMoonElement: P. Elemento Lua
+    expertiseLightElement: P. Elemento Luz
+    expertiseMagickElement: P. Elemento Magick
+    expertiseNatureElement: P. Elemento Natureza
+    expertiseSunElement: P. Elemento Sol
+    expertiseSoulElement: P. Elemento Soul
+    expertiseEarthElement: P. Elemento Terra
+    expertiseDarknessElement: P. Elemento Trevas
+    expertiseThunderElement: P. Elemento Trovão
+    expertiseWindElement: P. Elemento Vento
+    expertiseAstralElement: P. Elemento Astral
+    expertiseInterpretDreams: P. Interpretar Sonhos
+    expertiseInterrogate: P. Interrogar
+    expertiseIntimidate: P. Intimidar
+    expertiseLanguage: P. Linguagem
+    expertiseCurse: P. Maldição
+    expertiseMysticism: P. Misticismo
+    expertiseNegotiate: P. Negociar
+    expertisePerception: P. Percepção
+    expertiseForecastWeather: P. Prever Tempo
+    expertiseTactic: P. Tática
+    expertiseCombo: P. Combo
+    expertiseMVP: P. MVP
+    expertisePVP: P. PVP
+    expertiseSynergy: P. Sinergia
+    expertiseStunt: P. Acrobacia
+    expertiseAstronomy: P. Astronomia
+    expertiseFaith: P. Fé
+    expertiseSteal: P. Furtar
+    expertiseSpecialWeapon: P. Arma Especial
+    expertiseChemistry: P. Química
+    expertiseRelaxation: P. Relaxamento
+  operators:
+    sum: +
+    subtraction: –
+    multiplication: ⁕
+    division: /
+
+# COMPONENTS
+navbar:
+  characters: Personagens
+  npcs: NPCs
+  jobs: Classes
+  locations: Locais
+  data: Dados Gerais
+  notifications: Notificações
+  name: Nome
+  logout: Logout
+  login: Login
+location-form:
+  name:
+    label: Nome
+    placeholder: Nome do local...
+  description:
+    label: Descrição
+    placeholder: Descrição do local...
+  location-type:
+    label: Tipo de local
+    placeholder: Selecione um tipo
+characters-confirm-remove:
+  title: Removendo personagem
+  message: Você realmente deseja remover {name}?
+characters-main-info-form:
+  name: Nome
+  guild: Guilda
+  no-guild: Sem guilda.
+  no-element: Sem elementos.
+  no-job: Sem classes.
+characters-basic-data-form:
+  title: Dados Básicos
+  currentHP: 💖 HP
+  maxHP: Max
+  currentMP: 💙 MP
+  maxMP: Max
+  currentSP: 💛 SP
+  maxSP: Max
+  level: Level
+  exp: Exp
+  next: Next
+  jp: JP
+  enhancements: Aprimoramentos
+  skillRegen: Regeneração Skill
+  currentHunger: 🍖 Fome
+  maxHunger: Max
+  gold: 💰 Gold
+characters-attributes-form:
+  title: Atributos
+  strength:
+    label: Força
+    acronym: FOR
+  agility:
+    label: Agilidade
+    acronym: AGI
+  dexterity:
+    label: Destreza
+    acronym: DES
+  vitality:
+    label: Vitalidade
+    acronym: VIT
+  spirit:
+    label: Espírito
+    acronym: ESP
+  luck:
+    label: Sorte
+    acronym: SOR
+  modificator:
+    label: Modificador
+    acronym: MOD
+characters-basic-stats-form:
+  title: Status Básicos
+  initiative: Iniciativa
+  dodge: Esquiva
+  move: Move
+  critical: Critico
+  physicalDefense: Defesa Física
+  physicalDice: Dado Físico
+  magicalDefense: Defesa Mágica
+  magicalDice: Dado Mágico
+characters-ranges-form:
+  title: Alcances
+  unarmedRange: Desarmado
+  meleeRange: Arma Branca
+  rangedRange: Arma de Alcance
+  fireWeaponRange: Arma de Fogo
+characters-accuracies-form:
+  title: Acertos
+  unarmedAccuracy: Desarmado
+  meleeAccuracy: Arma Branca
+  rangedAccuracy: Arma de Alcance
+  fireWeaponAccuracy: Arma de Fogo
+characters-physical-bonus-form:
+  title: Bônus Físicos
+  unarmedBonus: Desarmado
+  meleeBonus: Arma Branca
+  rangedBonus: Arma de Alcance
+  fireWeaponBonus: Arma de Fogo
+characters-magical-bonus-form:
+  title: Bônus Mágicos
+  waterBonus: Água
+  etherealBonus: Etéreo
+  fireBonus: Fogo
+  iceBonus: Gelo
+  moonBonus: Lua
+  lightBonus: Luz
+  magickBonus: Magick
+  natureBonus: Natureza
+  sunBonus: Sol
+  soulBonus: Alma
+  earthBonus: Terra
+  darkBonus: Trevas
+  thunderBonus: Trovão
+  windBonus: Vento
+  astralBonus: Astral
+characters-expertises-form:
+  title: Perícias
+  expertiseMeleeWeapons: Perícia Armas Branca
+  expertiseMechanicalWeapons: Perícia Armas Mecânicas
+  expertiseWillpower: Perícia Força de Vontade
+  expertiseForge: Perícia Forjar
+  expertiseImmobilize: Perícia Imobilizar
+  expertiseUnarmedFight: Perícia Luta Desarmada
+  expertiseMine: Perícia Minerar
+  expertiseMount: Perícia Montar
+  expertiseTrack: Perícia Rastrear
+  expertiseMislead: Perícia Despistar
+  expertiseDisguise: Perícia Disfarce
+  expertiseDualWield: Perícia Dual Wield
+  expertiseHide: Perícia Esconder
+  expertiseDodge: Perícia Esquiva
+  expertiseEscape: Perícia Fugir
+  expertiseJump: Perícia Pular
+  expertiseAgriculture: Perícia Agricultura
+  expertiseRangedWeapons: Perícia Arma de Alcance
+  expertiseFireGuns: Perícia Arma de Fogo
+  expertiseMasonry: Perícia Alvenaria
+  expertiseThrowObject: Perícia Arremessar Objeto
+  expertiseClimb: Perícia Escalar
+  expertiseMakeBoat: Perícia Fazer Barco
+  expertiseSwim: Perícia Nadar
+  expertisePrepareTrap: Perícia Pilotagem
+  expertiseFirstAid: Perícia Preparar Armadilha
+  expertiseCharisma: Perícia Primeiros Socorros
+  expertisePhysicalDefense: Perícia Carisma
+  expertiseLeadership: Perícia Defesa Física
+  expertiseSurvival: Perícia Liderança
+  expertiseCritical: Perícia Sobrevivência
+  expertisePlayCalculate: Perícia Crítico
+  expertiseMagickFind: Perícia Magick Find
+  expertiseAid: Perícia Auxílio
+  expertiseBluff: Perícia Blefar
+  expertiseConjuration: Perícia Conjuração
+  expertiseMagicDefense: Perícia Defesa Mágica
+  expertiseWaterElement: Perícia Elemento Água
+  expertiseEtherealElement: Perícia Elemento Etéreo
+  expertiseFireElement: Perícia Elemento Fogo
+  expertiseIceElement: Perícia Elemento Gelo
+  expertiseMoonElement: Perícia Elemento Lua
+  expertiseLightElement: Perícia Elemento Luz
+  expertiseMagickElement: Perícia Elemento Magick
+  expertiseNatureElement: Perícia Elemento Natureza
+  expertiseSunElement: Perícia Elemento Sol
+  expertiseSoulElement: Perícia Elemento Soul
+  expertiseEarthElement: Perícia Elemento Terra
+  expertiseDarknessElement: Perícia Elemento Trevas
+  expertiseThunderElement: Perícia Elemento Trovão
+  expertiseWindElement: Perícia Elemento Vento
+  expertiseInterpretDreams: Perícia Interpretar Sonhos
+  expertiseInterrogate: Perícia Interrogar
+  expertiseIntimidate: Perícia Intimidar
+  expertiseLanguage: Perícia Linguagem
+  expertiseCurse: Perícia Maldição
+  expertiseMysticism: Perícia Misticismo
+  expertiseNegotiate: Perícia Negociar
+  expertisePerception: Perícia Percepção
+  expertiseForecastWeather: Perícia Prever Tempo
+  expertiseTactic: Perícia Tática
+  expertiseCombo: Perícia Combo
+  expertiseMVP: Perícia MVP
+  expertisePVP: Perícia PVP
+  expertiseSynergy: Perícia Sinergia
+  expertiseStunt: Perícia Acrobacia
+  expertiseAstronomy: Perícia Astronomia
+  expertiseFaith: Perícia Fé
+  expertiseSteal: Perícia Furtar
+  expertiseSpecialWeapon: Perícia Arma Especial
+  expertiseChemistry: Perícia Química
+  expertiseRelaxation: Perícia Relaxamento
+characters-effects-form:
+  title: Efeitos
+  fixedEffects: Efeitos Fixos
+  linkedEffects: Efeitos Linkados
+  percentageEffects: Efeitos de Porcentagem
+characters-formulas-form:
+  title: Fórmulas
+  fixedEffects: Fórmulas Fixas
+  linkedEffects: Fórmulas Linkadas
+  percentageEffects: Fórmulas de Porcentagem
+data-elements-form:
+  name:
+    label: Nome
+    placeholder: Nome do element
+  double:
+    label: Dobro
+    placeholder: Nome dobrado
+  triple:
+    label: Triplo
+    placeholder: Nome triplicado
+  description:
+    label: Descrição
+    placeholder: Element description
+  image:
+    label: Imagem
+    placeholder: URL da imagem
+
+#PAGES
+login:
+  head-title: Pandora Gate Login
+  page-title: Login
+  email:
+    label: E-mail
+    placeholder: Digite seu e-mail...
+  password:
+    label: Senha
+    placeholder: Digite sua senha...
+  no-account: Não tem conta? {field}
+  register-here: Se registre aqui!
+register:
+  head-title: Pandora Gate Registro
+  page-title: Registro
+  name:
+    label: Nome
+    placeholder: Digite seu nome...
+  email:
+    label: E-mail
+    placeholder: Digite seu e-mail...
+  password:
+    label: Senha
+    placeholder: Digite sua senha...
+  got-account: Já tem uma conta? {field}
+  login-here: Login aqui!
+characters:
+  no-auth: Você precisa estar logado para criar personagens.
+  yours: Você tem {0} personagens.
+  none: Você não tem personagens ainda, cire um.
+  creating: Criando personagem
+  new: Criar novo
+  name: Nom do personagem...
+jobs:
+  head-title: Pandora Gate Classes
+  page-title: Lista de Classes
+locations:
+  head-title: Pandora Gate Locais
+  page-title: Lista de Locais
+  page-title-edit: Editando Lista de Locais
+  filter-by-type: Filtre por tipo
+  all: Todos
+  no-locations: Não há locais disponíveis.
+npcs:
+  head-title: Pandora Gate NPCs
+  page-title: List of NPCs
+data:
+  head-title: Pandora Gate Dados Gerais
+  elements: Lista de Elementos ({0})
+  creating-element: Criando elemento
+  importing-element: Importando elementos
+  exporting-element: Exportando elementos

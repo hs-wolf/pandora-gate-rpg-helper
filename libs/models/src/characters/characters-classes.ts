@@ -15,6 +15,7 @@ import {
   Accuracies,
   PhysicalBonus,
   MagicalBonus,
+  Expertises,
 } from './characters-types';
 
 export class Character {
@@ -32,9 +33,13 @@ export class Character {
     public accuracies: Accuracies,
     public physicalBonus: PhysicalBonus,
     public magicalBonus: MagicalBonus,
+    public expertises: Expertises,
     public fixedEffects: FixedEffect[],
     public linkedEffects: LinkedEffect[],
-    public percentageEffects: PercentageEffect[]
+    public percentageEffects: PercentageEffect[],
+    public fixedFormulas: FixedEffect[],
+    public linkedFormulas: LinkedEffect[],
+    public percentageFormulas: PercentageEffect[]
   ) {}
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -64,9 +69,13 @@ export class Character {
       map['accuracies'] ?? null,
       map['physicalBonus'] ?? null,
       map['magicalBonus'] ?? null,
+      map['expertises'] ?? null,
       map['fixedEffects'] ?? null,
       map['linkedEffects'] ?? null,
-      map['percentageEffects'] ?? null
+      map['percentageEffects'] ?? null,
+      map['fixedFormulas'] ?? null,
+      map['linkedFormulas'] ?? null,
+      map['percentageFormulas'] ?? null
     );
   }
 
@@ -86,36 +95,47 @@ export class Character {
       initial = this.physicalBonus[field as keyof PhysicalBonus];
     } else if (field in this.magicalBonus) {
       initial = this.magicalBonus[field as keyof MagicalBonus];
+    } else if (field in this.expertises) {
+      initial = this.expertises[field as keyof Expertises];
     } else {
       return;
     }
     const fixedEffects = this.fixedEffects.filter(
       (effect) => effect.target === field
     );
+    const fixedFormulas = this.fixedFormulas.filter(
+      (fomula) => fomula.target === field
+    );
     const linkedEffects = this.linkedEffects.filter(
       (effect) => effect.target === field
+    );
+    const linkedFormulas = this.linkedFormulas.filter(
+      (fomula) => fomula.target === field
     );
     const percentageEffects = this.percentageEffects.filter(
       (effect) => effect.target === field
     );
+    const percentageFomulas = this.percentageFormulas.filter(
+      (formula) => formula.target === field
+    );
     const appliedSumsAndSubtractions = this.applySumsAndSubtractions(
       initial,
-      fixedEffects,
-      linkedEffects
+      [...fixedEffects, ...fixedFormulas],
+      [...linkedEffects, ...linkedFormulas]
     );
     const appliedMultiplications = this.applyMultiplications(
       appliedSumsAndSubtractions,
-      fixedEffects,
-      linkedEffects
+      [...fixedEffects, ...fixedFormulas],
+      [...linkedEffects, ...linkedFormulas]
     );
-    const appliedPercentages = this.applyPercentages(
-      appliedMultiplications,
-      percentageEffects
-    );
+    const appliedPercentages = this.applyPercentages(appliedMultiplications, [
+      ...percentageEffects,
+      ...percentageFomulas,
+    ]);
     const appliedDivisions = this.applyDivisions(
       appliedPercentages,
-      fixedEffects,
-      linkedEffects
+      [...fixedEffects, ...fixedFormulas],
+      [...linkedEffects, ...linkedFormulas]
     );
     return appliedDivisions;
   }
@@ -262,9 +282,13 @@ export class Character {
       accuracies: this.accuracies,
       physicalBonus: this.physicalBonus,
       magicalBonus: this.magicalBonus,
+      expertises: this.expertises,
       fixedEffects: this.fixedEffects,
       linkedEffects: this.linkedEffects,
       percentageEffects: this.percentageEffects,
+      fixedFormulas: this.fixedFormulas,
+      linkedFormulas: this.linkedFormulas,
+      percentageFormulas: this.percentageFormulas,
     };
   }
 }

@@ -7,6 +7,7 @@ import { pinia } from '@plugins/pinia';
 import { router } from '@plugins/router';
 import { useAuthStore } from '@stores/auth';
 import { useCharactersStore } from '@stores/characters';
+import { useDataStore } from '@stores/data';
 import { useLocalesStore } from '@stores/locales';
 
 const app = initializeApp(environment.firebaseConfig);
@@ -19,13 +20,14 @@ auth.onAuthStateChanged(async (user) => {
 
     const authStore = useAuthStore(pinia);
     const charactersStore = useCharactersStore(pinia);
+    const dataStore = useDataStore(pinia);
     const localesStore = useLocalesStore(pinia);
 
     localesStore.loadLocale();
     await authStore.updateCurrentUser();
 
     if (authStore.currentUser) {
-      charactersStore.getUserCharacters();
+      charactersStore.getCharactersList();
       if (router.currentRoute.value.meta.requiresOffline) {
         router.push({ name: 'index' });
       }
@@ -34,6 +36,8 @@ auth.onAuthStateChanged(async (user) => {
         router.push({ name: 'login' });
       }
     }
+
+    dataStore.getCurrentElements();
   } catch (error) {
     console.log(error);
   } finally {

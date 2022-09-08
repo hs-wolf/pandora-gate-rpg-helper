@@ -1,77 +1,74 @@
 <script setup lang="ts">
-import {
-  Character,
-  EffectFieldsList,
-  Ranges,
-} from '@pandora-gate-rpg-helper/models';
-
-const props = defineProps<{ character: Character }>();
+import { useCharactersStore } from '@src/stores/characters';
+import { EffectFieldsList, Ranges } from '@pandora-gate-rpg-helper/models';
 
 const { t } = useI18n();
+const charactersStore = useCharactersStore();
+const { currentCharacter } = storeToRefs(charactersStore);
 
-const showData = ref(false);
+const showForm = ref(false);
 const editing = ref(false);
-
-const editableRanges = computed(() => props.character.ranges);
-
-const save = () => {
-  // Call store here.
+const saveEdits = () => {
+  charactersStore.updateCharacter(currentCharacter.value?.id ?? '', {
+    ranges: currentCharacter.value?.ranges,
+  });
   editing.value = false;
 };
 </script>
 
 <template>
   <div
-    class="flex flex-col border border-primary-gray-dark rounded-md overflow-hidden"
+    v-if="currentCharacter"
+    class="flex flex-col gap-4 p-4 bg-primary-gray-dark rounded-md overflow-hidden"
   >
     <button
-      class="flex items-center justify-between gap-2 px-4 py-2 bg-primary-gray-dark"
-      @click.prevent="showData = !showData"
+      class="flex justify-between items-center gap-2 font-semibold"
+      @click.prevent="showForm = !showForm"
     >
-      <p class="text-sm font-semibold">
-        {{ t('characters-ranges-form.title') }}
-      </p>
-      <icon-carbon:chevron-up v-if="showData" class="text-xl" />
-      <icon-carbon:chevron-down v-else class="text-xl" />
+      <p>{{ t('characters-ranges-form.title') }}</p>
+      <icon-carbon:chevron-up v-if="showForm" />
+      <icon-carbon:chevron-down v-else />
     </button>
-    <div v-if="showData" class="flex flex-col p-4 gap-4">
-      <div class="flex flex-col gap-2">
+    <div v-if="showForm" class="flex flex-col gap-4">
+      <div v-if="editing" class="flex flex-col gap-4">
         <div
-          v-for="(key, index) in Object.keys(editableRanges)"
-          :key="index"
-          class="item-simple"
+          v-for="field in Object.keys(currentCharacter.ranges).sort()"
+          :key="field"
+          class="form-section"
         >
-          <h1 class="col-span-2">
-            {{ t(`characters-ranges-form.${key}`) }}
-          </h1>
-          <p v-if="editing" class="col-span-2 flex items-center gap-4">
-            <input
-              type="number"
-              v-model="editableRanges[key as keyof Ranges]"
-              class="editing-input w-full"
-            />
-            <span>
-              {{ character.getFieldFinalValue(key as EffectFieldsList) }}
-            </span>
-          </p>
-          <p v-else class="col-span-2 flex items-center gap-2">
-            <span class="text-sm font-normal">
-              ({{ editableRanges[key as keyof Ranges] }})
-            </span>
-            <span>
-              {{ character.getFieldFinalValue(key as EffectFieldsList) }}
-            </span>
+          <h1>{{ t(`characters-ranges-form.${field}`) }}</h1>
+          <input
+            type="number"
+            v-model="currentCharacter.ranges[field as keyof Ranges]"
+            class="form-input"
+          />
+          <p class="ml-4">
+            {{ currentCharacter.getFieldFinalValue(field as EffectFieldsList) }}
           </p>
         </div>
-      </div>
-      <div v-if="editing" class="flex justify-end">
-        <button class="btn-green" @click.prevent="save">
-          <icon-carbon:save />
+        <button class="self-end btn-green rounded" @click.prevent="saveEdits">
+          <icon-carbon:save class="text-xl" />
         </button>
       </div>
-      <div v-else class="flex justify-end">
-        <button class="btn-blue" @click.prevent="editing = !editing">
-          <icon-carbon:edit />
+      <div v-else class="flex flex-col gap-4">
+        <div
+          v-for="field in Object.keys(currentCharacter.ranges).sort()"
+          :key="field"
+          class="display-section"
+        >
+          <h1>{{ t(`characters-ranges-form.${field}`) }}</h1>
+          <span class="text-sm font-normal">
+            ({{ currentCharacter.ranges[field as keyof Ranges] }})
+          </span>
+          <p>
+            {{ currentCharacter.getFieldFinalValue(field as EffectFieldsList) }}
+          </p>
+        </div>
+        <button
+          class="self-end btn-blue rounded"
+          @click.prevent="editing = !editing"
+        >
+          <icon-carbon:edit class="text-xl" />
         </button>
       </div>
     </div>
@@ -79,16 +76,34 @@ const save = () => {
 </template>
 
 <style scoped lang="scss">
-.item-simple {
-  @apply grid grid-cols-4 items-center gap-2;
+.form-section {
+  @apply flex items-center;
   h1 {
-    @apply text-sm text-primary-gray-light whitespace-nowrap;
+    @apply p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap;
   }
   p {
-    @apply font-semibold whitespace-nowrap;
+    @apply font-semibold;
+  }
+  span {
+    @apply text-xs;
+  }
+  input {
+    @apply rounded-r;
   }
 }
-.editing-input {
-  @apply px-2 py-1 bg-transparent border border-primary-gray rounded outline-none;
+.display-section {
+  @apply flex items-center gap-2;
+  h1 {
+    @apply text-primary-gray-light whitespace-nowrap;
+  }
+  p {
+    @apply font-semibold;
+  }
+  span {
+    @apply text-xs;
+  }
+}
+.form-input {
+  @apply w-full p-2 bg-transparent border border-primary-gray outline-none;
 }
 </style>
