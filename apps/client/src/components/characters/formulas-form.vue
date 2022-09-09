@@ -24,7 +24,7 @@ const saveEdits = () => {
 
 const addFixedFormula = () => {
   currentCharacter.value?.fixedFormulas.push({
-    target: EffectFieldsList.STRENGTH,
+    target: EffectFieldsList.ATTRIBUTE_AGILITY,
     operator: FixedOperators.SUM,
     value: 1,
   });
@@ -32,9 +32,9 @@ const addFixedFormula = () => {
 
 const addLinkedFormula = () => {
   currentCharacter.value?.linkedFormulas.push({
-    target: EffectFieldsList.STRENGTH,
+    target: EffectFieldsList.ATTRIBUTE_AGILITY,
     targetOperator: FixedOperators.SUM,
-    field: EffectFieldsList.AGILITY,
+    field: EffectFieldsList.ATTRIBUTE_DEXTERITY,
     fieldOperator: LinkedOperators.MULTIPLICATION,
     value: 1,
   });
@@ -42,7 +42,7 @@ const addLinkedFormula = () => {
 
 const addPercentageformula = () => {
   currentCharacter.value?.percentageFormulas.push({
-    target: EffectFieldsList.STRENGTH,
+    target: EffectFieldsList.ATTRIBUTE_AGILITY,
     operator: PercentageOperators.SUM,
     value: 1,
   });
@@ -66,7 +66,7 @@ const addPercentageformula = () => {
       <div v-if="editing" class="flex flex-col gap-4">
         <div class="flex flex-col gap-4">
           <div class="flex justify-between items-center gap-4">
-            <div class="flex gap-2 text-primary-gray-light">
+            <div class="flex gap-2 text-primary-gray-light font-semibold">
               <p>{{ t('characters-formulas-form.fixedEffects') }}</p>
               <p>{{ `(${currentCharacter.fixedFormulas.length})` }}</p>
             </div>
@@ -114,7 +114,7 @@ const addPercentageformula = () => {
         <hr class="border-primary-gray" />
         <div class="flex flex-col gap-4">
           <div class="flex justify-between items-center gap-2">
-            <div class="flex gap-1 text-primary-gray-light">
+            <div class="flex gap-1 text-primary-gray-light font-semibold">
               <p>{{ t('characters-formulas-form.linkedEffects') }}</p>
               <p>{{ `(${currentCharacter.linkedFormulas.length})` }}</p>
             </div>
@@ -178,7 +178,7 @@ const addPercentageformula = () => {
         <hr class="border-primary-gray" />
         <div class="flex flex-col gap-4">
           <div class="flex justify-between items-center gap-4">
-            <div class="flex gap-2 text-primary-gray-light">
+            <div class="flex gap-2 text-primary-gray-light font-semibold">
               <p>{{ t('characters-formulas-form.percentageEffects') }}</p>
               <p>{{ `(${currentCharacter.percentageFormulas.length})` }}</p>
             </div>
@@ -234,18 +234,18 @@ const addPercentageformula = () => {
         </button>
       </div>
       <div v-else class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-          <h1 class="text-primary-gray-light">
+        <div class="display-section">
+          <h1 class="font-semibold">
             {{ t('characters-formulas-form.fixedEffects') }}
           </h1>
           <div
             v-for="(effect, index) in currentCharacter?.fixedFormulas"
             :key="index"
-            class="flex items-center gap-2"
+            class="flex items-center flex-wrap gap-2"
           >
-            <p class="font-semibold">
+            <h1>
               {{ t(`general.fields-list.${effect.target}`) }}
-            </p>
+            </h1>
             <p>
               {{ t(`general.operators.${effect.operator.toLowerCase()}`) }}
             </p>
@@ -253,18 +253,18 @@ const addPercentageformula = () => {
           </div>
         </div>
         <hr class="border-primary-gray" />
-        <div class="flex flex-col gap-2">
-          <h1 class="text-primary-gray-light">
+        <div class="display-section">
+          <h1 class="font-semibold">
             {{ t('characters-formulas-form.linkedEffects') }}
           </h1>
           <div
             v-for="(effect, index) in currentCharacter?.linkedFormulas"
             :key="index"
-            class="flex items-center gap-2"
+            class="flex items-center flex-wrap gap-2"
           >
-            <p class="font-semibold">
+            <h1>
               {{ t(`general.fields-list.${effect.target}`) }}
-            </p>
+            </h1>
             <p>
               {{
                 t(`general.operators.${effect.targetOperator.toLowerCase()}`)
@@ -278,18 +278,18 @@ const addPercentageformula = () => {
           </div>
         </div>
         <hr class="border-primary-gray" />
-        <div class="flex flex-col gap-2">
-          <h1 class="text-primary-gray-light">
+        <div class="display-section">
+          <h1 class="font-semibold">
             {{ t('characters-formulas-form.percentageEffects') }}
           </h1>
           <div
             v-for="(effect, index) in currentCharacter?.percentageFormulas"
             :key="index"
-            class="flex items-center gap-2"
+            class="flex items-center flex-wrap gap-2"
           >
-            <p class="font-semibold">
+            <h1>
               {{ t(`general.fields-list.${effect.target}`) }}
-            </p>
+            </h1>
             <p>
               {{ t(`general.operators.${effect.operator.toLowerCase()}`) }}
             </p>
@@ -325,7 +325,7 @@ const addPercentageformula = () => {
   }
 }
 .display-section {
-  @apply flex items-center gap-2;
+  @apply flex flex-col gap-2;
   h1 {
     @apply text-primary-gray-light whitespace-nowrap;
   }

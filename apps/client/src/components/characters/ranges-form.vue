@@ -32,7 +32,11 @@ const saveEdits = () => {
     <div v-if="showForm" class="flex flex-col gap-4">
       <div v-if="editing" class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.ranges).sort()"
+          v-for="field in Object.keys(currentCharacter.ranges).sort((a, b) =>
+            t(`characters-ranges-form.${a}`) < t(`characters-ranges-form.${b}`)
+              ? -1
+              : 1
+          )"
           :key="field"
           class="form-section"
         >
@@ -52,7 +56,11 @@ const saveEdits = () => {
       </div>
       <div v-else class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.ranges).sort()"
+          v-for="field in Object.keys(currentCharacter.ranges).sort((a, b) =>
+            t(`characters-ranges-form.${a}`) < t(`characters-ranges-form.${b}`)
+              ? -1
+              : 1
+          )"
           :key="field"
           class="display-section"
         >

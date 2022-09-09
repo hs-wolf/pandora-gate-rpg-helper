@@ -7,13 +7,13 @@ const charactersStore = useCharactersStore();
 const { currentCharacter } = storeToRefs(charactersStore);
 
 const showForm = ref(false);
-const editing = ref(false);
-const saveEdits = () => {
-  charactersStore.updateCharacter(currentCharacter.value?.id ?? '', {
-    basicStats: currentCharacter.value?.basicStats,
-  });
-  editing.value = false;
-};
+// const editing = ref(false);
+// const saveEdits = () => {
+//   charactersStore.updateCharacter(currentCharacter.value?.id ?? '', {
+//     basicStats: currentCharacter.value?.basicStats,
+//   });
+//   editing.value = false;
+// };
 </script>
 
 <template>
@@ -30,9 +30,9 @@ const saveEdits = () => {
       <icon-carbon:chevron-down v-else />
     </button>
     <div v-if="showForm" class="flex flex-col gap-4">
-      <div v-if="editing" class="flex flex-col gap-4">
+      <!-- <div v-if="editing" class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.basicStats).sort()"
+          v-for="field in Object.keys(currentCharacter.basicStats)"
           :key="field"
           class="form-section"
         >
@@ -49,10 +49,16 @@ const saveEdits = () => {
         <button class="self-end btn-green rounded" @click.prevent="saveEdits">
           <icon-carbon:save class="text-xl" />
         </button>
-      </div>
-      <div v-else class="flex flex-col gap-4">
+      </div> -->
+      <div class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.basicStats).sort()"
+          v-for="field in Object.keys(currentCharacter.basicStats).sort(
+            (a, b) =>
+              t(`characters-basic-stats-form.${a}`) <
+              t(`characters-basic-stats-form.${b}`)
+                ? -1
+                : 1
+          )"
           :key="field"
           class="display-section"
         >
@@ -64,12 +70,12 @@ const saveEdits = () => {
             {{ currentCharacter.getFieldFinalValue(field as EffectFieldsList) }}
           </p>
         </div>
-        <button
+        <!-- <button
           class="self-end btn-blue rounded"
           @click.prevent="editing = !editing"
         >
           <icon-carbon:edit class="text-xl" />
-        </button>
+        </button> -->
       </div>
     </div>
   </div>

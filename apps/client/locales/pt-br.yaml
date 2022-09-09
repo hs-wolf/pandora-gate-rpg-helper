@@ -26,54 +26,53 @@ general:
     city: Cidade
     village: Vila
   fields-list:
-    currentHP: HP Atual
-    maxHP: HP Máximo
-    currentMP: MP Atual
-    maxMP: MP Máximo
-    currentSP: SP Atual
-    maxSP: SP Máximo
-    level: LVL
-    strength: FOR
-    agility: AGI
-    dexterity: DES
-    vitality: VIT
-    spirit: ESP
-    luck: SOR
-    initiative: INI
-    dodge: ESQ
-    move: MOVE
-    critical: CRIT
-    physicalDefense: Def. F.
-    physicalDice: Dado F.
-    magicalDefense: Def. M.
-    magicalDice: Dado M.
-    unarmedRange: Alcance Desarmado
-    meleeRange: Alcance Arma Branca
-    rangedRange: Alcance Arma de Alcance
-    fireWeaponRange: Alcance Arma de Fogo
-    unarmedAccuracy: Acerto Desarmado
-    meleeAccuracy: Acerto Arma Branca
-    rangedAccuracy: Acerto Arma de Alcance
-    fireWeaponAccuracy: Acerto Arma de Fogo
-    unarmedBonus: Bonus Desarmado
-    meleeBonus: Bonus Arma Branca
-    rangedBonus: Bonus Arma de Alcance
-    fireWeaponBonus: Bonus Arma de Fogo
-    waterBonus: Bonus Água
-    etherealBonus: Bonus Etéreo
-    fireBonus: Bonus Fogo
-    iceBonus: Bonus Gelo
-    moonBonus: Bonus Lua
-    lightBonus: Bonus Luz
-    magickBonus: Bonus Magick
-    natureBonus: Bonus Natureza
-    sunBonus: Bonus Sol
-    soulBonus: Bonus Alma
-    earthBonus: Bonus Terra
-    darkBonus: Bonus Trevas
-    thunderBonus: Bonus Trovão
-    windBonus: Bonus Vento
-    astralBonus: Bonus Astral
+    basicDataCurrentHP: HP Atual
+    basicDataMaxHP: HP Máximo
+    basicDataCurrentMP: MP Atual
+    basicDataMaxMP: MP Máximo
+    basicDataCurrentSP: SP Atual
+    basicDataMaxSP: SP Máximo
+    basicDataLevel: LVL
+    basicDataGold: Gold
+    attributeAgility: AGI
+    attributeDexterity: DES
+    attributeLuck: SOR
+    attributeSpirit: ESP
+    attributeStrength: FOR
+    attributeVitality: VIT
+    basicStatInitiative: INI
+    basicStatDodge: ESQ
+    basicStatMove: MOVE
+    basicStatCritical: CRIT
+    basicStatPhysicalDefense: Def. F.
+    basicStatPhysicalDice: Dado F.
+    basicStatMagicalDefense: Def. M.
+    basicStatMagicalDice: Dado M.
+    rangeUnarmed: Alcance Desarmado
+    rangeMeleeWeapon: Alcance Arma Branca
+    rangeRangedWeapon: Alcance Arma de Alcance
+    rangeFireWeapon: Alcance Arma de Fogo
+    accuracyUnarmed: Acerto Desarmado
+    accuracyMeleeWeapon: Acerto Arma Branca
+    accuracyRangedWeapon: Acerto Arma de Alcance
+    accuracyFireWeapon: Acerto Arma de Fogo
+    bonusUnarmed: Bonus Desarmado
+    bonusMeleeWeapon: Bonus Arma Branca
+    bonusRangedWeapon: Bonus Arma de Alcance
+    bonusFireWeapon: Bonus Arma de Fogo
+    bonusElementDark: B. Elemento Água
+    bonusElementEarth: B. Elemento Etéreo
+    bonusElementEthereal: B. Elemento Fogo
+    bonusElementFire: B. Elemento Gelo
+    bonusElementIce: B. Elemento Lua
+    bonusElementLight: B. Elemento Luz
+    bonusElementMagick: B. Elemento Magick
+    bonusElementMoon: B. Elemento Natureza
+    bonusElementNature: B. Elemento Sol
+    bonusElementSun: B. Elemento Terra
+    bonusElementThunder: B. Elemento Trevas
+    bonusElementWater: B. Elemento Trovão
+    bonusElementWind: B. Elemento Vento
     expertiseMeleeWeapons: P. Armas Branca
     expertiseMechanicalWeapons: P. Armas Mecânicas
     expertiseWillpower: P. Força de Vontade
@@ -88,11 +87,11 @@ general:
     expertiseDualWield: P. Dual Wield
     expertiseHide: P. Esconder
     expertiseDodge: P. Esquiva
-    expertiseEscape: P. Fugir
+    expertiseFlee: P. Fugir
     expertiseJump: P. Pular
     expertiseAgriculture: P. Agricultura
     expertiseRangedWeapons: P. Arma de Alcance
-    expertiseFireGuns: P. Arma de Fogo
+    expertiseFireWeapons: P. Arma de Fogo
     expertiseMasonry: P. Alvenaria
     expertiseThrowObject: P. Arremessar Objeto
     expertiseClimb: P. Escalar
@@ -106,27 +105,25 @@ general:
     expertiseLeadership: P. Liderança
     expertiseSurvival: P. Sobrevivência
     expertiseCritical: P. Crítico
-    expertisePlayCalculate: Jogar / Calcular
+    expertisePlayCalculate: P. Jogar / Calcular
     expertiseMagickFind: P. Magick Find
-    expertiseAid: P. Auxílio
+    expertiseSupport: P. Auxílio
     expertiseBluff: P. Blefar
     expertiseConjuration: P. Conjuração
-    expertiseMagicDefense: P. Defesa Mágica
-    expertiseWaterElement: P. Elemento Água
-    expertiseEtherealElement: P. Elemento Etéreo
-    expertiseFireElement: P. Elemento Fogo
-    expertiseIceElement: P. Elemento Gelo
-    expertiseMoonElement: P. Elemento Lua
-    expertiseLightElement: P. Elemento Luz
-    expertiseMagickElement: P. Elemento Magick
-    expertiseNatureElement: P. Elemento Natureza
-    expertiseSunElement: P. Elemento Sol
-    expertiseSoulElement: P. Elemento Soul
-    expertiseEarthElement: P. Elemento Terra
-    expertiseDarknessElement: P. Elemento Trevas
-    expertiseThunderElement: P. Elemento Trovão
-    expertiseWindElement: P. Elemento Vento
-    expertiseAstralElement: P. Elemento Astral
+    expertiseMagicalDefense: P. Defesa Mágica
+    expertiseElementDark: P. Elemento Trevas
+    expertiseElementEarth: P. Elemento Terra
+    expertiseElementEthereal: P. Elemento Etéreo
+    expertiseElementFire: P. Elemento Fogo
+    expertiseElementIce: P. Elemento Gelo
+    expertiseElementLight: P. Elemento Luz
+    expertiseElementMagick: P. Elemento Magick
+    expertiseElementMoon: P. Elemento Lua
+    expertiseElementNature: P. Elemento Natureza
+    expertiseElementSun: P. Elemento Sol
+    expertiseElementThunder: P. Elemento Trovão
+    expertiseElementWater: P. Elemento Água
+    expertiseElementWind: P. Elemento Vento
     expertiseInterpretDreams: P. Interpretar Sonhos
     expertiseInterrogate: P. Interrogar
     expertiseIntimidate: P. Intimidar
@@ -137,17 +134,17 @@ general:
     expertisePerception: P. Percepção
     expertiseForecastWeather: P. Prever Tempo
     expertiseTactic: P. Tática
+    expertiseAstronomy: P. Astronomia
+    expertiseChemistry: P. Química
     expertiseCombo: P. Combo
+    expertiseFaith: P. Fé
     expertiseMVP: P. MVP
     expertisePVP: P. PVP
-    expertiseSynergy: P. Sinergia
-    expertiseStunt: P. Acrobacia
-    expertiseAstronomy: P. Astronomia
-    expertiseFaith: P. Fé
-    expertiseSteal: P. Furtar
-    expertiseSpecialWeapon: P. Arma Especial
-    expertiseChemistry: P. Química
     expertiseRelaxation: P. Relaxamento
+    expertiseSpecialWeapon: P. Arma Especial
+    expertiseSteal: P. Furtar
+    expertiseStunt: P. Acrobacia
+    expertiseSynergy: P. Sinergia
   operators:
     sum: +
     subtraction: –
@@ -186,163 +183,161 @@ characters-main-info-form:
   no-job: Sem classes.
 characters-basic-data-form:
   title: Dados Básicos
-  currentHP: 💖 HP
-  maxHP: Max
-  currentMP: 💙 MP
-  maxMP: Max
-  currentSP: 💛 SP
-  maxSP: Max
-  level: Level
-  exp: Exp
-  next: Next
-  jp: JP
-  enhancements: Aprimoramentos
-  skillRegen: Regeneração Skill
-  currentHunger: 🍖 Fome
-  maxHunger: Max
-  gold: 💰 Gold
+  basicDataCurrentHP: 💖 HP
+  basicDataMaxHP: Max
+  basicDataCurrentMP: 💙 MP
+  basicDataMaxMP: Max
+  basicDataCurrentSP: 💛 SP
+  basicDataMaxSP: Max
+  basicDataLevel: Level
+  basicDataExp: Exp
+  basicDataNext: Next
+  basicDataJP: JP
+  basicDataEnhancements: Aprimoramentos
+  basicDataSkillRegen: Regeneração Skill
+  basicDataCurrentHunger: 🍖 Fome
+  basicDataMaxHunger: Max
+  basicDataGold: 💰 Gold
 characters-attributes-form:
   title: Atributos
-  strength:
-    label: Força
-    acronym: FOR
-  agility:
+  attributeAgility:
     label: Agilidade
     acronym: AGI
-  dexterity:
+  attributeDexterity:
     label: Destreza
     acronym: DES
-  vitality:
-    label: Vitalidade
-    acronym: VIT
-  spirit:
-    label: Espírito
-    acronym: ESP
-  luck:
+  attributeLuck:
     label: Sorte
     acronym: SOR
+  attributeSpirit:
+    label: Espírito
+    acronym: ESP
+  attributeStrength:
+    label: Força
+    acronym: FOR
+  attributeVitality:
+    label: Vitalidade
+    acronym: VIT
   modificator:
     label: Modificador
     acronym: MOD
 characters-basic-stats-form:
   title: Status Básicos
-  initiative: Iniciativa
-  dodge: Esquiva
-  move: Move
-  critical: Critico
-  physicalDefense: Defesa Física
-  physicalDice: Dado Físico
-  magicalDefense: Defesa Mágica
-  magicalDice: Dado Mágico
+  basicStatInitiative: Iniciativa
+  basicStatDodge: Esquiva
+  basicStatMove: Move
+  basicStatCritical: Critico
+  basicStatPhysicalDefense: Defesa Física
+  basicStatPhysicalDice: Dado Físico
+  basicStatMagicalDefense: Defesa Mágica
+  basicStatMagicalDice: Dado Mágico
 characters-ranges-form:
   title: Alcances
-  unarmedRange: Desarmado
-  meleeRange: Arma Branca
-  rangedRange: Arma de Alcance
-  fireWeaponRange: Arma de Fogo
+  rangeUnarmed: Desarmado
+  rangeMeleeWeapon: Arma Branca
+  rangeRangedWeapon: Arma de Alcance
+  rangeFireWeapon: Arma de Fogo
 characters-accuracies-form:
   title: Acertos
-  unarmedAccuracy: Desarmado
-  meleeAccuracy: Arma Branca
-  rangedAccuracy: Arma de Alcance
-  fireWeaponAccuracy: Arma de Fogo
+  accuracyUnarmed: Desarmado
+  accuracyMeleeWeapon: Arma Branca
+  accuracyRangedWeapon: Arma de Alcance
+  accuracyFireWeapon: Arma de Fogo
 characters-physical-bonus-form:
   title: Bônus Físicos
-  unarmedBonus: Desarmado
-  meleeBonus: Arma Branca
-  rangedBonus: Arma de Alcance
-  fireWeaponBonus: Arma de Fogo
+  bonusUnarmed: Desarmado
+  bonusMeleeWeapon: Arma Branca
+  bonusRangedWeapon: Arma de Alcance
+  bonusFireWeapon: Arma de Fogo
 characters-magical-bonus-form:
   title: Bônus Mágicos
-  waterBonus: Água
-  etherealBonus: Etéreo
-  fireBonus: Fogo
-  iceBonus: Gelo
-  moonBonus: Lua
-  lightBonus: Luz
-  magickBonus: Magick
-  natureBonus: Natureza
-  sunBonus: Sol
-  soulBonus: Alma
-  earthBonus: Terra
-  darkBonus: Trevas
-  thunderBonus: Trovão
-  windBonus: Vento
-  astralBonus: Astral
+  bonusElementDark: B. Elemento Água
+  bonusElementEarth: B. Elemento Etéreo
+  bonusElementEthereal: B. Elemento Fogo
+  bonusElementFire: B. Elemento Gelo
+  bonusElementIce: B. Elemento Lua
+  bonusElementLight: B. Elemento Luz
+  bonusElementMagick: B. Elemento Magick
+  bonusElementMoon: B. Elemento Natureza
+  bonusElementNature: B. Elemento Sol
+  bonusElementSun: B. Elemento Terra
+  bonusElementThunder: B. Elemento Trevas
+  bonusElementWater: B. Elemento Trovão
+  bonusElementWind: B. Elemento Vento
 characters-expertises-form:
   title: Perícias
-  expertiseMeleeWeapons: Perícia Armas Branca
-  expertiseMechanicalWeapons: Perícia Armas Mecânicas
-  expertiseWillpower: Perícia Força de Vontade
-  expertiseForge: Perícia Forjar
-  expertiseImmobilize: Perícia Imobilizar
-  expertiseUnarmedFight: Perícia Luta Desarmada
-  expertiseMine: Perícia Minerar
-  expertiseMount: Perícia Montar
-  expertiseTrack: Perícia Rastrear
-  expertiseMislead: Perícia Despistar
-  expertiseDisguise: Perícia Disfarce
-  expertiseDualWield: Perícia Dual Wield
-  expertiseHide: Perícia Esconder
-  expertiseDodge: Perícia Esquiva
-  expertiseEscape: Perícia Fugir
-  expertiseJump: Perícia Pular
-  expertiseAgriculture: Perícia Agricultura
-  expertiseRangedWeapons: Perícia Arma de Alcance
-  expertiseFireGuns: Perícia Arma de Fogo
-  expertiseMasonry: Perícia Alvenaria
-  expertiseThrowObject: Perícia Arremessar Objeto
-  expertiseClimb: Perícia Escalar
-  expertiseMakeBoat: Perícia Fazer Barco
-  expertiseSwim: Perícia Nadar
-  expertisePrepareTrap: Perícia Pilotagem
-  expertiseFirstAid: Perícia Preparar Armadilha
-  expertiseCharisma: Perícia Primeiros Socorros
-  expertisePhysicalDefense: Perícia Carisma
-  expertiseLeadership: Perícia Defesa Física
-  expertiseSurvival: Perícia Liderança
-  expertiseCritical: Perícia Sobrevivência
-  expertisePlayCalculate: Perícia Crítico
-  expertiseMagickFind: Perícia Magick Find
-  expertiseAid: Perícia Auxílio
-  expertiseBluff: Perícia Blefar
-  expertiseConjuration: Perícia Conjuração
-  expertiseMagicDefense: Perícia Defesa Mágica
-  expertiseWaterElement: Perícia Elemento Água
-  expertiseEtherealElement: Perícia Elemento Etéreo
-  expertiseFireElement: Perícia Elemento Fogo
-  expertiseIceElement: Perícia Elemento Gelo
-  expertiseMoonElement: Perícia Elemento Lua
-  expertiseLightElement: Perícia Elemento Luz
-  expertiseMagickElement: Perícia Elemento Magick
-  expertiseNatureElement: Perícia Elemento Natureza
-  expertiseSunElement: Perícia Elemento Sol
-  expertiseSoulElement: Perícia Elemento Soul
-  expertiseEarthElement: Perícia Elemento Terra
-  expertiseDarknessElement: Perícia Elemento Trevas
-  expertiseThunderElement: Perícia Elemento Trovão
-  expertiseWindElement: Perícia Elemento Vento
-  expertiseInterpretDreams: Perícia Interpretar Sonhos
-  expertiseInterrogate: Perícia Interrogar
-  expertiseIntimidate: Perícia Intimidar
-  expertiseLanguage: Perícia Linguagem
-  expertiseCurse: Perícia Maldição
-  expertiseMysticism: Perícia Misticismo
-  expertiseNegotiate: Perícia Negociar
-  expertisePerception: Perícia Percepção
-  expertiseForecastWeather: Perícia Prever Tempo
-  expertiseTactic: Perícia Tática
-  expertiseCombo: Perícia Combo
-  expertiseMVP: Perícia MVP
-  expertisePVP: Perícia PVP
-  expertiseSynergy: Perícia Sinergia
-  expertiseStunt: Perícia Acrobacia
-  expertiseAstronomy: Perícia Astronomia
-  expertiseFaith: Perícia Fé
-  expertiseSteal: Perícia Furtar
-  expertiseSpecialWeapon: Perícia Arma Especial
-  expertiseChemistry: Perícia Química
-  expertiseRelaxation: Perícia Relaxamento
+  expertiseMeleeWeapons: P. Armas Branca
+  expertiseMechanicalWeapons: P. Armas Mecânicas
+  expertiseWillpower: P. Força de Vontade
+  expertiseForge: P. Forjar
+  expertiseImmobilize: P. Imobilizar
+  expertiseUnarmedFight: P. Luta Desarmada
+  expertiseMine: P. Minerar
+  expertiseMount: P. Montar
+  expertiseTrack: P. Rastrear
+  expertiseMislead: P. Despistar
+  expertiseDisguise: P. Disfarce
+  expertiseDualWield: P. Dual Wield
+  expertiseHide: P. Esconder
+  expertiseDodge: P. Esquiva
+  expertiseFlee: P. Fugir
+  expertiseJump: P. Pular
+  expertiseAgriculture: P. Agricultura
+  expertiseRangedWeapons: P. Arma de Alcance
+  expertiseFireWeapons: P. Arma de Fogo
+  expertiseMasonry: P. Alvenaria
+  expertiseThrowObject: P. Arremessar Objeto
+  expertiseClimb: P. Escalar
+  expertiseMakeBoat: P. Fazer Barco
+  expertiseSwim: P. Nadar
+  expertisePilot: P. Pilotar
+  expertisePrepareTrap: P. Preparar Armadilha
+  expertiseFirstAid: P. Primeiros Socorros
+  expertiseCharisma: P. Carisma
+  expertisePhysicalDefense: P. Defesa Física
+  expertiseLeadership: P. Liderança
+  expertiseSurvival: P. Sobrevivência
+  expertiseCritical: P. Crítico
+  expertisePlayCalculate: P. Jogar / Calcular
+  expertiseMagickFind: P. Magick Find
+  expertiseSupport: P. Auxílio
+  expertiseBluff: P. Blefar
+  expertiseConjuration: P. Conjuração
+  expertiseMagicalDefense: P. Defesa Mágica
+  expertiseElementDark: P. Elemento Trevas
+  expertiseElementEarth: P. Elemento Terra
+  expertiseElementEthereal: P. Elemento Etéreo
+  expertiseElementFire: P. Elemento Fogo
+  expertiseElementIce: P. Elemento Gelo
+  expertiseElementLight: P. Elemento Luz
+  expertiseElementMagick: P. Elemento Magick
+  expertiseElementMoon: P. Elemento Lua
+  expertiseElementNature: P. Elemento Natureza
+  expertiseElementSun: P. Elemento Sol
+  expertiseElementThunder: P. Elemento Trovão
+  expertiseElementWater: P. Elemento Água
+  expertiseElementWind: P. Elemento Vento
+  expertiseInterpretDreams: P. Interpretar Sonhos
+  expertiseInterrogate: P. Interrogar
+  expertiseIntimidate: P. Intimidar
+  expertiseLanguage: P. Linguagem
+  expertiseCurse: P. Maldição
+  expertiseMysticism: P. Misticismo
+  expertiseNegotiate: P. Negociar
+  expertisePerception: P. Percepção
+  expertiseForecastWeather: P. Prever Tempo
+  expertiseTactic: P. Tática
+  expertiseAstronomy: P. Astronomia
+  expertiseChemistry: P. Química
+  expertiseCombo: P. Combo
+  expertiseFaith: P. Fé
+  expertiseMVP: P. MVP
+  expertisePVP: P. PVP
+  expertiseRelaxation: P. Relaxamento
+  expertiseSpecialWeapon: P. Arma Especial
+  expertiseSteal: P. Furtar
+  expertiseStunt: P. Acrobacia
+  expertiseSynergy: P. Sinergia
 characters-effects-form:
   title: Efeitos
   fixedEffects: Efeitos Fixos
@@ -399,10 +394,10 @@ register:
 characters:
   no-auth: Você precisa estar logado para criar personagens.
   yours: Você tem {0} personagens.
-  none: Você não tem personagens ainda, cire um.
+  none: Você não tem personagens ainda, crie um.
   creating: Criando personagem
   new: Criar novo
-  name: Nom do personagem...
+  name: Nome do personagem...
 jobs:
   head-title: Pandora Gate Classes
   page-title: Lista de Classes

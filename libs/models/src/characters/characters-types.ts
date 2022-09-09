@@ -5,80 +5,78 @@ export type CharacterCreateBody = Partial<Pick<Character, 'ownerId' | 'name'>>;
 export type CharacterUpdateBody = Partial<Omit<Character, 'id' | 'ownerId'>>;
 
 export type BasicData = {
-  currentHP: number;
-  maxHP: number;
-  currentMP: number;
-  maxMP: number;
-  currentSP: number;
-  maxSP: number;
-  level: number;
-  exp: number;
-  next: number;
-  jp: number;
-  enhancements: number;
-  skillRegen: number;
-  currentHunger: number;
-  maxHunger: number;
-  gold: number;
+  basicDataCurrentHP: number;
+  basicDataMaxHP: number;
+  basicDataCurrentMP: number;
+  basicDataMaxMP: number;
+  basicDataCurrentSP: number;
+  basicDataMaxSP: number;
+  basicDataLevel: number;
+  basicDataExp: number;
+  basicDataNext: number;
+  basicDataJP: number;
+  basicDataEnhancements: number;
+  basicDataSkillRegen: number;
+  basicDataCurrentHunger: number;
+  basicDataMaxHunger: number;
+  basicDataGold: number;
 };
 
 export type Attributes = {
-  strength: number;
-  agility: number;
-  dexterity: number;
-  vitality: number;
-  spirit: number;
-  luck: number;
+  attributeAgility: number;
+  attributeDexterity: number;
+  attributeLuck: number;
+  attributeSpirit: number;
+  attributeStrength: number;
+  attributeVitality: number;
 };
 
 export type BasicStats = {
-  initiative: number;
-  dodge: number;
-  move: number;
-  critical: number;
-  physicalDefense: number;
-  physicalDice: number;
-  magicalDefense: number;
-  magicalDice: number;
+  basicStatInitiative: number;
+  basicStatDodge: number;
+  basicStatMove: number;
+  basicStatCritical: number;
+  basicStatPhysicalDefense: number;
+  basicStatPhysicalDice: number;
+  basicStatMagicalDefense: number;
+  basicStatMagicalDice: number;
 };
 
 export type Ranges = {
-  unarmedRange: number;
-  meleeRange: number;
-  rangedRange: number;
-  fireWeaponRange: number;
+  rangeUnarmed: number;
+  rangeMeleeWeapon: number;
+  rangeRangedWeapon: number;
+  rangeFireWeapon: number;
 };
 
 export type Accuracies = {
-  unarmedAccuracy: number;
-  meleeAccuracy: number;
-  rangedAccuracy: number;
-  fireWeaponAccuracy: number;
+  accuracyUnarmed: number;
+  accuracyMeleeWeapon: number;
+  accuracyRangedWeapon: number;
+  accuracyFireWeapon: number;
 };
 
 export type PhysicalBonus = {
-  unarmedBonus: number;
-  meleeBonus: number;
-  rangedBonus: number;
-  fireWeaponBonus: number;
+  bonusUnarmed: number;
+  bonusMeleeWeapon: number;
+  bonusRangedWeapon: number;
+  bonusFireWeapon: number;
 };
 
 export type MagicalBonus = {
-  waterBonus: number;
-  etherealBonus: number;
-  fireBonus: number;
-  iceBonus: number;
-  moonBonus: number;
-  lightBonus: number;
-  magickBonus: number;
-  natureBonus: number;
-  sunBonus: number;
-  soulBonus: number;
-  earthBonus: number;
-  darkBonus: number;
-  thunderBonus: number;
-  windBonus: number;
-  astralBonus: number;
+  bonusElementDark: number;
+  bonusElementEarth: number;
+  bonusElementEthereal: number;
+  bonusElementFire: number;
+  bonusElementIce: number;
+  bonusElementLight: number;
+  bonusElementMagick: number;
+  bonusElementMoon: number;
+  bonusElementNature: number;
+  bonusElementSun: number;
+  bonusElementThunder: number;
+  bonusElementWater: number;
+  bonusElementWind: number;
 };
 
 export type Expertises = {
@@ -96,11 +94,11 @@ export type Expertises = {
   expertiseDualWield: number;
   expertiseHide: number;
   expertiseDodge: number;
-  expertiseEscape: number;
+  expertiseFlee: number;
   expertiseJump: number;
   expertiseAgriculture: number;
   expertiseRangedWeapons: number;
-  expertiseFireGuns: number;
+  expertiseFireWeapons: number;
   expertiseMasonry: number;
   expertiseThrowObject: number;
   expertiseClimb: number;
@@ -116,25 +114,23 @@ export type Expertises = {
   expertiseCritical: number;
   expertisePlayCalculate: number;
   expertiseMagickFind: number;
-  expertiseAid: number;
+  expertiseSupport: number;
   expertiseBluff: number;
   expertiseConjuration: number;
-  expertiseMagicDefense: number;
-  expertiseWaterElement: number;
-  expertiseEtherealElement: number;
-  expertiseFireElement: number;
-  expertiseIceElement: number;
-  expertiseMoonElement: number;
-  expertiseLightElement: number;
-  expertiseMagickElement: number;
-  expertiseNatureElement: number;
-  expertiseSunElement: number;
-  expertiseSoulElement: number;
-  expertiseEarthElement: number;
-  expertiseDarknessElement: number;
-  expertiseThunderElement: number;
-  expertiseWindElement: number;
-  expertiseAstralElement: number;
+  expertiseMagicalDefense: number;
+  expertiseElementDark: number;
+  expertiseElementEarth: number;
+  expertiseElementEthereal: number;
+  expertiseElementFire: number;
+  expertiseElementIce: number;
+  expertiseElementLight: number;
+  expertiseElementMagick: number;
+  expertiseElementMoon: number;
+  expertiseElementNature: number;
+  expertiseElementSun: number;
+  expertiseElementThunder: number;
+  expertiseElementWater: number;
+  expertiseElementWind: number;
   expertiseInterpretDreams: number;
   expertiseInterrogate: number;
   expertiseIntimidate: number;
@@ -145,17 +141,17 @@ export type Expertises = {
   expertisePerception: number;
   expertiseForecastWeather: number;
   expertiseTactic: number;
+  expertiseAstronomy: number;
+  expertiseChemistry: number;
   expertiseCombo: number;
+  expertiseFaith: number;
   expertiseMVP: number;
   expertisePVP: number;
-  expertiseSynergy: number;
-  expertiseStunt: number;
-  expertiseAstronomy: number;
-  expertiseFaith: number;
-  expertiseSteal: number;
-  expertiseSpecialWeapon: number;
-  expertiseChemistry: number;
   expertiseRelaxation: number;
+  expertiseSpecialWeapon: number;
+  expertiseSteal: number;
+  expertiseStunt: number;
+  expertiseSynergy: number;
 };
 
 export type FixedEffect = {
@@ -178,131 +174,6 @@ export type PercentageEffect = {
   value: number;
 };
 
-export enum EffectFieldsList {
-  CURRENT_HP = 'currentHP',
-  MAX_HP = 'maxHP',
-  CURRENT_MP = 'currentMP',
-  MAX_MP = 'maxMP',
-  CURRENT_SP = 'currentSP',
-  MAX_SP = 'maxSP',
-  LEVEL = 'level',
-  STRENGTH = 'strength',
-  AGILITY = 'agility',
-  DEXTERITY = 'dexterity',
-  VITALITY = 'vitality',
-  SPIRIT = 'spirit',
-  LUCK = 'luck',
-  INITIATIVE = 'initiative',
-  DODGE = 'dodge',
-  MOVE = 'move',
-  CRITICAL = 'critical',
-  PHYSICAL_DEFENSE = 'physicalDefense',
-  PHYSICAL_DICE = 'physicalDice',
-  MAGICAL_DEFENSE = 'magicalDefense',
-  MAGICAL_DICE = 'magicalDice',
-  UNARMED_RANGE = 'unarmedRange',
-  MELEE_RANGE = 'meleeRange',
-  RANGED_RANGE = 'rangedRange',
-  FIRE_WEAPON_RANGE = 'fireWeaponRange',
-  UNARMED_ACCURACY = 'unarmedAccuracy',
-  MELEE_ACCURACY = 'meleeAccuracy',
-  RANGED_ACCURACY = 'rangedAccuracy',
-  FIRE_WEAPON_ACCURACY = 'fireWeaponAccuracy',
-  UNARMED_BONUS = 'unarmedBonus',
-  MELEE_BONUS = 'meleeBonus',
-  RANGED_BONUS = 'rangedBonus',
-  FIRE_WEAPON_BONUS = 'fireWeaponBonus',
-  WATER_BONUS = 'waterBonus',
-  ETHEREAL_BONUS = 'etherealBonus',
-  FIRE_BONUS = 'fireBonus',
-  ICE_BONUS = 'iceBonus',
-  MOON_BONUS = 'moonBonus',
-  LIGHT_BONUS = 'lightBonus',
-  MAGICK_BONUS = 'magickBonus',
-  NATURE_BONUS = 'natureBonus',
-  SUN_BONUS = 'sunBonus',
-  SOUL_BONUS = 'soulBonus',
-  EARTH_BONUS = 'earthBonus',
-  DARK_BONUS = 'darkBonus',
-  THUNDER_BONUS = 'thunderBonus',
-  WIND_BONUS = 'windBonus',
-  ASTRAL_BONUS = 'astralBonus',
-  EXPERTISE_MELEE_WEAPONS = 'expertiseMeleeWeapons',
-  EXPERTISE_MECHANICAL_WEAPONS = 'expertiseMechanicalWeapons',
-  EXPERTISE_WILLPOWER = 'expertiseWillpower',
-  EXPERTISE_FORGE = 'expertiseForge',
-  EXPERTISE_IMMOBILIZE = 'expertiseImmobilize',
-  EXPERTISE_UNARMED_FIGHT = 'expertiseUnarmedFight',
-  EXPERTISE_MINE = 'expertiseMine',
-  EXPERTISE_MOUNT = 'expertiseMount',
-  EXPERTISE_TRACK = 'expertiseTrack',
-  EXPERTISE_MISLEAD = 'expertiseMislead',
-  EXPERTISE_DISGUISE = 'expertiseDisguise',
-  EXPERTISE_DUALWIELD = 'expertiseDualWield',
-  EXPERTISE_HIDE = 'expertiseHide',
-  EXPERTISE_DODGE = 'expertiseDodge',
-  EXPERTISE_ESCAPE = 'expertiseEscape',
-  EXPERTISE_JUMP = 'expertiseJump',
-  EXPERTISE_AGRICULTURE = 'expertiseAgriculture',
-  EXPERTISE_RANGED_WEAPONS = 'expertiseRangedWeapons',
-  EXPERTISE_FIREGUNS = 'expertiseFireGuns',
-  EXPERTISE_MASONRY = 'expertiseMasonry',
-  EXPERTISE_THROW_OBJECT = 'expertiseThrowObject',
-  EXPERTISE_CLIMB = 'expertiseClimb',
-  EXPERTISE_MAKEBOAT = 'expertiseMakeBoat',
-  EXPERTISE_SWIM = 'expertiseSwim',
-  EXPERTISE_PILOT = 'expertisePilot',
-  EXPERTISE_PREPARE_TRAP = 'expertisePrepareTrap',
-  EXPERTISE_FIRST_AID = 'expertiseFirstAid',
-  EXPERTISE_CHARISMA = 'expertiseCharisma',
-  EXPERTISE_PHYSICAL_DEFENSE = 'expertisePhysicalDefense',
-  EXPERTISE_LEADERSHIP = 'expertiseLeadership',
-  EXPERTISE_SURVIVAL = 'expertiseSurvival',
-  EXPERTISE_CRITICAL = 'expertiseCritical',
-  EXPERTISE_PLAY_CALCULATE = 'expertisePlayCalculate',
-  EXPERTISE_MAGICK_FIND = 'expertiseMagickFind',
-  EXPERTISE_AID = 'expertiseAid',
-  EXPERTISE_BLUFF = 'expertiseBluff',
-  EXPERTISE_CONJURATION = 'expertiseConjuration',
-  EXPERTISE_MAGIC_DEFENSE = 'expertiseMagicDefense',
-  EXPERTISE_WATER_ELEMENT = 'expertiseWaterElement',
-  EXPERTISE_ETHEREAL_ELEMENT = 'expertiseEtherealElement',
-  EXPERTISE_FIRE_ELEMENT = 'expertiseFireElement',
-  EXPERTISE_ICE_ELEMENT = 'expertiseIceElement',
-  EXPERTISE_MOON_ELEMENT = 'expertiseMoonElement',
-  EXPERTISE_LIGHT_ELEMENT = 'expertiseLightElement',
-  EXPERTISE_MAGICK_ELEMENT = 'expertiseMagickElement',
-  EXPERTISE_NATURE_ELEMENT = 'expertiseNatureElement',
-  EXPERTISE_SUN_ELEMENT = 'expertiseSunElement',
-  EXPERTISE_SOUL_ELEMENT = 'expertiseSoulElement',
-  EXPERTISE_EARTH_ELEMENT = 'expertiseEarthElement',
-  EXPERTISE_DARKNESS_ELEMENT = 'expertiseDarknessElement',
-  EXPERTISE_THUNDER_ELEMENT = 'expertiseThunderElement',
-  EXPERTISE_WIND_ELEMENT = 'expertiseWindElement',
-  EXPERTISE_ASTRAL_ELEMENT = 'expertiseAstralElement',
-  EXPERTISE_INTERPRET_DREAMS = 'expertiseInterpretDreams',
-  EXPERTISE_INTERROGATE = 'expertiseInterrogate',
-  EXPERTISE_INTIMIDATE = 'expertiseIntimidate',
-  EXPERTISE_LANGUAGE = 'expertiseLanguage',
-  EXPERTISE_CURSE = 'expertiseCurse',
-  EXPERTISE_MYSTICISM = 'expertiseMysticism',
-  EXPERTISE_NEGOTIATE = 'expertiseNegotiate',
-  EXPERTISE_PERCEPTION = 'expertisePerception',
-  EXPERTISE_FORECAST_WEATHER = 'expertiseForecastWeather',
-  EXPERTISE_TACTIC = 'expertiseTactic',
-  EXPERTISE_COMBO = 'expertiseCombo',
-  EXPERTISE_MVP = 'expertiseMVP',
-  EXPERTISE_PVP = 'expertisePVP',
-  EXPERTISE_SYNERGY = 'expertiseSynergy',
-  EXPERTISE_STUNT = 'expertiseStunt',
-  EXPERTISE_ASTRONOMY = 'expertiseAstronomy',
-  EXPERTISE_FAITH = 'expertiseFaith',
-  EXPERTISE_STEAL = 'expertiseSteal',
-  EXPERTISE_SPECIAL_WEAPON = 'expertiseSpecialWeapon',
-  EXPERTISE_CHEMISTRY = 'expertiseChemistry',
-  EXPERTISE_RELAXATION = 'expertiseRelaxation',
-}
-
 export enum FixedOperators {
   SUM = 'SUM',
   SUBTRACTION = 'SUBTRACTION',
@@ -318,4 +189,126 @@ export enum LinkedOperators {
 export enum PercentageOperators {
   SUM = 'SUM',
   SUBTRACTION = 'SUBTRACTION',
+}
+
+export enum EffectFieldsList {
+  BASIC_DATA_CURRENT_HP = 'basicDataCurrentHP',
+  BASIC_DATA_MAX_HP = 'basicDataMaxHP',
+  BASIC_DATA_CURRENT_MP = 'basicDataCurrentMP',
+  BASIC_DATA_MAX_MP = 'basicDataMaxMP',
+  BASIC_DATA_CURRENT_SP = 'basicDataCurrentSP',
+  BASIC_DATA_MAX_SP = 'basicDataMaxSP',
+  BASIC_DATA_LEVEL = 'basicDataLevel',
+  BASIC_DATA_GOLD = 'basicDataGold',
+  ATTRIBUTE_AGILITY = 'attributeAgility',
+  ATTRIBUTE_DEXTERITY = 'attributeDexterity',
+  ATTRIBUTE_LUCK = 'attributeLuck',
+  ATTRIBUTE_SPIRIT = 'attributeSpirit',
+  ATTRIBUTE_STRENGTH = 'attributeStrength',
+  ATTRIBUTE_VITALITY = 'attributeVitality',
+  BASIC_STAT_INITIATIVE = 'basicStatInitiative',
+  BASIC_STAT_DODGE = 'basicStatDodge',
+  BASIC_STAT_MOVE = 'basicStatMove',
+  BASIC_STAT_CRITICAL = 'basicStatCritical',
+  BASIC_STAT_PHYSICAL_DEFENSE = 'basicStatPhysicalDefense',
+  BASIC_STAT_PHYSICAL_DICE = 'basicStatPhysicalDice',
+  BASIC_STAT_MAGICAL_DEFENSE = 'basicStatMagicalDefense',
+  BASIC_STAT_MAGICAL_DICE = 'basicStatMagicalDice',
+  RANGE_UNARMED = 'rangeUnarmed',
+  RANGE_MELEE_WEAPON = 'rangeMeleeWeapon',
+  RANGE_RANGED_WEAPON = 'rangeRangedWeapon',
+  RANGE_FIRE_WEAPON = 'rangeFireWeapon',
+  ACCURACY_UNARMED = 'accuracyUnarmed',
+  ACCURACY_MELEE_WEAPON = 'accuracyMeleeWeapon',
+  ACCURACY_RANGED_WEAPON = 'accuracyRangedWeapon',
+  ACCURACY_FIRE_WEAPON = 'accuracyFireWeapon',
+  BONUS_UNARMED = 'bonusUnarmed',
+  BONUS_MELEE_WEAPON = 'bonusMeleeWeapon',
+  BONUS_RANGED_WEAPON = 'bonusRangedWeapon',
+  BONUS_FIRE_WEAPON = 'bonusFireWeapon',
+  BONUS_ELEMENT_DARK = 'bonusElementDark',
+  BONUS_ELEMENT_EARTH = 'bonusElementEarth',
+  BONUS_ELEMENT_ETHEREAL = 'bonusElementEthereal',
+  BONUS_ELEMENT_FIRE = 'bonusElementFire',
+  BONUS_ELEMENT_ICE = 'bonusElementIce',
+  BONUS_ELEMENT_LIGHT = 'bonusElementLight',
+  BONUS_ELEMENT_MAGICK = 'bonusElementMagick',
+  BONUS_ELEMENT_MOON = 'bonusElementMoon',
+  BONUS_ELEMENT_NATURE = 'bonusElementNature',
+  BONUS_ELEMENT_SUN = 'bonusElementSun',
+  BONUS_ELEMENT_THUNDER = 'bonusElementThunder',
+  BONUS_ELEMENT_WATER = 'bonusElementWater',
+  BONUS_ELEMENT_WIND = 'bonusElementWind',
+  EXPERTISE_MELEE_WEAPONS = 'expertiseMeleeWeapons',
+  EXPERTISE_MECHANICAL_WEAPONS = 'expertiseMechanicalWeapons',
+  EXPERTISE_WILLPOWER = 'expertiseWillpower',
+  EXPERTISE_FORGE = 'expertiseForge',
+  EXPERTISE_IMMOBILIZE = 'expertiseImmobilize',
+  EXPERTISE_UNARMED_FIGHT = 'expertiseUnarmedFight',
+  EXPERTISE_MINE = 'expertiseMine',
+  EXPERTISE_MOUNT = 'expertiseMount',
+  EXPERTISE_TRACK = 'expertiseTrack',
+  EXPERTISE_MISLEAD = 'expertiseMislead',
+  EXPERTISE_DISGUISE = 'expertiseDisguise',
+  EXPERTISE_DUAL_WIELD = 'expertiseDualWield',
+  EXPERTISE_HIDE = 'expertiseHide',
+  EXPERTISE_DODGE = 'expertiseDodge',
+  EXPERTISE_FLEE = 'expertiseFlee',
+  EXPERTISE_JUMP = 'expertiseJump',
+  EXPERTISE_AGRICULTURE = 'expertiseAgriculture',
+  EXPERTISE_RANGED_WEAPONS = 'expertiseRangedWeapons',
+  EXPERTISE_FIRE_WEAPONS = 'expertiseFireWeapons',
+  EXPERTISE_MASONRY = 'expertiseMasonry',
+  EXPERTISE_THROW_OBJECT = 'expertiseThrowObject',
+  EXPERTISE_CLIMB = 'expertiseClimb',
+  EXPERTISE_MAKEBOAT = 'expertiseMakeBoat',
+  EXPERTISE_SWIM = 'expertiseSwim',
+  EXPERTISE_PILOT = 'expertisePilot',
+  EXPERTISE_PREPARE_TRAP = 'expertisePrepareTrap',
+  EXPERTISE_FIRST_AID = 'expertiseFirstAid',
+  EXPERTISE_CHARISMA = 'expertiseCharisma',
+  EXPERTISE_PHYSICAL_DEFENSE = 'expertisePhysicalDefense',
+  EXPERTISE_LEADERSHIP = 'expertiseLeadership',
+  EXPERTISE_SURVIVAL = 'expertiseSurvival',
+  EXPERTISE_CRITICAL = 'expertiseCritical',
+  EXPERTISE_PLAY_CALCULATE = 'expertisePlayCalculate',
+  EXPERTISE_MAGICK_FIND = 'expertiseMagickFind',
+  EXPERTISE_SUPPORT = 'expertiseSupport',
+  EXPERTISE_BLUFF = 'expertiseBluff',
+  EXPERTISE_CONJURATION = 'expertiseConjuration',
+  EXPERTISE_MAGICAL_DEFENSE = 'expertiseMagicalDefense',
+  EXPERTISE_ELEMENT_DARK = 'expertiseElementDark',
+  EXPERTISE_ELEMENT_EARTH = 'expertiseElementEarth',
+  EXPERTISE_ELEMENT_ETHEREAL = 'expertiseElementEthereal',
+  EXPERTISE_ELEMENT_FIRE = 'expertiseElementFire',
+  EXPERTISE_ELEMENT_ICE = 'expertiseElementIce',
+  EXPERTISE_ELEMENT_LIGHT = 'expertiseElementLight',
+  EXPERTISE_ELEMENT_MAGICK = 'expertiseElementMagick',
+  EXPERTISE_ELEMENT_MOON = 'expertiseElementMoon',
+  EXPERTISE_ELEMENT_NATURE = 'expertiseElementNature',
+  EXPERTISE_ELEMENT_SUN = 'expertiseElementSun',
+  EXPERTISE_ELEMENT_THUNDER = 'expertiseElementThunder',
+  EXPERTISE_ELEMENT_WATER = 'expertiseElementWater',
+  EXPERTISE_ELEMENT_WIND = 'expertiseElementWind',
+  EXPERTISE_INTERPRET_DREAMS = 'expertiseInterpretDreams',
+  EXPERTISE_INTERROGATE = 'expertiseInterrogate',
+  EXPERTISE_INTIMIDATE = 'expertiseIntimidate',
+  EXPERTISE_LANGUAGE = 'expertiseLanguage',
+  EXPERTISE_CURSE = 'expertiseCurse',
+  EXPERTISE_MYSTICISM = 'expertiseMysticism',
+  EXPERTISE_NEGOTIATE = 'expertiseNegotiate',
+  EXPERTISE_PERCEPTION = 'expertisePerception',
+  EXPERTISE_FORECAST_WEATHER = 'expertiseForecastWeather',
+  EXPERTISE_TACTIC = 'expertiseTactic',
+  EXPERTISE_ASTRONOMY = 'expertiseAstronomy',
+  EXPERTISE_CHEMISTRY = 'expertiseChemistry',
+  EXPERTISE_COMBO = 'expertiseCombo',
+  EXPERTISE_FAITH = 'expertiseFaith',
+  EXPERTISE_MVP = 'expertiseMVP',
+  EXPERTISE_PVP = 'expertisePVP',
+  EXPERTISE_RELAXATION = 'expertiseRelaxation',
+  EXPERTISE_SPECIAL_WEAPON = 'expertiseSpecialWeapon',
+  EXPERTISE_STEAL = 'expertiseSteal',
+  EXPERTISE_STUNT = 'expertiseStunt',
+  EXPERTISE_SYNERGY = 'expertiseSynergy',
 }

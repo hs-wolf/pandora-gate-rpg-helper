@@ -137,6 +137,9 @@ export class Character {
       [...fixedEffects, ...fixedFormulas],
       [...linkedEffects, ...linkedFormulas]
     );
+    if (appliedDivisions < 0) {
+      return 0;
+    }
     return appliedDivisions;
   }
 

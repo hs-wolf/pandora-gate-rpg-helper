@@ -32,7 +32,13 @@ const saveEdits = () => {
     <div v-if="showForm" class="flex flex-col gap-4">
       <div v-if="editing" class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.expertises).sort()"
+          v-for="field in Object.keys(currentCharacter.expertises).sort(
+            (a, b) =>
+              t(`characters-expertises-form.${a}`) <
+              t(`characters-expertises-form.${b}`)
+                ? -1
+                : 1
+          )"
           :key="field"
           class="form-section"
         >
@@ -43,7 +49,11 @@ const saveEdits = () => {
             class="form-input"
           />
           <p class="ml-4">
-            {{ currentCharacter.getFieldFinalValue(field as EffectFieldsList) }}
+            {{
+              currentCharacter.expertises[field as keyof Expertises]
+                ? currentCharacter.getFieldFinalValue(field as EffectFieldsList)
+                : 0
+            }}
           </p>
         </div>
         <button class="self-end btn-green rounded" @click.prevent="saveEdits">
@@ -52,7 +62,13 @@ const saveEdits = () => {
       </div>
       <div v-else class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.expertises).sort()"
+          v-for="field in Object.keys(currentCharacter.expertises).sort(
+            (a, b) =>
+              t(`characters-expertises-form.${a}`) <
+              t(`characters-expertises-form.${b}`)
+                ? -1
+                : 1
+          )"
           :key="field"
           class="display-section"
         >
@@ -61,7 +77,11 @@ const saveEdits = () => {
             ({{ currentCharacter.expertises[field as keyof Expertises] }})
           </span>
           <p>
-            {{ currentCharacter.getFieldFinalValue(field as EffectFieldsList) }}
+            {{
+              currentCharacter.expertises[field as keyof Expertises]
+                ? currentCharacter.getFieldFinalValue(field as EffectFieldsList)
+                : 0
+            }}
           </p>
         </div>
         <button

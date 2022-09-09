@@ -36,26 +36,30 @@ const saveEdits = () => {
             <h1
               class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.currentHP') }}
+              {{ t('characters-basic-data-form.basicDataCurrentHP') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.currentHP"
+              v-model="currentCharacter.basicData.basicDataCurrentHP"
               class="form-input"
             />
             <h1
               class="p-2 bg-primary-gray border border-primary-gray whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.maxHP') }}
+              {{ t('characters-basic-data-form.basicDataMaxHP') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.maxHP"
+              v-model="currentCharacter.basicData.basicDataMaxHP"
               class="form-input rounded-r"
             />
           </div>
           <p class="font-semibold">
-            {{ currentCharacter.getFieldFinalValue(EffectFieldsList.MAX_HP) }}
+            {{
+              currentCharacter.getFieldFinalValue(
+                EffectFieldsList.BASIC_DATA_MAX_HP
+              )
+            }}
           </p>
         </div>
         <div class="flex items-center gap-4">
@@ -63,26 +67,30 @@ const saveEdits = () => {
             <h1
               class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.currentMP') }}
+              {{ t('characters-basic-data-form.basicDataCurrentMP') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.currentMP"
+              v-model="currentCharacter.basicData.basicDataCurrentMP"
               class="form-input"
             />
             <h1
               class="p-2 bg-primary-gray border border-primary-gray whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.maxMP') }}
+              {{ t('characters-basic-data-form.basicDataMaxMP') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.maxMP"
+              v-model="currentCharacter.basicData.basicDataMaxMP"
               class="form-input rounded-r"
             />
           </div>
           <p class="font-semibold">
-            {{ currentCharacter.getFieldFinalValue(EffectFieldsList.MAX_MP) }}
+            {{
+              currentCharacter.getFieldFinalValue(
+                EffectFieldsList.BASIC_DATA_MAX_MP
+              )
+            }}
           </p>
         </div>
         <div class="flex items-center gap-4">
@@ -90,37 +98,41 @@ const saveEdits = () => {
             <h1
               class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.currentSP') }}
+              {{ t('characters-basic-data-form.basicDataCurrentSP') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.currentSP"
+              v-model="currentCharacter.basicData.basicDataCurrentSP"
               class="form-input"
             />
             <h1
               class="p-2 bg-primary-gray border border-primary-gray whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.maxSP') }}
+              {{ t('characters-basic-data-form.basicDataMaxSP') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.maxSP"
+              v-model="currentCharacter.basicData.basicDataMaxSP"
               class="form-input rounded-r"
             />
           </div>
           <p class="font-semibold">
-            {{ currentCharacter.getFieldFinalValue(EffectFieldsList.MAX_SP) }}
+            {{
+              currentCharacter.getFieldFinalValue(
+                EffectFieldsList.BASIC_DATA_MAX_SP
+              )
+            }}
           </p>
         </div>
         <div class="flex items-center">
           <h1
             class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
           >
-            {{ t('characters-basic-data-form.level') }}
+            {{ t('characters-basic-data-form.basicDataLevel') }}
           </h1>
           <input
             type="number"
-            v-model="currentCharacter.basicData.level"
+            v-model="currentCharacter.basicData.basicDataLevel"
             class="form-input rounded-r"
           />
         </div>
@@ -129,11 +141,11 @@ const saveEdits = () => {
             <h1
               class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.exp') }}
+              {{ t('characters-basic-data-form.basicDataExp') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.exp"
+              v-model="currentCharacter.basicData.basicDataExp"
               class="form-input"
             />
           </div>
@@ -141,11 +153,11 @@ const saveEdits = () => {
             <h1
               class="p-2 bg-primary-gray border border-primary-gray whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.next') }}
+              {{ t('characters-basic-data-form.basicDataNext') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.next"
+              v-model="currentCharacter.basicData.basicDataNext"
               class="form-input rounded-r"
             />
           </div>
@@ -154,21 +166,21 @@ const saveEdits = () => {
           <h1
             class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
           >
-            {{ t('characters-basic-data-form.jp') }}
+            {{ t('characters-basic-data-form.basicDataJP') }}
           </h1>
           <input
             type="number"
-            v-model="currentCharacter.basicData.jp"
+            v-model="currentCharacter.basicData.basicDataJP"
             class="form-input rounded-r"
           />
         </div>
         <div class="flex items-center">
           <h1 class="p-2 bg-primary-gray border border-primary-gray rounded-l">
-            {{ t('characters-basic-data-form.enhancements') }}
+            {{ t('characters-basic-data-form.basicDataEnhancements') }}
           </h1>
           <input
             type="number"
-            v-model="currentCharacter.basicData.enhancements"
+            v-model="currentCharacter.basicData.basicDataEnhancements"
             class="form-input rounded-r"
           />
         </div>
@@ -176,11 +188,11 @@ const saveEdits = () => {
           <h1
             class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
           >
-            {{ t('characters-basic-data-form.skillRegen') }}
+            {{ t('characters-basic-data-form.basicDataSkillRegen') }}
           </h1>
           <input
             type="number"
-            v-model="currentCharacter.basicData.skillRegen"
+            v-model="currentCharacter.basicData.basicDataSkillRegen"
             class="form-input rounded-r"
           />
         </div>
@@ -189,11 +201,11 @@ const saveEdits = () => {
             <h1
               class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.currentHunger') }}
+              {{ t('characters-basic-data-form.basicDataCurrentHunger') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.currentHunger"
+              v-model="currentCharacter.basicData.basicDataCurrentHunger"
               class="form-input"
             />
           </div>
@@ -201,11 +213,11 @@ const saveEdits = () => {
             <h1
               class="p-2 bg-primary-gray border border-primary-gray whitespace-nowrap"
             >
-              {{ t('characters-basic-data-form.maxHunger') }}
+              {{ t('characters-basic-data-form.basicDataMaxHunger') }}
             </h1>
             <input
               type="number"
-              v-model="currentCharacter.basicData.maxHunger"
+              v-model="currentCharacter.basicData.basicDataMaxHunger"
               class="form-input rounded-r"
             />
           </div>
@@ -214,11 +226,11 @@ const saveEdits = () => {
           <h1
             class="p-2 bg-primary-gray border border-primary-gray rounded-l whitespace-nowrap"
           >
-            {{ t('characters-basic-data-form.gold') }}
+            {{ t('characters-basic-data-form.basicDataGold') }}
           </h1>
           <input
             type="number"
-            v-model="currentCharacter.basicData.gold"
+            v-model="currentCharacter.basicData.basicDataGold"
             class="form-input rounded-r"
           />
         </div>
@@ -228,72 +240,84 @@ const saveEdits = () => {
       </div>
       <div v-else class="flex flex-col gap-4">
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.currentHP') }}</h1>
-          <p>{{ currentCharacter.basicData.currentHP }}</p>
+          <h1>{{ t('characters-basic-data-form.basicDataCurrentHP') }}</h1>
+          <p>{{ currentCharacter.basicData.basicDataCurrentHP }}</p>
           <h1>/</h1>
-          <span>{{ `(${currentCharacter.basicData.maxHP})` }}</span>
+          <span>{{ `(${currentCharacter.basicData.basicDataMaxHP})` }}</span>
           <p>
-            {{ currentCharacter.getFieldFinalValue(EffectFieldsList.MAX_HP) }}
+            {{
+              currentCharacter.getFieldFinalValue(
+                EffectFieldsList.BASIC_DATA_MAX_HP
+              )
+            }}
           </p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.currentMP') }}</h1>
-          <p>{{ currentCharacter.basicData.currentMP }}</p>
+          <h1>{{ t('characters-basic-data-form.basicDataCurrentMP') }}</h1>
+          <p>{{ currentCharacter.basicData.basicDataCurrentMP }}</p>
           <h1>/</h1>
-          <span>{{ `(${currentCharacter.basicData.maxMP})` }}</span>
+          <span>{{ `(${currentCharacter.basicData.basicDataMaxMP})` }}</span>
           <p>
-            {{ currentCharacter.getFieldFinalValue(EffectFieldsList.MAX_MP) }}
+            {{
+              currentCharacter.getFieldFinalValue(
+                EffectFieldsList.BASIC_DATA_MAX_MP
+              )
+            }}
           </p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.currentSP') }}</h1>
-          <p>{{ currentCharacter.basicData.currentSP }}</p>
+          <h1>{{ t('characters-basic-data-form.basicDataCurrentSP') }}</h1>
+          <p>{{ currentCharacter.basicData.basicDataCurrentSP }}</p>
           <h1>/</h1>
-          <span>{{ `(${currentCharacter.basicData.maxSP})` }}</span>
+          <span>{{ `(${currentCharacter.basicData.basicDataMaxSP})` }}</span>
           <p>
-            {{ currentCharacter.getFieldFinalValue(EffectFieldsList.MAX_SP) }}
+            {{
+              currentCharacter.getFieldFinalValue(
+                EffectFieldsList.BASIC_DATA_MAX_SP
+              )
+            }}
           </p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.level') }}</h1>
+          <h1>{{ t('characters-basic-data-form.basicDataLevel') }}</h1>
           <p>
-            {{ currentCharacter.basicData.level }}
+            {{ currentCharacter.basicData.basicDataLevel }}
           </p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.exp') }}</h1>
-          <p>{{ currentCharacter.basicData.exp }}</p>
+          <h1>{{ t('characters-basic-data-form.basicDataExp') }}</h1>
+          <p>{{ currentCharacter.basicData.basicDataExp }}</p>
           <h1>/</h1>
-          <p>{{ currentCharacter.basicData.next }}</p>
+          <p>{{ currentCharacter.basicData.basicDataNext }}</p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.jp') }}</h1>
+          <h1>{{ t('characters-basic-data-form.basicDataJP') }}</h1>
           <p>
-            {{ currentCharacter.basicData.jp }}
+            {{ currentCharacter.basicData.basicDataJP }}
           </p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.enhancements') }}</h1>
+          <h1>{{ t('characters-basic-data-form.basicDataEnhancements') }}</h1>
           <p>
-            {{ currentCharacter.basicData.enhancements }}
+            {{ currentCharacter.basicData.basicDataEnhancements }}
           </p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.skillRegen') }}</h1>
+          <h1>{{ t('characters-basic-data-form.basicDataSkillRegen') }}</h1>
           <p>
-            {{ currentCharacter.basicData.skillRegen }}
+            {{ currentCharacter.basicData.basicDataSkillRegen }}
           </p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.currentHunger') }}</h1>
-          <p>{{ currentCharacter.basicData.currentHunger }}</p>
+          <h1>{{ t('characters-basic-data-form.basicDataMaxHunger') }}</h1>
+          <p>{{ currentCharacter.basicData.basicDataCurrentHunger }}</p>
           <h1>/</h1>
-          <p>{{ currentCharacter.basicData.maxHunger }}</p>
+          <p>{{ currentCharacter.basicData.basicDataMaxHunger }}</p>
         </div>
         <div class="display-section">
-          <h1>{{ t('characters-basic-data-form.gold') }}</h1>
+          <h1>{{ t('characters-basic-data-form.basicDataGold') }}</h1>
           <p>
-            {{ currentCharacter.basicData.gold }}
+            {{ currentCharacter.basicData.basicDataGold }}
           </p>
         </div>
         <button

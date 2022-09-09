@@ -32,33 +32,39 @@ const saveEdits = () => {
     <div v-if="showForm" class="flex flex-col gap-4">
       <div v-if="editing" class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.attributes).sort()"
+          v-for="field in Object.keys(currentCharacter.attributes).sort(
+            (a, b) =>
+              t(`characters-attributes-form.${a}.acronym`) <
+              t(`characters-attributes-form.${b}.acronym`)
+                ? -1
+                : 1
+          )"
           :key="field"
           class="form-section"
         >
           <h1 class="flex items-center gap-2">
             <icon-iconoir:gym
-              v-if="field === EffectFieldsList.STRENGTH"
+              v-if="field === EffectFieldsList.ATTRIBUTE_STRENGTH"
               class="text-primary-green shrink-0"
             />
             <icon-mdi:run-fast
-              v-else-if="field === EffectFieldsList.AGILITY"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_AGILITY"
               class="text-primary-green shrink-0"
             />
             <icon-fa-solid:hand-sparkles
-              v-else-if="field === EffectFieldsList.DEXTERITY"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_DEXTERITY"
               class="text-primary-green shrink-0"
             />
             <icon-ic:baseline-health-and-safety
-              v-else-if="field === EffectFieldsList.VITALITY"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_VITALITY"
               class="text-primary-green shrink-0"
             />
             <icon-ri:mental-health-line
-              v-else-if="field === EffectFieldsList.SPIRIT"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_SPIRIT"
               class="text-primary-green shrink-0"
             />
             <icon-tabler:clover
-              v-else-if="field === EffectFieldsList.LUCK"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_LUCK"
               class="text-primary-green shrink-0"
             />
             {{ t(`characters-attributes-form.${field}.acronym`) }}
@@ -78,33 +84,39 @@ const saveEdits = () => {
       </div>
       <div v-else class="flex flex-col gap-4">
         <div
-          v-for="field in Object.keys(currentCharacter.attributes).sort()"
+          v-for="field in Object.keys(currentCharacter.attributes).sort(
+            (a, b) =>
+              t(`characters-attributes-form.${a}.acronym`) <
+              t(`characters-attributes-form.${b}.acronym`)
+                ? -1
+                : 1
+          )"
           :key="field"
           class="grid grid-cols-3 gap-4"
         >
           <div class="col-span-2 display-section">
             <icon-iconoir:gym
-              v-if="field === EffectFieldsList.STRENGTH"
+              v-if="field === EffectFieldsList.ATTRIBUTE_STRENGTH"
               class="text-primary-green shrink-0"
             />
             <icon-mdi:run-fast
-              v-else-if="field === EffectFieldsList.AGILITY"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_AGILITY"
               class="text-primary-green shrink-0"
             />
             <icon-fa-solid:hand-sparkles
-              v-else-if="field === EffectFieldsList.DEXTERITY"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_DEXTERITY"
               class="text-primary-green shrink-0"
             />
             <icon-ic:baseline-health-and-safety
-              v-else-if="field === EffectFieldsList.VITALITY"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_VITALITY"
               class="text-primary-green shrink-0"
             />
             <icon-ri:mental-health-line
-              v-else-if="field === EffectFieldsList.SPIRIT"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_SPIRIT"
               class="text-primary-green shrink-0"
             />
             <icon-tabler:clover
-              v-else-if="field === EffectFieldsList.LUCK"
+              v-else-if="field === EffectFieldsList.ATTRIBUTE_LUCK"
               class="text-primary-green shrink-0"
             />
             <h1>{{ t(`characters-attributes-form.${field}.acronym`) }}</h1>
